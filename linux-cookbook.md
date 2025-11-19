@@ -1,5 +1,6 @@
 # Linux Cookbook
 
+```
 ls = list
 mkdir = create directory
 cp = copy files
@@ -35,4 +36,4 @@ if [ "$FREE" -gt "$limite" ]; then
 	echo "RAM OK - $FREE mbyte liberi"; else
 	echo "RAM KO - $FREE mbyte liberi"; 
 fi
-
+```
