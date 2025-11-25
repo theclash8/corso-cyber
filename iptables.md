@@ -1,7 +1,3 @@
-# Tasks
-- [x] Terminare Haproxy seedible ✅ 2025-11-25
-- [x] Call Seedible ✅ 2025-11-25
-
 # Recap
 * Protocollo IP
 	* IP Address
