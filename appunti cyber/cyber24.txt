@@ -1,0 +1,114 @@
+multiplexing: divisione in porte logiche di ogni interfaccia di rete, ad esempio tcp e udp hanno diverse porte
+
+RFC: è un documento che viene aggiornzto da internet engineerging che contiene scoperte e regole
+
+ICMP: protocollo di transport
+
+/etc/services: fa la lista delle porte e corrispondenti servizi (richiede sudo cioè i permessi)
+
+firewall: il "filtro" che controlla il traffico sono divisibili in 2 grandi categorie firewall "network" e "waf" (web application firewall)
+
+firewall "network": più semplici e quindi più veloci ma meno affidabili
+
+firewall "waf": 
+
+
+PS C:\Users\egidi> nmap searchsploit  Microsoft Windows RPC
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-24 15:52 +0100
+Failed to resolve "searchsploit".
+Failed to resolve "Microsoft".
+Failed to resolve "Windows".
+Failed to resolve "RPC".
+WARNING: No targets were specified, so 0 hosts scanned.
+Nmap done: 0 IP addresses (0 hosts up) scanned in 15.02 seconds
+PS C:\Users\egidi>  nmap -A 192.168.201.228
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-24 15:53 +0100
+Stats: 0:00:56 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 99.77% done; ETC: 15:54 (0:00:00 remaining)
+Stats: 0:00:57 elapsed; 0 hosts completed (1 up), 1 undergoing Script Scan
+NSE Timing: About 99.77% done; ETC: 15:54 (0:00:00 remaining)
+Nmap scan report for 192.168.201.228
+Host is up (0.034s latency).
+Not shown: 997 filtered tcp ports (no-response)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+MAC Address: 6C:2F:80:45:17:BC (Intel Corporate)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Device type: general purpose|phone|specialized
+Running (JUST GUESSING): Microsoft Windows 11|10|2022|2008|Phone|7 (96%)
+OS CPE: cpe:/o:microsoft:windows_11 cpe:/o:microsoft:windows_10 cpe:/o:microsoft:windows_server_2022 cpe:/o:microsoft:windows_server_2008::sp1 cpe:/o:microsoft:windows cpe:/o:microsoft:windows_7
+Aggressive OS guesses: Microsoft Windows 11 21H2 (96%), Microsoft Windows 10 (91%), Microsoft Windows 10 1607 (91%), Microsoft Windows Server 2022 (90%), Microsoft Windows Server 2008 SP1 (88%), Microsoft Windows Phone 7.5 or 8.0 (88%), Microsoft Windows Embedded Standard 7 (87%), Microsoft Windows 10 1511 - 1607 (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 1 hop
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_nbstat: NetBIOS name: PMSA-025, NetBIOS user: <unknown>, NetBIOS MAC: 6c:2f:80:45:17:bc (Intel Corporate)
+|_clock-skew: -9m41s
+| smb2-security-mode:
+|   3.1.1:
+|_    Message signing enabled and required
+| smb2-time:
+|   date: 2025-11-24T14:44:13
+|_  start_date: N/A
+
+TRACEROUTE
+HOP RTT      ADDRESS
+1   34.41 ms 192.168.201.228
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 69.71 seconds
+PS C:\Users\egidi>  nmap -p 135 -sV 192.168.201.228
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-24 15:57 +0100
+Nmap scan report for 192.168.201.228
+Host is up (0.37s latency).
+
+PORT    STATE SERVICE VERSION
+135/tcp open  msrpc   Microsoft Windows RPC
+MAC Address: 6C:2F:80:45:17:BC (Intel Corporate)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.63 seconds
+PS C:\Users\egidi> nmap -p 139 -sV 192.168.201.228
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-24 15:57 +0100
+Nmap scan report for 192.168.201.228
+Host is up (0.14s latency).
+
+PORT    STATE SERVICE     VERSION
+139/tcp open  netbios-ssn Microsoft Windows netbios-ssn
+MAC Address: 6C:2F:80:45:17:BC (Intel Corporate)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.42 seconds
+PS C:\Users\egidi> nmap -p 445 -sV 192.168.201.228
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-24 15:58 +0100
+Nmap scan report for 192.168.201.228
+Host is up (0.16s latency).
+
+PORT    STATE SERVICE       VERSION
+445/tcp open  microsoft-ds?
+MAC Address: 6C:2F:80:45:17:BC (Intel Corporate)
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 7.85 seconds
+PS C:\Users\egidi> wsl --install
+Per eseguire l'operazione richiesta è necessaria l'esecuzione con privilegi elevati.
+Installazione in corso: Piattaforma macchina virtuale
+Piattaforma macchina virtuale è stato installato.
+Installazione in corso: Sottosistema Windows per Linux
+Sottosistema Windows per Linux è stato installato.
+Installazione in corso: Ubuntu
+Ubuntu è stato installato.
+L'operazione richiesta è stata eseguita. Le modifiche avranno effetto al riavvio del sistema.
+PS C:\Users\egidi>
+
+
+
+
+
+
+
