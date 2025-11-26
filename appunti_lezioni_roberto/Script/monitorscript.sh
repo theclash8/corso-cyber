@@ -5,7 +5,7 @@ echo "<br>Il server e' up da: $UPTIME" >> "$OUTPUT_DIR/monitoring.html"
 N_ACCOUNT=$(ls /home/ | wc -l)
 
 echo "<br>Ci sono in totale" $N_ACCOUNT " account esistenti" >> $OUTPUT_DIR/monitoring.html
-CONTA_CONNESSIONI=$(netstat -tunap | grep ":2222 " | awk '{print $5}' |  wc -l)
+CONTA_CONNESSIONI=$(netstat -tunap | grep ":22 " | awk '{print $5}' |  wc -l)
 echo "<br>Ci sono attualmente " $CONTA_CONNESSIONI " connessioni" >> $OUTPUT_DIR/monitoring.html
 if [ $CONTA_CONNESSIONI -ge 15 ] && [ $CONTA_CONNESSIONI -lt 25 ]; then
         echo " WARNING: Numero sospetto di connessioni" >> $OUTPUT_DIR/monitoring.html
