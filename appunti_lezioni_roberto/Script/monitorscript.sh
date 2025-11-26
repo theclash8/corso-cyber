@@ -24,7 +24,11 @@ PERC_DISK=$(( FREE_DISK * 100 / TOTAL_DISK ))
 
 echo "<br><br>Spazio disco libero: ${PERC_DISK}%" >> "$OUTPUT_DIR/monitoring.html"
 
+TRAFFICO_TOT=$(/sbin/ifconfig ens18 | grep "TX packets" | awk '{print $6,$7}' | sed 's/[()]//g')
+echo "<br><br>Attualmente c'è un traffico di ${TRAFFICO_TOT}" >> "$OUTPUT_DIR/monitoring.html"
+
 echo "<br><br><b>Top 5 processi per CPU:</b><br>" >> "$OUTPUT_DIR/monitoring.html"
 echo "<pre>" >> "$OUTPUT_DIR/monitoring.html"
 ps -eo pid,comm,%cpu --sort=-%cpu | head -n 6 >> "$OUTPUT_DIR/monitoring.html"
 echo "</pre>" >> "$OUTPUT_DIR/monitoring.html"
+
