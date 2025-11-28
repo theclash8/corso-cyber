@@ -1,0 +1,12 @@
+protocolli più usati: TCP, UDP, ICMP
+
+POP: "Point Of Presence" cioè i punti di accesso dove vanno i dati scelti allo scopo di ridurre la strada dei segnali. 
+
+NAT: "Network Adress Translation", ciò che permette il funzionamento di internet poiché è il modo in cui 2 reti riescono a comunicare
+
+in uno scambio di dati l'ip cambia tante volte quante sono i salti
+
+
+
+differenza router e modem: il modem da l'ip al computer e infatti il modem fa entrare su internet un dispositivo alla volta, il router invece ha 2 interfacce di rete: un ip locale e un ip pubblico attraverso il quale instrada gli ip 
+

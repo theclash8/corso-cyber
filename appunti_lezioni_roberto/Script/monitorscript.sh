@@ -5,7 +5,7 @@ echo "<br>Il server e' up da: $UPTIME" >> "$OUTPUT_DIR/monitoring.html"
 N_ACCOUNT=$(ls /home/ | wc -l)
 
 echo "<br>Ci sono in totale" $N_ACCOUNT " account esistenti" >> $OUTPUT_DIR/monitoring.html
-CONTA_CONNESSIONI=$(netstat -tunap | grep ":2222 " | awk '{print $5}' |  wc -l)
+CONTA_CONNESSIONI=$(netstat -tunap | grep ":22 " | awk '{print $5}' |  wc -l)
 echo "<br>Ci sono attualmente " $CONTA_CONNESSIONI " connessioni" >> $OUTPUT_DIR/monitoring.html
 if [ $CONTA_CONNESSIONI -ge 15 ] && [ $CONTA_CONNESSIONI -lt 25 ]; then
         echo " WARNING: Numero sospetto di connessioni" >> $OUTPUT_DIR/monitoring.html
@@ -24,7 +24,11 @@ PERC_DISK=$(( FREE_DISK * 100 / TOTAL_DISK ))
 
 echo "<br><br>Spazio disco libero: ${PERC_DISK}%" >> "$OUTPUT_DIR/monitoring.html"
 
+TRAFFICO_TOT=$(/sbin/ifconfig ens18 | grep "TX packets" | awk '{print $6,$7}' | sed 's/[()]//g')
+echo "<br><br>Attualmente c'è un traffico di ${TRAFFICO_TOT}" >> "$OUTPUT_DIR/monitoring.html"
+
 echo "<br><br><b>Top 5 processi per CPU:</b><br>" >> "$OUTPUT_DIR/monitoring.html"
 echo "<pre>" >> "$OUTPUT_DIR/monitoring.html"
 ps -eo pid,comm,%cpu --sort=-%cpu | head -n 6 >> "$OUTPUT_DIR/monitoring.html"
 echo "</pre>" >> "$OUTPUT_DIR/monitoring.html"
+
