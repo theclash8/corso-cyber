@@ -1,7 +1,9 @@
 OUTPUT_DIR=/home/roberto/public_html/
 cat $OUTPUT_DIR/header.html > $OUTPUT_DIR/monitoring.html
+DATE=$(date)
+echo "<br>I dati sono aggiornati a $DATE" >> "$OUTPUT_DIR/monitoring.html"
 UPTIME=$(uptime -p)
-echo "<br>Il server e' up da: $UPTIME" >> "$OUTPUT_DIR/monitoring.html"
+echo "<br><br>Il server e' up da: $UPTIME" >> "$OUTPUT_DIR/monitoring.html"
 N_ACCOUNT=$(ls /home/ | wc -l)
 
 echo "<br>Ci sono in totale" $N_ACCOUNT " account esistenti" >> $OUTPUT_DIR/monitoring.html
