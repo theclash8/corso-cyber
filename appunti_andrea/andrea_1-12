@@ -1,0 +1,35 @@
+Netmask: serve a far capire al computer (quindi al ip) chi sono gli altri ip nella stessa rete nella net mask 
+
+
+ipv4 è a 32 bit
+ipv6 è a 64 bit
+con gli ipv6 non servirà più il NAT, basterà il proprio indirizzo
+
+
+scrivere 192.168.201.0.255.255.255.0 è come scrivere 192.168.201.0/24
+
+un ip che inizia con 192.168...... è impossibile da trovare fuori da una rete locale nel ipv4
+
+192.168....: reti piccole
+
+172.16....: reti medie (cittadine)
+
+10.0.0.0:grandi
+una volta internet era pensato per essere diviso, non era stato considerata l'attuale situazione
+
+le reti piccole cioè le locali poi sono state espanse rendendo cambiabile anche la seconda cifra da sinistra 192.168.|201.20|
+
+se la mia netmask è 255.255.255.0 e provo a pingare 192.168.202.  non può farlo ma se la netmask cambiasse a 255.255.0.0 si può
+
+Netmask 255.255.255.255 significa solo io se invece fosse 0.0.0.0 significherebbe tutti, la Netmask ti dà la grandezza della rete
+
+la Net mask seziona la rete, più "decresce" e più la sezione è
+
+Dhcp: protocollo con cui una macchina Garantisce che i dispositivi di una rete abbiano le corrette impostazioni 
+di rete non appena si connettono
+
+routen network: dispositivi comunicanti distribuiti su due diverse reti collegate con selezionamento percorso
+
+flat network: tutti i dispositivi sono nello steso broadcast e nella stessa sottorete ip
+
+
