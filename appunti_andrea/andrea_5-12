@@ -1,0 +1,38 @@
+i principali motivi di attachi informatici sono: soldi(almeno 80%), propaganda e hacktivsm (esempio anonimous)
+
+STRIDE: Spoofing-Tampering-Repudiation-Information Disclodure-Denial of Service-Elevation of Privilege
+
+Spoofing: 
+fare finta di essere qualcosa o qualcuno per fare qualcosa, si può far finta di essere una persona o anche un server....
+
+
+
+Tampering:
+manipolazione di dati , ad esempio entrare nel server che mette a disposizione su internet un programma,
+avendo quindi l'accesso si può modificare il programma maagari per mettere nel programma un virus di qualuque tipologia
+
+Repudiation:
+Camuffaggio per non farsi individuare, per lo più avviene perchè i log al giorno d'oggi sono cosi complessi che per la lettura 
+richiedono programmi appositi e quindi quando si subisce qualcosa nonostante gli accessi siano nel log non si può sapere chi è 
+stato,  il log può essere anche semplicemente non aggiornato
+
+
+
+Information Disclodure:
+prendere informazioni confienziali e renderle pubbliche, non avviene come conseguenza di un attacco ma perchè si lascia tutto 
+visibile
+
+Denial of Service:
+rendere qualcosa non disponibile, si può fare con DDOS per un intero dispositivo, server o servizio
+
+
+Elevation of Privilege:
+Ottenere permessi per fare operazioni che possono essere compiute solo con quei permessi, ad esempio tutte le operazioni 
+del kernell space
+-------------------------------------------------------------------------------------------------------------------------
+SaaS(che sta per "Software as a Service"): Software che  viene eseguito solo dal server, come netflix o prime video 
+senza averli installati
+
+
+
+

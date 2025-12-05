@@ -6,7 +6,8 @@ ICMP: protocollo di transport
 
 /etc/services: fa la lista delle porte e corrispondenti servizi (richiede sudo cioè i permessi)
 
-firewall: il "filtro" che controlla il traffico sono divisibili in 2 grandi categorie firewall "network" e "waf" (web application firewall)
+firewall: il "filtro" che controlla il traffico sono divisibili in 2 grandi categorie firewall 
+          "network" e "waf" (web application firewall)
 
 firewall "network": più semplici e quindi più veloci ma meno affidabili
 

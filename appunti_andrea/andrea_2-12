@@ -1,0 +1,43 @@
+Ripasso
+
+pila iso/osi: nasce dalla scomposizione delle necessità per la comunicazione in una rete,
+              da tale processo vengono distinte 7 problematiche basilari.   
+              non a caso è una pila di protocolli di 7 layer, ogni layer è una "soluzione" di una delle 7 problematiche
+              e stabilisce un insieme che funziona con delle parti a cui sono attribuiti dei ruoli. 
+              serve per creare uno standard cosi che più macchine riescano a comunicare nel modo più semplice possibile
+              
+
+1)Physical:
+  definizione specifiche per il collegamento fisico, a questo livello ci sono solo dati BIT
+
+
+2)Data link:
+  gestione indirizzamento nei nodi tramite indirizzo MAC
+
+3 )Network
+  gestione consegna dei pacchetti tra la rete iniziale e finale
+Network, Transport, Session:
+
+Network:
+
+Transport: divide i dati in segmenti
+
+ Session:             
+
+
+Il modello iso/osi è la teoria di una rete ma la pratica è il modello TCP/IP
+
+i protocolli TCP e UDP usano porte, 65535
+
+Tipi di firewall:
+
+Firewall proxy:
+
+Firewall Steful inspection:
+
+Firewall Unified Threat Management (UTM): 
+
+combina Firewall Steful inspection con funzionalità di prevenzione di intrusioni e antivirus
+
+Next-generation Firewall (NGFW):
+
