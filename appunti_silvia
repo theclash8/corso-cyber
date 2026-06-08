@@ -1,0 +1,88 @@
+OS:
+BASSO LIVELLO         **kernel space**                       
+        (parlare con le periferiche, driver, stack)  
+    driver: programmi che riescono a parlare con delle PERIFERICHE (es. mouse, stampante, tastiera, usb...)
+    
+divisione fondamentale per evitare che malintenzionati tramite rootkit et similia possano danneggiare entrambi gli spazi.
+    Ambedue comunicano tramite le SYSCALL (system calls)
+    
+ALTO LIVELLO           **user** **space**            
+          (programmi utente)
+ 
+
+RAM
+ROM
+NET
+
+**File System**: un modo per gestire gli HARD DISK (ssd). 
+Come funzionano a livello logico? Quando vengono 'inizializzati' (o formattati) vengono divisi in due parti: dati - metadati. 
+Cosa c'è all'interno dei metadati? Alcune informazioni (grandezze, permessi, indirizzi specifici sui quali possiamo trovare i file)
+Su Linux, rispetto a Windows, i file system vengono gestiti in maniera totalmente differente. 
+
+WND
+A:\ (floppy, non esistono più
+C:\ (disco locale)  es C:\Windows
+D:\ (seconda unità, es. cd-rom)
+
+LNX
+root (amministratore, cartella principale) = / 
+/root (root di root)
+/toor 
+/usr
+/etc
+/home
+/bin
+/esbin
+/var
+
+
+c:\documents and settings\nome etc
+
+
+Tramite il BIOS viene caricato il BOOTLOADER che serve a trovare il kernel fisicamente nel disco. Il BOOTLOADER prende i primi 512 kb del disco (è cosi per standard).
+Il BIOS è un piccolo programmino molto vicino al linguaggio macchina, installato fisicamente nella scheda madre.
+Il BOOTLOADER carica il kernel tramite le periferiche ed una volta avente una macchina funzionante vengono caricati i programmi utente (es. Linux, Windows, Mac OS etc...)
+Le directory che iniziano con "." sono file nascosti (es .nome_file_hidden)
+
+A differenza di Windows, Linux può essere utilizzato senza interfaccia grafica. Nel 99% dei server mondiali troveremo Linux o OS basati su Unix (come Linux).
+es: BSD ---> UNIX ---> Firewalls. (i BSD generalmente vengono utilizzati come firewall)
+
+sas vs site
+lag 
+riga di comando
+
+La SHELL è un programma o una serie di programmi che attraverso delle operazioni codificate fa si che noi possiamo comunicare direttamente con la macchina. 
+Per il corso utilizzeremo una SHELL remota. ---> SSH (Secure Shell)
+
+Servizio cloud di Linux = AZURS
+
+In Linux e Android se la RAM non viene usata, è "sprecata". Se hai due o piu programmi in esecuzione che consumano RAM, gli altri tre giga di ram (ammettendo che 1GB di RAM lo stai gia utilizzando) servono a "pre-caricare" gli altri programmi in background.
+
+Come funziona una shell? Com (comando -> opzioni = 2 tipologie di 
+
+Parametro 1
+Un trattino: accetta un comando solo 
+Due trattini: può esserci più d'una parola
+
+linux cardcheat:1 ls 
+                   lista i file
+            2 cd 
+                 si sposta tra le directory 
+                -a (visualizza file nascosti)
+                -l (maggiori informazioni)
+                -h (human readable)
+            3 cat 
+            4 mkdir (crea una nuova directory)
+            5 rm (rimuovere file)
+            6 top (visualizza i processi in esecuzione)
+            7 free (stampa la RAM)
+            8 df -h (visualizza spazio disco)
+            9 echo (stampa una stringa che passiamo come parametro
+            10 cp (copia un file sul server che stiamo usando)
+            11 scp 
+            12 mv (muove un file + rinomina file)
+            
+Parametro 2
+
+
+La SHELL ha un suo sistema di scripting denominato 'shell script', con il quale è possibile scrivere dei programmini con le sue righe di comando. (POSIX)
