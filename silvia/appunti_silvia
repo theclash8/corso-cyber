@@ -20,7 +20,7 @@ Cosa c'è all'interno dei metadati? Alcune informazioni (grandezze, permessi, in
 Su Linux, rispetto a Windows, i file system vengono gestiti in maniera totalmente differente. 
 
 WND
-A:\ (floppy, non esistono più
+A:\ (floppy)
 C:\ (disco locale)  es C:\Windows
 D:\ (seconda unità, es. cd-rom)
 
