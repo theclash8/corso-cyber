@@ -1,0 +1,47 @@
+Appunti Cyber 8 giugno
+
+Abbiamo visto che nel Kernel, ci sono i driver, ovvero quelli che riescono a parlare con il Kernel.
+Abbiamo lo User Space, ovvero la parte dei programmi utente,
+I Rootkit sono programmi che possono essere lanciati come amministratore oppure attraverso dei permessi.   Se i Virus arrivano al Kernel dovrò reinstallare tutto. 
+Abbiamo la RAM e la ROM (Read Only Memory) 
+Il Kernel è il basso livello, mentre l'User Space è ad alto livello.
+
+Linux può essere usato sia a livello grafico che a livello server. 
+Un tool molto utilizzato di Linux è Iptables e Ufw.
+
+La Shell è una serie di programmi che attraverso delle operazioni codificate ci permette di parlare con la macchina. La shell ha uno script
+Un comando shell è diviso con: -r -w (è case sensitive) --write --list 
+/nome/nomeutente
+.nomefile -->hidden
+Un file system è un modo per gestire un hard disk. Abbiamo una parte dove vengono salvati i dati e un'altra dove vengono salvati i metadati(.txt) 
+A:\ Floppy
+C:\ Windows\
+D:\ cdrom
+root/
+/root
+/usr
+/etc
+/home  luca\directory
+/var 
+
+ls# lista di files
+    -a visualizza file nascosti
+     -l maggiori informazioni
+     -h dimensioni file human readeable
+cd# si sposta tra le directory
+Emacs, un ide,  un editor di testo creato da Richard Stallman
+Vim, 
+Nano, un editor di testo già installato --> Pico
+nano# editor di testo
+cat# visualizza file
+mkdir# crea nuova directory
+rm# cancella file
+top# task manager
+free# stampa la RAM
+echo# stampa una stringa che passiamo come parametro
+cp# copia un file
+mv# muovi file + rinomina file
+Uno script che: 
+controlla se è usata troppa RAM, 
+controlla se la CPU usata da un processo è al 100%, 
+controlla se lo spazio disco utilizzato è superiore all'80%
