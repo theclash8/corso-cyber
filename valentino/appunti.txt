@@ -1,1 +1,145 @@
-appunti cyber securety luca
+shell su windows è il motore grafico,noi infatti per utilizzare il server del corso useremo in remoto una shell 
+per avere scelta di usare una shell remota serve una SSh
+un comando shell e diviso
+
+LINUX
+
+COMANDO 
+
+DUE TIPOLIGIE DI PARAMETRO I PRIMO CON UN MENO SOLO 
+AD ESEMPIO -W -R 
+consoglio usare sempre il minuscolo 
+- opzione comando 
+nome_cognome_
+
+OPZIONE
+
+
+cmd ssh ed email su putty 
+server virtual canadese 
+
+COMANDI
+ls TI FA VEDERE I FILE
+ls -a FA VEDERE FILE NASCOSTI
+bash history comandi che io ho dato
+ls -a -l vede tutta la storia bash history
+ls -a -l -h vedi la bash storico ma per vedere bene      
+h quante grande
+- raggruppa tutto ad esempio -lah
+cd per entrare  dentro una directory 
+file system un modo per gestir eun hard disk
+hard disk funzionavano con le puntino ora impulsi magnetici che hanno la possibilità di far salvare i file all interno
+a livello logico vegono diviso in due parti
+prima parte i file ovvero i metadati ( allinterno ci sono alcune informazione ad esempio indirizzo specifico dove ce file , grandezza ecc)
+
+a floppy non esistono piu
+c hard disk interno
+d cd room
+su windows
+
+unix o linux viene una utilizzata con una directory root amministratore ad albero
+usr directory 
+etc
+home esempio home luca ecc 
+var  
+
+cd /home lista directory
+ls lista
+
+
+ls lista i file 
+cd si sposta tra le directory
+-a visualizza file nascosti
+-l maggiori info
+-h dimensioni file 
+nano editor di testo 
+ctrl c torna inditro
+cat e nome file serve per andare diretto nel file
+mkdir nuova_dir poi ls -l nuova directory
+rm poi nome del file cancella il file
+top serve per processi di sistema ecc  tempo ecc ram cpu
+wall per scrivere a tutti
+free stampa la ram -h -m -g 
+echo stampa una stringa 
+df -h spazio disco
+cp copia un file 
+mv muovi file
+wall scrivere a tutti  
+
+Il termine directory (pronunciato dirètori) deriva dall'inglese e si riferisce principalmente all'ambito informatico, dove indica una 
+cartella utilizzata per organizzare e archiviare file in modo gerarchico. Può avere anche altri significati a seconda del contesto.
+ls è un tools un utiliti di sistema è proprio un vero programma
+
+emacs è un programma per scrivere codici   richard stalman
+vim acerimo nemico di emac
+da linux
+neovim
+nano un editor pico
+sta su  linux si usa per creare file d testo 
+
+nano per scrivere file di testo ctrl x save nella mia directory 
+
+
+con shell script all interno del server posso scrivere un programmino e quant altro 
+ps tramite linux posso collegarmi a server da remoto steri e scirvere nella barra da sistema
+
+come si crea una script?
+luca ha bisogno se la ram e di piu di 400 mg allora mandi un sms a tutti gli utenti connessi
+
+wall  per scrivere a tutti 
+
+
+esrcizio
+controlla se è usata troppa ram 
+controlla se la cpu e usata da processo e usata al 100 per 100 
+controlla se lo spazio usato e  piu dell 80 per
+
+Un sistema operativo (OS) è il software principale di qualsiasi dispositivo informatico. Funziona come un "direttore d'orchestra": fa da tramite tra l'hardware (le componenti fisiche) e i programmi, gestendo le risorse, la memoria e permettendo all'utente di interagire con il computer o lo smartphone
+
+Il kernel (in italiano "nocciolo") è il cuore di un sistema operativo. Funge da ponte fondamentale tra l'hardware del computer (CPU, memoria, periferiche) e i programmi software, gestendo le risorse di sistema e assicurando che tutto funzioni in modo efficiente e sicuro.
+
+Il termine networking indica l'attività di creare, coltivare ed espandere una rete di relazioni professionali o personali. Si basa sulla fiducia e sullo scambio reciproco di informazioni, supporto e opportunità, ed è ampiamente utilizzato nel mondo del lavoro, aziendale e informatico.
+
+editor browser fanno parte del sistema operativo 
+molto più sicuro restare diviso dal primo dal kernel 
+perché kernel fa parte dell aminisatratore
+
+root puo fare quasiasi cosa lavorare con kernel 
+toor idem
+
+Linux è un sistema operativo open source, nato nel 1991 come alternativa a Windows e macOS. Più precisamente, Linux è il kernel (il cuore del sistema), che unito ad altri programmi forma sistemi operativi completi detti distribuzioni (es. Ubuntu o Fedora).Perché è così importante?È gratuito e libero: Chiunque può scaricarlo, usarlo e persino modificarne il codice sorgente.Sicurezza: È notoriamente più sicuro e meno soggetto a virus rispetto ad altri sistemi operativi.Personalizzazione: Puoi cambiare ogni singolo aspetto grafico e funzionale dell'interfaccia.Leggerezza: Molte versioni sono pensate per resuscitare computer vecchi o con poche risorse hardware.
+
+AI Overview               Le differenze principali tra Microsoft Windows e Linux riguardano il modello di sviluppo, i costi e la filosofia: Windows è un sistema operativo proprietario a pagamento, sviluppato da un'azienda, mentre Linux è un'alternativa libera e open source, modificabile e distribuita gratuitamente.Le caratteristiche distintive si riassumono in:Licenza e Costo: Windows è solitamente preinstallato e il suo costo è incluso nel prezzo del PC (o acquistabile tramite licenze). Linux è completamente gratuito e disponibile in centinaia di versioni diverse, dette distribuzioni (come Ubuntu, Linux Mint o Fedora).Personalizzazione: Su Windows l'interfaccia e le funzioni di base sono standard. Su Linux, ogni aspetto del sistema è modificabile, inclusa la scelta di ambienti grafici differenti per cambiare radicalmente l'aspetto del desktop.Compatibilità Software e Giochi: Windows ha il primato per la disponibilità di software professionale (es. Adobe Suite) e per l'ampio catalogo di videogiochi. Linux ha fatto passi da gigante nel gaming grazie a strumenti come Proton, ma molti applicativi commerciali nativi non sono supportati.Gestione del Sistema e Sicurezza: Linux richiede spesso l'uso della riga di comando per le configurazioni avanzate, sebbene le versioni moderne siano molto intuitive. È considerato intrinsecamente più sicuro e leggero, con una gestione delle risorse solitamente più efficiente per i computer meno recenti.
+
+reg exp registro delle chiavi di sistemi 
+installer deve essere fatto bene per andare bene il sitema operativo rispetto linux ( più facile rispetto a windows)
+
+linux si gestisce con la riga di comando (shell) ovvero pezzo di software che si interfaccia conm noi e la macchina , inoltre al kernel suit gnu
+con 40 comandi sci garantisce di usare bene il server linux 
+shell = traduttore umano a macchina , usata ad riga di comando per gestire macchcine remote , primo perché non lagga 
+
+
+
+La riga di comando (o interfaccia a riga di comando, spesso chiamata CLI, terminale o prompt) è un'interfaccia testuale in cui si interagisce con il computer digitando comandi specifici tramite la tastiera, al posto di usare il mouse e le icone grafiche.I punti chiave per capire come funziona:Funzionamento: I comandi scritti vengono inviati al sistema operativo (tramite un programma chiamato shell), che li elabora e risponde con un output testuale.Velocità ed automazione: Consente di eseguire operazioni complesse, navigare tra i file e installare programmi in modo molto più rapido rispetto all'interfaccia grafica.Scripting: Permette di concatenare più comandi in script (file di testo con estensioni specifiche) per automatizzare operazioni ripetitive.Dove si trova nei sistemi operativi:Windows: Si chiama Prompt dei comandi (o PowerShell). Si apre premendo i tasti Windows + R, digitando cmd e premendo invio.macOS e Linux: Si chiama Terminale.Se vuoi approfondire l'argomento, dimmi:Quale sistema operativo stai usando (Windows, macOS o Linux).Cosa vorresti imparare a fare (es. navigare tra le cartelle, gestire file, imparare i comandi base).Posso guidarti passo dopo passo nell'uso dei comandi principali.
+
+POSIX (acronimo di Portable Operating System Interface) è una famiglia di standard sviluppata dall'IEEE (e condivisa con ISO/IEC) che definisce un insieme di API, comandi e comportamenti standard per i sistemi operativi. Il suo scopo principale è garantire la portabilità del software, permettendo a un programma scritto per un sistema di funzionare su altri sistemi conformi senza modifiche al codice sorgente.Perché è nato e a cosa serveOriginariamente derivato dall'ambiente Unix, lo standard POSIX serve da "ponte" universale tra il software e il sistema operativo. Quando un sistema è conforme a POSIX, gli sviluppatori hanno la certezza di poter usare un set coerente di librerie (come le API del linguaggio C), chiamate di sistema e strumenti a riga di comando.Portabilità: Un codice sorgente che usa solo chiamate conformi a POSIX può essere compilato o eseguito su diversi sistemi operativi.Interoperabilità: Rende prevedibili i comportamenti del sistema, come la gestione dei file, dei processi e dei thread.Scripting: Garantisce che gli script bash o le utilità di sistema (come awk, grep, sed) abbiano la stessa sintassi e funzionalità su distribuzioni diverse.Sistemi compatibiliCertificati ufficialmente: Sistemi operativi commerciali come macOS e varie distribuzioni basate su Unix (come IBM AIX).Unix-like: Linux (tramite glibc, bash e coreutils) e BSD implementano ampiamente le specifiche POSIX, anche se spesso non ottengono la certificazione ufficiale a pagamento.Windows: Offre strumenti e ambienti compatibili (come WSL o MSYS2) per facilitare il porting di software nativo per Linux/Unix.Per comprendere meglio come POSIX agevola lo sviluppo e la portabilità del software su sistemi operativi differenti:
+
+
+AI Overview               SSH (Secure Shell) è un protocollo di rete crittografico che consente di accedere, controllare e gestire un server o un dispositivo remoto in totale sicurezza. Sostituisce i vecchi metodi non protetti (come Telnet) offrendo un canale cifrato per eseguire comandi da riga di comando.Come stabilire una connessioneSu macOS, Linux e le versioni recenti di Windows (tramite il Prompt dei Comandi o PowerShell), il client SSH è integrato nativamente.Il comando di base da inserire nella shell è:ssh nomeutente@indirizzoIP o ssh nomeutente@nomeserverIl sistema chiederà di verificare l'identità del server remoto (la prima volta) e poi di inserire la propria password.Funzionalità principaliCrittografia: Tutti i dati scambiati, comprese le password, sono protetti da occhi indiscreti.Autenticazione avanzata: Richiede una prova di identità, che può avvenire tramite password o, molto più efficacemente, tramite coppie di chiavi crittografiche (pubblica/privata).Port forwarding (Tunneling): Permette di incanalare in modo sicuro altri protocolli di rete e superare restrizioni.Utilizzo avanzato ed estensioniSCP e SFTP: Consentono di caricare o scaricare file da e verso il server remoto sfruttando lo stesso livello di sicurezza.Porta personalizzata: Di default, SSH opera sulla porta TCP 22. Se il server usa una porta differente, si utilizza il flag -p: ssh nomeutente@indirizzoIP -p 2222.Gestione tramite client grafici: Se preferisci un'interfaccia grafica per gestire i file o avviare la shell, puoi utilizzare software gratuiti come PuTTY o Termius.Se vuoi, posso aiutarti a:Configurare l'accesso tramite chiavi SSH per evitare l'uso della password.Spiegare come trasferire file da o verso il server.Risolvere eventuali errori di connessione (come il Connection Refused).
+
+
+asincronaIl termine asincrono (dal greco asýnchronos) significa letteralmente "che non avviene nello stesso tempo" o "che non condivide lo stesso ritmo". Indica eventi, processi o comunicazioni che si verificano in momenti diversi e non in contemporanea.
+
+
+
+AI Overview
+La chiave pubblica e la chiave privata sono i due elementi fondamentali della crittografia asimmetrica. Sono una coppia di codici alfanumerici generati matematicamente insieme: mentre la pubblica è nota a tutti per cifrare i dati, la privata è strettamente segreta e serve per decifrarli. 
+
+IBM
+ +2
+Le Differenze Principali
+Chiave Pubblica: Come suggerisce il nome, può essere condivisa liberamente con chiunque. Viene utilizzata per criptare un messaggio o verificare l'identità del proprietario del documento. 
+
+DigiCert
+ +2
+Chiave Privata: È il tuo "segreto" digitale e non deve mai essere condivisa con nessuno. Se la perdi, perdi l'accesso ai tuoi dati o beni. Serve a decifrare i messaggi inviati a te o ad "autorizzare" (firmare) le tue azioni
