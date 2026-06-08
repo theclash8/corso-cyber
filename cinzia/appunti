@@ -1,1 +1,179 @@
+bsd= unix - fw
+
+
+
+linux 
+
+su linux sono  pi firewall   dalla sicurezza è meno sicuro 
+
+
+*****************************
+
+Riassunto del 5 giugno 2026
+kerne
+
+
+Come comunicare tra l'omino e la macchina? usiamo la shell
+
+Programma per accedere alla shell remote? ssh
+
+service cloud                azurs
+
+
+****************importante usare la minuscola case sensitive***************mai spazi
+Come funziona la shell?
+
+    shell comando [opzioni][parametri]
+
+le opzioni sono divise 
+  con 1 meno - (accetta un parametro)
+  con 2 meno  -- (accetta più di una parola)
+
+
+
+ls + un binario vero e proprio programma 
+
+
+
+i programma può essere 
+
+
+editor di test su linux sono 
+
+
+chi l'ha scritto stallman 
+emacs editor di testo ide programma che serve per fare sviluppo compilatore
+vim   - domanda come 
+
+neovim lo usa luca
+
+nano piu semplice  
+pico 
+pine
+
+
+creare un file di testo con nano
+nano nome_file
+crtl + x  per salvarlo occorre ls
+
+
+leggere o visualizzare un file
+
+       cat nomefile
+
+
+per uscire dal comandi crtl c
+
+ls
+
+creare una nuova directory
+     mkdir nuova_directoryl
+
+
+cancellare un file 
+
+      rm nomefile
+
+
+
+comandi controllo del sistema operativo
+
+
+win task managar
+linux top programma
+        lista dei processi
+                 utilizzi di risorse
+      up time   
+load average (carico medio gestione cpu)
+
+mib mem : 
+
+come funziona linux - se la ram non la  usi viene sprecata 
+
+  4 gb e ne usi 1 gb x lavoro e 3 per altri programmi
+
+
+
+tabella 
+  cpu usata
+
+
+****************************************************
+sistema è migliore è shell
+
+è  programmabile
+
+shell script - programmi che faccia più cose  posics bash-script
+
+
+ho bisogno se la ram è usata più
+
+
+
+wall cinzia
+
+devi essere iscritto ad un gruppo
+
+
+free stampa la ram
+        free -m
+        free -h
+        free -g
+
+ho bisogno se la ram è usata più deve inviare un messaggio con wall
+free -m | grep "Mem" |
+| serve ad inviare
+
+lanciare con bash 
+
+sh check_memory.sh
+
+
+
+
+*************************
+1) script 
+controlla se usata troppa la ram
+
+comando top
+controllare il campo 'used'
+
+
+2)
+controlla se la cpu usata da un processo è al 100%
+controllare il campo '%CPU'
+
+3)
+controlla se lo spazio disco utilizzato è superiore all'80%
+
+
+free  - nanovoc
+ps aux - cpu
+cat p
+
+
+mpstat 1 1 | grep "Average"
+ echo  stampa una stringa che passiamo 
+
+
+cp copia un file 
+
+cp check_memory-sh luca 
+
+scp 
+
+
+il file sta sulla home
+
+
+mv 
+
+
+                    md
+linguaggio  marchup mette evidenza delle cose
+
+
+** corsivo
+grassetto
+
 
