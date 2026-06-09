@@ -1,1 +1,21 @@
+ci muoviamo all'interno delle directory tramite il comando 
+     cd 
+
+
+
+
+se non so dove mi trovo 
+
+ls/home
+
+ci sono 2 modi diversi di arrivare allo stesso file 
+
+ls file.txt  percordo relativo
+ls /home/df/file.txt percorso assoluto
+
+
+
+
+
+
 
