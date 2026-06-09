@@ -153,3 +153,13 @@ Come funziona un sito internet?
  HTML 
  Processi (come gestirli, come visualizzarli, quali utilizzano più/meno RAM)
 
+COS'è UN HASH?
+
+E' una stringa che può avere diversi usi. Nel caso delle criptovalute sono dei risultati univoci matematici.
+Alternativamente l'hash viene utilizzato per:
+ - il cript delle password ('hashare' una password, cioè cambiarla da 'ciaone' a una stringa applicandole un algoritmo di cript tipo in 'enoaic')
+   (cambiare 'ciaone' in una stringa di caratteri esadecimali) es. MD5 (era considerato un algoritmo di cript sicuro).
+
+Da un decript posso arrivare a cript, ma non viceversa. Non è reversibile. 
+Ora viene utilizzato algoritmo di SHA(512). E' più lento di un MD5. 
+
