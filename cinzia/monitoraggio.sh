@@ -1,4 +1,5 @@
 #!/bin/bash
+
 while true; do
 
     DISCO_USATO=$(df /dev/sda1 | grep sda1 | awk {'print $5'} | tr -d '%')
