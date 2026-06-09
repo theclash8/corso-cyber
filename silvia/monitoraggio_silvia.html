@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script Bash - Monitoraggio Risorse</title>
+    <style>
+        /* Stile generale orientato al comfort visivo (Dark Mode) */
+        body {
+            background-color: #0d1117; /* Nero profondo / Grigio scuro */
+            color: #c9d1d9; /* Bianco spento per non abbagliare */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            padding: 30px;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #58a6ff; /* Blu tenue rilassante */
+            font-size: 24px;
+            border-bottom: 1px solid #21262d;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #8b949e; /* Grigio attenuato per le descrizioni */
+            font-size: 15px;
+        }
+        /* Contenitore del codice (Stile Terminale/IDE) */
+        pre {
+            background-color: #161b22; /* Sfondo blocco codice ancora più scuro */
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        code {
+            tab-size: 4;
+        }
+        /* Sintassi colorata (Saturazione ridotta per riposare gli occhi) */
+        .comment { color: #8b949e; font-style: italic; } /* Grigio commenti */
+        .keyword { color: #ff7b72; font-weight: bold; } /* Rosso opaco/Arancio */
+        .variable { color: #ffa657; } /* Arancione tenue */
+        .command { color: #79c0ff; } /* Celeste */
+        .string { color: #a5d6ff; } /* Blu chiaro */
+        .operator { color: #ff7b72; } /* Operatori logici */
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Script di Monitoraggio Risorse Linux</h1>
+    <p>Codice sorgente Bash corretto e ottimizzato per il controllo ciclico di RAM, CPU e spazio su Disco.</p>
+
+<pre><code><span class="comment">#!/bin/bash</span>
+
+<span class="keyword">while</span> <span class="keyword">true</span>; <span class="keyword">do</span>
+
+    <span class="comment"># Estrazione dati sull'utilizzo delle risorse</span>
+    <span class="variable">DISCO_USATO</span>=$(<span class="command">df</span> /dev/sda1 | <span class="command">grep</span> sda1 | <span class="command">awk</span> <span class="string">'{print $5}'</span> | <span class="command">tr</span> -d <span class="string">'%'</span>)
+    <span class="variable">RAM_USATA</span>=$(<span class="command">free</span> -m | <span class="command">awk</span> <span class="string">'/Mem:/ {print $3}'</span>)
+    <span class="variable">CPU_USATA</span>=$(<span class="command">mpstat</span> 1 1 | <span class="command">grep</span> <span class="string">"Average"</span> | <span class="command">awk</span> <span class="string">'{print 100 - $NF}'</span>)
+
+    <span class="comment"># Controllo RAM (Soglia: 400 MB)</span>
+    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$RAM_USATA</span><span class="string">"</span> <span class="operator">-gt</span> 400 ]; <span class="keyword">then</span>
+        <span class="command">echo</span> <span class="string">"ATTENZIONE: Utilizzo RAM elevato! Valore attuale: ${</span><span class="variable">RAM_USATA</span><span class="string">}MB"</span>
+    <span class="keyword">else</span>
+        <span class="command">echo</span> <span class="string">"RAM OK!!!!!!"</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># Controllo CPU (Soglia: 90%)</span>
+    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$CPU_USATA</span><span class="string">"</span> <span class="operator">-gt</span> 90 ]; <span class="keyword">then</span>
+        <span class="command">echo</span> <span class="string">"ATTENZIONE: Utilizzo CPU critico! Valore attuale: ${</span><span class="variable">CPU_USATA</span><span class="string">}%"</span>
+    <span class="keyword">else</span>
+        <span class="command">echo</span> <span class="string">"CPU OK!!!!"</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># Controllo Disco (Soglia: 80%)</span>
+    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$DISCO_USATO</span><span class="string">"</span> <span class="operator">-gt</span> 80 ]; <span class="keyword">then</span>
+        <span class="command">echo</span> <span class="string">"ATTENZIONE: Spazio disco in esaurimento! Valore attuale: ${</span><span class="variable">DISCO_USATO</span><span class="string">}%"</span>
+    <span class="keyword">else</span>
+        <span class="command">echo</span> <span class="string">"DISCO OK!!!!"</span>
+    <span class="keyword">fi</span>
+
+    <span class="comment"># Attesa di 10 secondi prima del prossimo ciclo</span>
+    <span class="command">sleep</span> 10
+<span class="keyword">done</span></code></pre>
+</div>
+
+</body>
+</html>
