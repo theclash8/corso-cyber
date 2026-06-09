@@ -18,7 +18,7 @@ while true; do
         echo "CPU OK!!!!"
     fi
 
-    if [ "$DISCO_USATO --gt 80 ]; then
+    if [ "$DISCO_USATO" --gt 80 ]; then
         wall "OUCH!"
     else
         echo "DISCO OK!!!!"
