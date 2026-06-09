@@ -1,3 +1,5 @@
+
+
 OS:
 BASSO LIVELLO         **kernel space**                       
         (parlare con le periferiche, driver, stack)  
@@ -14,13 +16,14 @@ RAM
 ROM
 NET
 
-**File System**: un modo per gestire gli HARD DISK (ssd). 
+**File System**: il modo per gestire gli HARD DISK (ssd). 
 Come funzionano a livello logico? Quando vengono 'inizializzati' (o formattati) vengono divisi in due parti: dati - metadati. 
 Cosa c'è all'interno dei metadati? Alcune informazioni (grandezze, permessi, indirizzi specifici sui quali possiamo trovare i file)
-Su Linux, rispetto a Windows, i file system vengono gestiti in maniera totalmente differente. 
+Su Linux, rispetto a Windows, i file system vengono gestiti in maniera totalmente differente. Fondamentale che l'HD sia MONTATO su root (radice). 
+
 
 WND
-A:\ (floppy)
+A:\ (floppy, non esistono più
 C:\ (disco locale)  es C:\Windows
 D:\ (seconda unità, es. cd-rom)
 
@@ -31,9 +34,13 @@ root (amministratore, cartella principale) = /
 /usr
 /etc
 /home
-/bin
+/bin (binari)
 /esbin
-/var
+/var 
+
+Organizzazione ad albero, gerarchica. (in Linux)
+ogni sottocartella richiede necessariamente l inserimento di "/" (es /usr/home/log), ci muoviamo tra le cartelle con il comando 'cd'.
+Due modi per muoversi tra le directory: percorso assoluto e percorso relativo. Per gli script ci vuole il path ASSOLUTO.  
 
 
 c:\documents and settings\nome etc
@@ -47,7 +54,7 @@ Le directory che iniziano con "." sono file nascosti (es .nome_file_hidden)
 A differenza di Windows, Linux può essere utilizzato senza interfaccia grafica. Nel 99% dei server mondiali troveremo Linux o OS basati su Unix (come Linux).
 es: BSD ---> UNIX ---> Firewalls. (i BSD generalmente vengono utilizzati come firewall)
 
-sas vs site
+sas (software as a service) vs site
 lag 
 riga di comando
 
@@ -58,7 +65,7 @@ Servizio cloud di Linux = AZURS
 
 In Linux e Android se la RAM non viene usata, è "sprecata". Se hai due o piu programmi in esecuzione che consumano RAM, gli altri tre giga di ram (ammettendo che 1GB di RAM lo stai gia utilizzando) servono a "pre-caricare" gli altri programmi in background.
 
-Come funziona una shell? Com (comando -> opzioni = 2 tipologie di 
+Come funziona una shell? Con comando -> opzioni = 2 tipologie di 
 
 Parametro 1
 Un trattino: accetta un comando solo 
@@ -81,8 +88,68 @@ linux cardcheat:1 ls
             10 cp (copia un file sul server che stiamo usando)
             11 scp 
             12 mv (muove un file + rinomina file)
+            13 passwd (cambio password)
+            14 ../ (serve a salire di cartella)
+            15 ./ (cartella corrente)
+            16 ps-ax (visualizza processi in esecuzione come 'top')
+            
             
 Parametro 2
 
 
 La SHELL ha un suo sistema di scripting denominato 'shell script', con il quale è possibile scrivere dei programmini con le sue righe di comando. (POSIX)
+La shell TRADUCE I MIEI COMANDI IN ISTRUZIONI PER LA MACCHINA. In Linux è in maniera TESTUALE. Per la gestione dei server non utilizziamo interfacce grafiche. 
+
+
+
+                        editor di testo
+                        
+EMACS: editor di testo creato da Richard Stallman che serve per sviluppare anche codici. E' un multitool. 
+VIM: 
+neoVIM: 
+Nano: pico -> pine (accedere tramite shell = /home$ nano file)
+
+***esercizio*** Uno script che:
+* controlla se è usata troppa RAM
+* controlla se la CPU usata da un processo è al 100%
+* controlla se lo spazio sul disco utilizzato è superiore all'80%
+
+aggiungere dischi tramite server virtuali. ?
+
+
+La RAM viene gestita tramite chiamate di sistema dall'interprete. (es. Python ha l'interprete Python (PYC) che poi traduce in codice binario).
+In C viene compilato con più istruzioni. 
+RISORSE
+ - shell 
+ PROCESSI 
+  - programmi che girano sul sistema operativo. 
+  - esistono processi obbligatori senza i quali il sistema operativo non funziona (es. systemd, sshd)
+
+Come vengono gestiti i processi su Linux?
+Come facciamo a far si che un processo venga identificato in maniera univoca?
+Ogni processo è un numero. Questo numero si chiama ID (identificativo). Process ID = PID.
+Ogni comando ha un PID. 
+Il controllo dei processi è fare riferimento ai PID. 
+La prima cosa che fa un virus è creare o lanciare un PROCESSO malevolo col nome uguale ad un processo giusto. 
+3 motivi per i quali una persona fa cose 'malandrine': 
+
+    1) soldi, ritorno economico. Es. creare script di controllo per controllare eventuali bug conosciuti sui siti e piattaforme, se viene rilevato il bug di sistema in automatico viene effettuato l'accesso malevolo ed installato un miner (mining di criptovalute).
+  
+  *Bitcoin funziona tramite calcolo matematico basato su di un algoritmo. Questi calcoli matematici tirano fuori gli 'hash' (stringhe alfanumeriche univoche). Ogni qualvolta troviamo un hash univoco noi guadagnamo qualcosa da bitcoin e dalla blockchain sulla quale si appoggia. Per calcolare questo hash necessitiamo di potenza di calcolo, più potenza di calcolo è necessaria e più il bitcoin vale. Perchè vale tanto? Perchè c'è un limite massimo di bitcoin che possono essere minati, 21milioni. Il guadagno è installare un miner su ad esempio 10.000 computer, bucando i siti tramite problemi di sicurezza (es. i bug di cui qui sopra).
+
+La CPU ha un set di istruzioni più limitato di una scheda video. Molti miner sono nascosti.
+
+   2) motivi etici, es. controllo statale, attivismo politico
+     
+   3) goliardia...
+
+L'installazione di un processo malevolo deve avere un nome (PID) familiare ai processi in esecuzione sul sistema operativo. 
+Capire da dove sono entrati. Per questo motivo i PID sono importanti, quando controlliamo i processi di sistema dobbiamo sempre tenerne conto perche rendono univoco un processo all'interno di un sistema operativo.
+
+Come funziona un sito internet? 
+ - Web server, un programma che offre dei contenuti accessibili tramite browser, ciò che fa si che i siti siano visibili. Quello che fa il server è rendere visibili tutti i file di testo con cui sono costituiti i siti 
+ - il web server deve essere sempre disponibile, applicando le regole della CIA dovremmo verificarne la disponibilità (Aviability), quindi verificare che sia accessibile (cioè grado di rispondere agli imput in maniera ottimale), l'integrità dei dati e la riservatezza (che il web server non abbia accesso a file non di sua competenza, tipo il gestore delle password dell'utente). 
+ 
+ HTML 
+ Processi (come gestirli, come visualizzarli, quali utilizzano più/meno RAM)
+
