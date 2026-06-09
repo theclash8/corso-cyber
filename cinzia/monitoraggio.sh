@@ -38,7 +38,6 @@ EOF
 
     sleep 5
 done
-🔥
-aggiornarlo senza refresh (AJAX/WebSocket)
-
-Dimmi che livello vuoi 👍
+else
+        echo "RAM OK!!!!!!"
+    fi
