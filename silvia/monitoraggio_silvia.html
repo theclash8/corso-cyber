@@ -3,95 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Script Bash - Monitoraggio Risorse</title>
+    <title>Monitoraggio Risorse Server</title>
     <style>
-        /* Stile generale orientato al comfort visivo (Dark Mode) */
+        /* Base e Layout scuro riposante */
         body {
-            background-color: #0d1117; /* Nero profondo / Grigio scuro */
-            color: #c9d1d9; /* Bianco spento per non abbagliare */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            padding: 30px;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 40px 20px;
             margin: 0;
-            line-height: 1.6;
+            display: flex;
+            justify-content: center;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .dashboard {
+            width: 100%;
+            max-width: 650px;
         }
         h1 {
-            color: #58a6ff; /* Blu tenue rilassante */
-            font-size: 24px;
-            border-bottom: 1px solid #21262d;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            color: #8b949e;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
         }
-        p {
-            color: #8b949e; /* Grigio attenuato per le descrizioni */
-            font-size: 15px;
-        }
-        /* Contenitore del codice (Stile Terminale/IDE) */
-        pre {
-            background-color: #161b22; /* Sfondo blocco codice ancora più scuro */
-            border: 1px solid #30363d;
+        
+        /* Struttura a sezioni separate */
+        .section-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
             border-radius: 8px;
             padding: 20px;
-            overflow-x: auto;
-            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .section-title {
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            color: #8b949e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 600;
         }
-        code {
-            tab-size: 4;
+
+        /* Stato dell'alert - Grafica pulita e attenuata */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
         }
-        /* Sintassi colorata (Saturazione ridotta per riposare gli occhi) */
-        .comment { color: #8b949e; font-style: italic; } /* Grigio commenti */
-        .keyword { color: #ff7b72; font-weight: bold; } /* Rosso opaco/Arancio */
-        .variable { color: #ffa657; } /* Arancione tenue */
-        .command { color: #79c0ff; } /* Celeste */
-        .string { color: #a5d6ff; } /* Blu chiaro */
-        .operator { color: #ff7b72; } /* Operatori logici */
+        
+        /* Verde chiaro tenue (Stato OK) */
+        .alert-ok {
+            background-color: rgba(46, 160, 67, 0.1);
+            border: 1px solid rgba(46, 160, 67, 0.25);
+            color: #7ee787;
+        }
+        
+        /* Rosso tenue pastello (Stato Allerta) */
+        .alert-warning {
+            background-color: rgba(248, 81, 73, 0.1);
+            border: 1px solid rgba(248, 81, 73, 0.25);
+            color: #ffa198;
+        }
+
+        /* Pulsante di controllo simulazione */
+        .control-panel {
+            text-align: right;
+            margin-top: 20px;
+        }
+        .btn-update {
+            background-color: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 8px 16px;
+            font-size: 13px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-update:hover {
+            background-color: #30363d;
+            border-color: #8b949e;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #484f58;
+            margin-top: 8px;
+            font-family: monospace;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>Script di Monitoraggio Risorse Linux</h1>
-    <p>Codice sorgente Bash corretto e ottimizzato per il controllo ciclico di RAM, CPU e spazio su Disco.</p>
+<div class="dashboard">
+    <h1>Stato Risorse Sistema</h1>
 
-<pre><code><span class="comment">#!/bin/bash</span>
+    <!-- Sezione RAM -->
+    <div class="section-card">
+        <div class="section-title">Memoria RAM</div>
+        <div id="ram-status" class="alert alert-ok">Caricamento dati in corso...</div>
+    </div>
 
-<span class="keyword">while</span> <span class="keyword">true</span>; <span class="keyword">do</span>
+    <!-- Sezione CPU -->
+    <div class="section-card">
+        <div class="section-title">Processore CPU</div>
+        <div id="cpu-status" class="alert alert-ok">Caricamento dati in corso...</div>
+    </div>
 
-    <span class="comment"># Estrazione dati sull'utilizzo delle risorse</span>
-    <span class="variable">DISCO_USATO</span>=$(<span class="command">df</span> /dev/sda1 | <span class="command">grep</span> sda1 | <span class="command">awk</span> <span class="string">'{print $5}'</span> | <span class="command">tr</span> -d <span class="string">'%'</span>)
-    <span class="variable">RAM_USATA</span>=$(<span class="command">free</span> -m | <span class="command">awk</span> <span class="string">'/Mem:/ {print $3}'</span>)
-    <span class="variable">CPU_USATA</span>=$(<span class="command">mpstat</span> 1 1 | <span class="command">grep</span> <span class="string">"Average"</span> | <span class="command">awk</span> <span class="string">'{print 100 - $NF}'</span>)
+    <!-- Sezione Disco -->
+    <div class="section-card">
+        <div class="section-title">Spazio Disco</div>
+        <div id="disco-status" class="alert alert-ok">Caricamento dati in corso...</div>
+    </div>
 
-    <span class="comment"># Controllo RAM (Soglia: 400 MB)</span>
-    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$RAM_USATA</span><span class="string">"</span> <span class="operator">-gt</span> 400 ]; <span class="keyword">then</span>
-        <span class="command">echo</span> <span class="string">"ATTENZIONE: Utilizzo RAM elevato! Valore attuale: ${</span><span class="variable">RAM_USATA</span><span class="string">}MB"</span>
-    <span class="keyword">else</span>
-        <span class="command">echo</span> <span class="string">"RAM OK!!!!!!"</span>
-    <span class="keyword">fi</span>
-
-    <span class="comment"># Controllo CPU (Soglia: 90%)</span>
-    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$CPU_USATA</span><span class="string">"</span> <span class="operator">-gt</span> 90 ]; <span class="keyword">then</span>
-        <span class="command">echo</span> <span class="string">"ATTENZIONE: Utilizzo CPU critico! Valore attuale: ${</span><span class="variable">CPU_USATA</span><span class="string">}%"</span>
-    <span class="keyword">else</span>
-        <span class="command">echo</span> <span class="string">"CPU OK!!!!"</span>
-    <span class="keyword">fi</span>
-
-    <span class="comment"># Controllo Disco (Soglia: 80%)</span>
-    <span class="keyword">if</span> [ <span class="string">"</span><span class="variable">$DISCO_USATO</span><span class="string">"</span> <span class="operator">-gt</span> 80 ]; <span class="keyword">then</span>
-        <span class="command">echo</span> <span class="string">"ATTENZIONE: Spazio disco in esaurimento! Valore attuale: ${</span><span class="variable">DISCO_USATO</span><span class="string">}%"</span>
-    <span class="keyword">else</span>
-        <span class="command">echo</span> <span class="string">"DISCO OK!!!!"</span>
-    <span class="keyword">fi</span>
-
-    <span class="comment"># Attesa di 10 secondi prima del prossimo ciclo</span>
-    <span class="command">sleep</span> 10
-<span class="keyword">done</span></code></pre>
+    <!-- Pannello di Controllo per testare il comportamento -->
+    <div class="control-panel">
+        <button class="btn-update" onclick="aggiornaDati()">Simula Aggiornamento</button>
+        <div class="timestamp" id="time-log">Prossimo aggiornamento automatico tra 10 secondi</div>
+    </div>
 </div>
+
+<script>
+function generaValoriCasuali() {
+    return {
+        ram: Math.floor(Math.random() * (600 - 200 + 1)) + 200, // tra 200 e 600 MB
+        cpu: Math.floor(Math.random() * 100),                  // tra 0 e 100%
+        disco: Math.floor(Math.random() * (90 - 75 + 1)) + 75   // tra 75% e 90%
+    };
+}
+
+function aggiornaDati() {
+    const dati = generaValoriCasuali();
+    
+    // Riferimenti DOM
+    const ramDiv = document.getElementById('ram-status');
+    const cpuDiv = document.getElementById('cpu-status');
+    const discoDiv = document.getElementById('disco-status');
+    const timeLog = document.getElementById('time-log');
+
+    // Aggiornamento Sezione RAM (Soglia 400MB)
+    if (dati.ram > 400) {
+        ramDiv.className = "alert alert-warning";
+        ramDiv.textContent = `Utilizzo memoria elevato. Valore attuale: ${dati.ram} MB`;
+    } else {
+        ramDiv.className = "alert alert-ok";
+        ramDiv.textContent = `Utilizzo memoria regolare. Valore attuale: ${dati.ram} MB`;
+    }
+
+    // Aggiornamento Sezione CPU (Soglia 90%)
+    if (dati.cpu > 90) {
+        cpuDiv.className = "alert alert-warning";
+        cpuDiv.textContent = `Carico di lavoro critico. Valore attuale: ${dati.cpu}%`;
+    } else {
+        cpuDiv.className = "alert alert-ok";
+        cpuDiv.textContent = `Carico di lavoro regolare. Valore attuale: ${dati.cpu}%`;
+    }
+
+    // Aggiornamento Sezione Disco (Soglia 80%)
+    if (dati.disco > 80) {
+        discoDiv.className = "alert alert-warning";
+        discoDiv.textContent = `Spazio di archiviazione in esaurimento. Spazio occupato: ${dati.disco}%`;
+    } else {
+        discoDiv.className = "alert alert-ok";
+        discoDiv.textContent = `Spazio di archiviazione regolare. Spazio occupato: ${dati.disco}%`;
+    }
+
+    // Timestamp dell'ultimo controllo
+    const oraAttuale = new Date().toLocaleTimeString('it-IT');
+    timeLog.textContent = `Ultima verifica eseguita alle ore: ${oraAttuale}`;
+}
+
+// Avvia il primo controllo e imposta il ciclo automatico ogni 10 secondi
+aggiornaDati();
+setInterval(aggiornaDati, 10000);
+</script>
 
 </body>
 </html>
