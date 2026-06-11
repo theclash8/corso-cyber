@@ -177,3 +177,760 @@ drwxr-xr-x 11 cinzia cinzia 4096 Jun 11 12:02 corso-cyber
 -rw-------  1 cinzia cinzia  978 Jun 11 12:02 known_hosts
 -rw-r--r--  1 cinzia cinzia  142 Jun 11 12:02 known_hosts.old
 cinzia@corso-cyber:~/.ssh$
+
+
+
+Microsoft Windows [Versione 10.0.26200.8457]
+(c) Microsoft Corporation. Tutti i diritti riservati.
+
+C:\Users\Studente>ssh
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-Q query_option]
+           [-R address] [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+
+C:\Users\Studente>ssh cinzi@corso-cyber.acido.be
+The authenticity of host 'corso-cyber.acido.be (158.69.30.85)' can't be established.
+ED25519 key fingerprint is SHA256:zybSIBFIuf8renQ0N9oiy/tSGYrj9QnuDHJYpR3FBOU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Host key verification failed.
+
+C:\Users\Studente>ssh cinzi@corso-cyber.acido.be
+The authenticity of host 'corso-cyber.acido.be (158.69.30.85)' can't be established.
+ED25519 key fingerprint is SHA256:zybSIBFIuf8renQ0N9oiy/tSGYrj9QnuDHJYpR3FBOU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'corso-cyber.acido.be' (ED25519) to the list of known hosts.
+cinzi@corso-cyber.acido.be's password:
+Permission denied, please try again.
+cinzi@corso-cyber.acido.be's password:
+Permission denied, please try again.
+cinzi@corso-cyber.acido.be's password:
+cinzi@corso-cyber.acido.be: Permission denied (publickey,password).
+
+C:\Users\Studente>ssh cinzia@corso-cyber.acido.be
+cinzia@corso-cyber.acido.be's password:
+Linux corso-cyber 6.1.0-43-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.162-1 (2026-02-08) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Jun  9 09:50:39 2026 from 185.82.112.217
+cinzia@corso-cyber:~$ .ssh
+-bash: .ssh: command not found
+cinzia@corso-cyber:~$ ls -l
+total 12
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 5 cinzia    cinzia    4096 Jun  8 13:42 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 5 diego     diego     4096 Jun  9 13:13 diego
+drwx------ 6 fabiana   fabiana   4096 Jun  8 18:41 fabiana
+drwx------ 5 giulia    giulia    4096 Jun  9 13:04 giulia
+drwx------ 7 luca      luca      4096 Jun  9 13:20 luca
+drwx------ 5 matteo    matteo    4096 Jun  9 11:52 matteo
+drwx------ 2 olga      olga      4096 Jun 10 21:33 olga
+drwx------ 5 silvia    silvia    4096 Jun  9 10:05 silvia
+drwx------ 5 valentino valentino 4096 Jun  8 13:42 valentino
+cinzia@corso-cyber:/home$ cd ..
+cinzia@corso-cyber:/$ ls -lah
+total 68K
+drwxr-xr-x  18 root root 4.0K Jun  7 16:43 .
+drwxr-xr-x  18 root root 4.0K Jun  7 16:43 ..
+lrwxrwxrwx   1 root root    7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root 4.0K Jun  7 16:44 boot
+drwxr-xr-x  19 root root 3.4K Jun  9 10:21 dev
+drwxr-xr-x  74 root root 4.0K Jun 11 11:37 etc
+drwxr-xr-x  13 root root 4.0K Jun  9 09:48 home
+lrwxrwxrwx   1 root root   30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root   30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root    7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root  16K Nov 15  2023 lost+found
+drwxr-xr-x   3 root root 4.0K Jun  9 10:22 media
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 mnt
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 opt
+dr-xr-xr-x 172 root root    0 Jun  7 16:42 proc
+drwx------   5 root root 4.0K Jun  8 12:03 root
+drwxr-xr-x  21 root root  640 Jun 11 11:38 run
+lrwxrwxrwx   1 root root    8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 srv
+dr-xr-xr-x  13 root root    0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root 4.0K Jun 11 01:14 tmp
+drwxr-xr-x  12 root root 4.0K Mar 10 19:09 usr
+drwxr-xr-x  12 root root 4.0K Jun  9 11:22 var
+lrwxrwxrwx   1 root root   27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root   27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd home
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 5 cinzia    cinzia    4096 Jun  8 13:42 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 5 diego     diego     4096 Jun  9 13:13 diego
+drwx------ 6 fabiana   fabiana   4096 Jun  8 18:41 fabiana
+drwx------ 5 giulia    giulia    4096 Jun  9 13:04 giulia
+drwx------ 7 luca      luca      4096 Jun  9 13:20 luca
+drwx------ 5 matteo    matteo    4096 Jun  9 11:52 matteo
+drwx------ 2 olga      olga      4096 Jun 10 21:33 olga
+drwx------ 5 silvia    silvia    4096 Jun  9 10:05 silvia
+drwx------ 5 valentino valentino 4096 Jun 11 11:37 valentino
+cinzia@corso-cyber:/home$ ssh-keygen -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cinzia/.ssh/id_rsa):
+Created directory '/home/cinzia/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/cinzia/.ssh/id_rsa
+Your public key has been saved in /home/cinzia/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:4AXjQMYuLlaT11NeUeKIhtyRZSoHlkwwIUjvrvDcrtc cinzia@corso-cyber
+The key's randomart image is:
++---[RSA 2048]----+
+|oo *O++.oo oo.   |
+|. o.==++=.o..    |
+|   o.++*+...     |
+|  o+.o+= .       |
+| ..oo . S        |
+|..o              |
+|o. . .           |
+|.o... E          |
+| .++o            |
++----[SHA256]-----+
+cinzia@corso-cyber:/home$ cd .ssh
+-bash: cd: .ssh: No such file or directory
+cinzia@corso-cyber:/home$ cd
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ cd
+cinzia@corso-cyber:~$ cd .ssh
+cinzia@corso-cyber:~/.ssh$ ls
+id_rsa  id_rsa.pub
+cinzia@corso-cyber:~/.ssh$ cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6Gg/kofQLMvfl2NeCi2hUr0YQ0n09/AHEdpxeaDLKrLelVXRzAGbGrmkwsqbQXbTOUUgpRyk7FGoNIIfzTguoKDNp3p/9fQ6QxcCV038PDnY1Ym2A+/oxJSk4V12RclB8yrin2yb95fOn8tcj0QRzn0LvRQpv4JhS30SzxuF62/vC/0APhpDGpfJQc7aP12yVluy9OYdHLZiQ55QuPxYQmWszgh1dKPlQ2U2Jj8YXowz3TCyaQ/8Q0osHY1yVjg0zaHBhHttrChfxzrdKfRXsgYfB3gAaeMkyHF5aKptZh3ELJS/F37R+bY54ZgfATvCn0u9EJceEUaoEI8u5aUwd cinzia@corso-cyber
+cinzia@corso-cyber:~/.ssh$ git clone git@github.com:theclash8/corso-cyber.git
+Cloning into 'corso-cyber'...
+The authenticity of host 'github.com (140.82.113.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+cinzia@corso-cyber:~/.ssh$ git clone git@github.com:theclash8/corso-cyber.git
+Cloning into 'corso-cyber'...
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+remote: Enumerating objects: 127, done.
+remote: Counting objects: 100% (127/127), done.
+remote: Compressing objects: 100% (104/104), done.
+remote: Total 127 (delta 48), reused 12 (delta 2), pack-reused 0 (from 0)
+Receiving objects: 100% (127/127), 49.92 KiB | 1.19 MiB/s, done.
+Resolving deltas: 100% (48/48), done.
+cinzia@corso-cyber:~/.ssh$ ls -l
+total 20
+drwxr-xr-x 11 cinzia cinzia 4096 Jun 11 12:02 corso-cyber
+-rw-------  1 cinzia cinzia 1823 Jun 11 11:45 id_rsa
+-rw-r--r--  1 cinzia cinzia  400 Jun 11 11:45 id_rsa.pub
+-rw-------  1 cinzia cinzia  978 Jun 11 12:02 known_hosts
+-rw-r--r--  1 cinzia cinzia  142 Jun 11 12:02 known_hosts.old
+cinzia@corso-cyber:~/.ssh$ cd home
+-bash: cd: home: No such file or directory
+cinzia@corso-cyber:~/.ssh$ cd ..
+cinzia@corso-cyber:~$ ls -l
+total 12
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 11:44 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:02 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 11:59 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:00 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:02 valentino
+cinzia@corso-cyber:/home$ cd cinzia
+cinzia@corso-cyber:~$ nano nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cat nuovo_file_cinzia.txt
+un file bello
+cinzia@corso-cyber:~$ git add nuovo_file_cinzia.txt
+fatal: not a git repository (or any of the parent directories): .git
+cinzia@corso-cyber:~$ ls -l
+total 16
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+-rw-r--r-- 1 cinzia cinzia   14 Jun 11 12:06 nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:00 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:08 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ cd ..
+cinzia@corso-cyber:/$ ls -l
+total 60
+lrwxrwxrwx   1 root root     7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root  4096 Jun  7 16:44 boot
+drwxr-xr-x  19 root root  3400 Jun  9 10:21 dev
+drwxr-xr-x  74 root root  4096 Jun 11 11:46 etc
+drwxr-xr-x  13 root root  4096 Jun  9 09:48 home
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root     7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root 16384 Nov 15  2023 lost+found
+drwxr-xr-x   3 root root  4096 Jun  9 10:22 media
+drwxr-xr-x   2 root root  4096 Nov 15  2023 mnt
+drwxr-xr-x   2 root root  4096 Nov 15  2023 opt
+dr-xr-xr-x 175 root root     0 Jun  7 16:42 proc
+drwx------   5 root root  4096 Jun  8 12:03 root
+drwxr-xr-x  21 root root   640 Jun 11 11:44 run
+lrwxrwxrwx   1 root root     8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root  4096 Nov 15  2023 srv
+dr-xr-xr-x  13 root root     0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root  4096 Jun 11 01:14 tmp
+drwxr-xr-x  12 root root  4096 Mar 10 19:09 usr
+drwxr-xr-x  12 root root  4096 Jun  9 11:22 var
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd ..
+cinzia@corso-cyber:/$ ls -l
+total 60
+lrwxrwxrwx   1 root root     7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root  4096 Jun  7 16:44 boot
+drwxr-xr-x  19 root root  3400 Jun  9 10:21 dev
+drwxr-xr-x  74 root root  4096 Jun 11 11:46 etc
+drwxr-xr-x  13 root root  4096 Jun  9 09:48 home
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root     7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root 16384 Nov 15  2023 lost+found
+drwxr-xr-x   3 root root  4096 Jun  9 10:22 media
+drwxr-xr-x   2 root root  4096 Nov 15  2023 mnt
+drwxr-xr-x   2 root root  4096 Nov 15  2023 opt
+dr-xr-xr-x 175 root root     0 Jun  7 16:42 proc
+drwx------   5 root root  4096 Jun  8 12:03 root
+drwxr-xr-x  21 root root   640 Jun 11 11:44 run
+lrwxrwxrwx   1 root root     8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root  4096 Nov 15  2023 srv
+dr-xr-xr-x  13 root root     0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root  4096 Jun 11 01:14 tmp
+drwxr-xr-x  12 root root  4096 Mar 10 19:09 usr
+drwxr-xr-x  12 root root  4096 Jun  9 11:22 var
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd corso-cyber
+-bash: cd: corso-cyber: No such file or directory
+cinzia@corso-cyber:/$ cd home
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:08 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ ./
+-bash: ./: Is a directory
+cinzia@corso-cyber:/home$ cd cinzia/
+cinzia@corso-cyber:~$ ls
+check_memory.txt  check_memory.txt.save  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd .ssh/
+cinzia@corso-cyber:~/.ssh$ ls
+corso-cyber  id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+cinzia@corso-cyber:~/.ssh$ mv corso-cyber ..
+cinzia@corso-cyber:~/.ssh$ cd ..
+cinzia@corso-cyber:~$ ls
+check_memory.txt  check_memory.txt.save  corso-cyber  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd corso-cyber
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo_file_cinzia.txt
+cat: nuovo_file_cinzia.txt: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ ls ..
+check_memory.txt  check_memory.txt.save  corso-cyber  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuov
+nuova_directory/       nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuov
+nuova_directory/       nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuovo_file_cinzia.txt cinzia/
+cinzia@corso-cyber:~/corso-cyber$ lds cinzia/
+-bash: lds: command not found
+cinzia@corso-cyber:~/corso-cyber$ ls cinzia/
+09_06_2026  appunti  monitoraggio.sh  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo
+cat: nuovo: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo_file_cinzia.txt
+cat: nuovo_file_cinzia.txt: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ cd cinzia/
+cinzia@corso-cyber:~/corso-cyber/cinzia$ ls
+09_06_2026  appunti  monitoraggio.sh  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ cat nuovo_file_cinzia.txt
+un file bello
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git add nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ ls -l
+total 16
+-rw-r--r-- 1 cinzia cinzia  239 Jun 11 12:02 09_06_2026
+-rw-r--r-- 1 cinzia cinzia 2499 Jun 11 12:02 appunti
+-rw-r--r-- 1 cinzia cinzia 1069 Jun 11 12:02 monitoraggio.sh
+-rw-r--r-- 1 cinzia cinzia   14 Jun 11 12:06 nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$
+------------------------------------------------
+ws [Versione 10.0.26200.8457]
+(c) Microsoft Corporation. Tutti i diritti riservati.
+
+C:\Users\Studente>ssh
+usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface] [-b bind_address]
+           [-c cipher_spec] [-D [bind_address:]port] [-E log_file]
+           [-e escape_char] [-F configfile] [-I pkcs11] [-i identity_file]
+           [-J destination] [-L address] [-l login_name] [-m mac_spec]
+           [-O ctl_cmd] [-o option] [-P tag] [-p port] [-Q query_option]
+           [-R address] [-S ctl_path] [-W host:port] [-w local_tun[:remote_tun]]
+           destination [command [argument ...]]
+
+C:\Users\Studente>ssh cinzi@corso-cyber.acido.be
+The authenticity of host 'corso-cyber.acido.be (158.69.30.85)' can't be established.
+ED25519 key fingerprint is SHA256:zybSIBFIuf8renQ0N9oiy/tSGYrj9QnuDHJYpR3FBOU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Host key verification failed.
+
+C:\Users\Studente>ssh cinzi@corso-cyber.acido.be
+The authenticity of host 'corso-cyber.acido.be (158.69.30.85)' can't be established.
+ED25519 key fingerprint is SHA256:zybSIBFIuf8renQ0N9oiy/tSGYrj9QnuDHJYpR3FBOU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'corso-cyber.acido.be' (ED25519) to the list of known hosts.
+cinzi@corso-cyber.acido.be's password:
+Permission denied, please try again.
+cinzi@corso-cyber.acido.be's password:
+Permission denied, please try again.
+cinzi@corso-cyber.acido.be's password:
+cinzi@corso-cyber.acido.be: Permission denied (publickey,password).
+
+C:\Users\Studente>ssh cinzia@corso-cyber.acido.be
+cinzia@corso-cyber.acido.be's password:
+Linux corso-cyber 6.1.0-43-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.162-1 (2026-02-08) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Tue Jun  9 09:50:39 2026 from 185.82.112.217
+cinzia@corso-cyber:~$ .ssh
+-bash: .ssh: command not found
+cinzia@corso-cyber:~$ ls -l
+total 12
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 5 cinzia    cinzia    4096 Jun  8 13:42 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 5 diego     diego     4096 Jun  9 13:13 diego
+drwx------ 6 fabiana   fabiana   4096 Jun  8 18:41 fabiana
+drwx------ 5 giulia    giulia    4096 Jun  9 13:04 giulia
+drwx------ 7 luca      luca      4096 Jun  9 13:20 luca
+drwx------ 5 matteo    matteo    4096 Jun  9 11:52 matteo
+drwx------ 2 olga      olga      4096 Jun 10 21:33 olga
+drwx------ 5 silvia    silvia    4096 Jun  9 10:05 silvia
+drwx------ 5 valentino valentino 4096 Jun  8 13:42 valentino
+cinzia@corso-cyber:/home$ cd ..
+cinzia@corso-cyber:/$ ls -lah
+total 68K
+drwxr-xr-x  18 root root 4.0K Jun  7 16:43 .
+drwxr-xr-x  18 root root 4.0K Jun  7 16:43 ..
+lrwxrwxrwx   1 root root    7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root 4.0K Jun  7 16:44 boot
+drwxr-xr-x  19 root root 3.4K Jun  9 10:21 dev
+drwxr-xr-x  74 root root 4.0K Jun 11 11:37 etc
+drwxr-xr-x  13 root root 4.0K Jun  9 09:48 home
+lrwxrwxrwx   1 root root   30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root   30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root    7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root    9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root  16K Nov 15  2023 lost+found
+drwxr-xr-x   3 root root 4.0K Jun  9 10:22 media
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 mnt
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 opt
+dr-xr-xr-x 172 root root    0 Jun  7 16:42 proc
+drwx------   5 root root 4.0K Jun  8 12:03 root
+drwxr-xr-x  21 root root  640 Jun 11 11:38 run
+lrwxrwxrwx   1 root root    8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root 4.0K Nov 15  2023 srv
+dr-xr-xr-x  13 root root    0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root 4.0K Jun 11 01:14 tmp
+drwxr-xr-x  12 root root 4.0K Mar 10 19:09 usr
+drwxr-xr-x  12 root root 4.0K Jun  9 11:22 var
+lrwxrwxrwx   1 root root   27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root   27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd home
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 5 cinzia    cinzia    4096 Jun  8 13:42 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 5 diego     diego     4096 Jun  9 13:13 diego
+drwx------ 6 fabiana   fabiana   4096 Jun  8 18:41 fabiana
+drwx------ 5 giulia    giulia    4096 Jun  9 13:04 giulia
+drwx------ 7 luca      luca      4096 Jun  9 13:20 luca
+drwx------ 5 matteo    matteo    4096 Jun  9 11:52 matteo
+drwx------ 2 olga      olga      4096 Jun 10 21:33 olga
+drwx------ 5 silvia    silvia    4096 Jun  9 10:05 silvia
+drwx------ 5 valentino valentino 4096 Jun 11 11:37 valentino
+cinzia@corso-cyber:/home$ ssh-keygen -t rsa -b 2048
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/cinzia/.ssh/id_rsa):
+Created directory '/home/cinzia/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/cinzia/.ssh/id_rsa
+Your public key has been saved in /home/cinzia/.ssh/id_rsa.pub
+The key fingerprint is:
+SHA256:4AXjQMYuLlaT11NeUeKIhtyRZSoHlkwwIUjvrvDcrtc cinzia@corso-cyber
+The key's randomart image is:
++---[RSA 2048]----+
+|oo *O++.oo oo.   |
+|. o.==++=.o..    |
+|   o.++*+...     |
+|  o+.o+= .       |
+| ..oo . S        |
+|..o              |
+|o. . .           |
+|.o... E          |
+| .++o            |
++----[SHA256]-----+
+cinzia@corso-cyber:/home$ cd .ssh
+-bash: cd: .ssh: No such file or directory
+cinzia@corso-cyber:/home$ cd
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ cd
+cinzia@corso-cyber:~$ cd .ssh
+cinzia@corso-cyber:~/.ssh$ ls
+id_rsa  id_rsa.pub
+cinzia@corso-cyber:~/.ssh$ cat id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6Gg/kofQLMvfl2NeCi2hUr0YQ0n09/AHEdpxeaDLKrLelVXRzAGbGrmkwsqbQXbTOUUgpRyk7FGoNIIfzTguoKDNp3p/9fQ6QxcCV038PDnY1Ym2A+/oxJSk4V12RclB8yrin2yb95fOn8tcj0QRzn0LvRQpv4JhS30SzxuF62/vC/0APhpDGpfJQc7aP12yVluy9OYdHLZiQ55QuPxYQmWszgh1dKPlQ2U2Jj8YXowz3TCyaQ/8Q0osHY1yVjg0zaHBhHttrChfxzrdKfRXsgYfB3gAaeMkyHF5aKptZh3ELJS/F37R+bY54ZgfATvCn0u9EJceEUaoEI8u5aUwd cinzia@corso-cyber
+cinzia@corso-cyber:~/.ssh$ git clone git@github.com:theclash8/corso-cyber.git
+Cloning into 'corso-cyber'...
+The authenticity of host 'github.com (140.82.113.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+Host key verification failed.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+cinzia@corso-cyber:~/.ssh$ git clone git@github.com:theclash8/corso-cyber.git
+Cloning into 'corso-cyber'...
+The authenticity of host 'github.com (140.82.112.4)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+remote: Enumerating objects: 127, done.
+remote: Counting objects: 100% (127/127), done.
+remote: Compressing objects: 100% (104/104), done.
+remote: Total 127 (delta 48), reused 12 (delta 2), pack-reused 0 (from 0)
+Receiving objects: 100% (127/127), 49.92 KiB | 1.19 MiB/s, done.
+Resolving deltas: 100% (48/48), done.
+cinzia@corso-cyber:~/.ssh$ ls -l
+total 20
+drwxr-xr-x 11 cinzia cinzia 4096 Jun 11 12:02 corso-cyber
+-rw-------  1 cinzia cinzia 1823 Jun 11 11:45 id_rsa
+-rw-r--r--  1 cinzia cinzia  400 Jun 11 11:45 id_rsa.pub
+-rw-------  1 cinzia cinzia  978 Jun 11 12:02 known_hosts
+-rw-r--r--  1 cinzia cinzia  142 Jun 11 12:02 known_hosts.old
+cinzia@corso-cyber:~/.ssh$ cd home
+-bash: cd: home: No such file or directory
+cinzia@corso-cyber:~/.ssh$ cd ..
+cinzia@corso-cyber:~$ ls -l
+total 12
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 11:44 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:02 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 11:59 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:00 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:02 valentino
+cinzia@corso-cyber:/home$ cd cinzia
+cinzia@corso-cyber:~$ nano nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cat nuovo_file_cinzia.txt
+un file bello
+cinzia@corso-cyber:~$ git add nuovo_file_cinzia.txt
+fatal: not a git repository (or any of the parent directories): .git
+cinzia@corso-cyber:~$ ls -l
+total 16
+-rw-r--r-- 1 cinzia cinzia   64 Jun  8 12:35 check_memory.txt
+-rw-r--r-- 1 cinzia cinzia  223 Jun  8 13:42 check_memory.txt.save
+drwxr-xr-x 2 cinzia cinzia 4096 Jun  8 11:24 nuova_directory
+-rw-r--r-- 1 cinzia cinzia   14 Jun 11 12:06 nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd ..
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:00 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:08 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ cd ..
+cinzia@corso-cyber:/$ ls -l
+total 60
+lrwxrwxrwx   1 root root     7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root  4096 Jun  7 16:44 boot
+drwxr-xr-x  19 root root  3400 Jun  9 10:21 dev
+drwxr-xr-x  74 root root  4096 Jun 11 11:46 etc
+drwxr-xr-x  13 root root  4096 Jun  9 09:48 home
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root     7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root 16384 Nov 15  2023 lost+found
+drwxr-xr-x   3 root root  4096 Jun  9 10:22 media
+drwxr-xr-x   2 root root  4096 Nov 15  2023 mnt
+drwxr-xr-x   2 root root  4096 Nov 15  2023 opt
+dr-xr-xr-x 175 root root     0 Jun  7 16:42 proc
+drwx------   5 root root  4096 Jun  8 12:03 root
+drwxr-xr-x  21 root root   640 Jun 11 11:44 run
+lrwxrwxrwx   1 root root     8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root  4096 Nov 15  2023 srv
+dr-xr-xr-x  13 root root     0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root  4096 Jun 11 01:14 tmp
+drwxr-xr-x  12 root root  4096 Mar 10 19:09 usr
+drwxr-xr-x  12 root root  4096 Jun  9 11:22 var
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd ..
+cinzia@corso-cyber:/$ ls -l
+total 60
+lrwxrwxrwx   1 root root     7 Nov 15  2023 bin -> usr/bin
+drwxr-xr-x   3 root root  4096 Jun  7 16:44 boot
+drwxr-xr-x  19 root root  3400 Jun  9 10:21 dev
+drwxr-xr-x  74 root root  4096 Jun 11 11:46 etc
+drwxr-xr-x  13 root root  4096 Jun  9 09:48 home
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img -> boot/initrd.img-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    30 Jun  7 16:43 initrd.img.old -> boot/initrd.img-6.1.0-43-amd64
+lrwxrwxrwx   1 root root     7 Nov 15  2023 lib -> usr/lib
+lrwxrwxrwx   1 root root     9 Nov 15  2023 lib64 -> usr/lib64
+drwx------   2 root root 16384 Nov 15  2023 lost+found
+drwxr-xr-x   3 root root  4096 Jun  9 10:22 media
+drwxr-xr-x   2 root root  4096 Nov 15  2023 mnt
+drwxr-xr-x   2 root root  4096 Nov 15  2023 opt
+dr-xr-xr-x 175 root root     0 Jun  7 16:42 proc
+drwx------   5 root root  4096 Jun  8 12:03 root
+drwxr-xr-x  21 root root   640 Jun 11 11:44 run
+lrwxrwxrwx   1 root root     8 Nov 15  2023 sbin -> usr/sbin
+drwxr-xr-x   2 root root  4096 Nov 15  2023 srv
+dr-xr-xr-x  13 root root     0 Jun  7 16:42 sys
+drwxrwxrwt   9 root root  4096 Jun 11 01:14 tmp
+drwxr-xr-x  12 root root  4096 Mar 10 19:09 usr
+drwxr-xr-x  12 root root  4096 Jun  9 11:22 var
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz -> boot/vmlinuz-6.1.0-49-amd64
+lrwxrwxrwx   1 root root    27 Jun  7 16:43 vmlinuz.old -> boot/vmlinuz-6.1.0-43-amd64
+cinzia@corso-cyber:/$ cd corso-cyber
+-bash: cd: corso-cyber: No such file or directory
+cinzia@corso-cyber:/$ cd home
+cinzia@corso-cyber:/home$ ls -l
+total 48
+drwx------ 2 alessio   alessio   4096 Jun  8 09:47 alessio
+-rwxr-xr-x 1 luca      luca       546 Jun  8 12:57 check_memory.sh
+drwx------ 6 cinzia    cinzia    4096 Jun 11 12:06 cinzia
+drwxr-xr-x 3 debian    debian    4096 Mar 10 19:20 debian
+drwx------ 7 diego     diego     4096 Jun 11 12:08 diego
+drwx------ 7 fabiana   fabiana   4096 Jun 11 11:47 fabiana
+drwx------ 6 giulia    giulia    4096 Jun 11 11:44 giulia
+drwx------ 8 luca      luca      4096 Jun 11 12:07 luca
+drwx------ 7 matteo    matteo    4096 Jun 11 12:08 matteo
+drwx------ 2 olga      olga      4096 Jun 11 11:46 olga
+drwx------ 6 silvia    silvia    4096 Jun 11 11:44 silvia
+drwx------ 7 valentino valentino 4096 Jun 11 12:06 valentino
+cinzia@corso-cyber:/home$ ./
+-bash: ./: Is a directory
+cinzia@corso-cyber:/home$ cd cinzia/
+cinzia@corso-cyber:~$ ls
+check_memory.txt  check_memory.txt.save  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd .ssh/
+cinzia@corso-cyber:~/.ssh$ ls
+corso-cyber  id_rsa  id_rsa.pub  known_hosts  known_hosts.old
+cinzia@corso-cyber:~/.ssh$ mv corso-cyber ..
+cinzia@corso-cyber:~/.ssh$ cd ..
+cinzia@corso-cyber:~$ ls
+check_memory.txt  check_memory.txt.save  corso-cyber  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~$ cd corso-cyber
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo_file_cinzia.txt
+cat: nuovo_file_cinzia.txt: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ ls ..
+check_memory.txt  check_memory.txt.save  corso-cyber  nuova_directory  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuov
+nuova_directory/       nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuov
+nuova_directory/       nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ mv ../nuovo_file_cinzia.txt cinzia/
+cinzia@corso-cyber:~/corso-cyber$ lds cinzia/
+-bash: lds: command not found
+cinzia@corso-cyber:~/corso-cyber$ ls cinzia/
+09_06_2026  appunti  monitoraggio.sh  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo
+cat: nuovo: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ cat nuovo_file_cinzia.txt
+cat: nuovo_file_cinzia.txt: No such file or directory
+cinzia@corso-cyber:~/corso-cyber$ cd cinzia/
+cinzia@corso-cyber:~/corso-cyber/cinzia$ ls
+09_06_2026  appunti  monitoraggio.sh  nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ cat nuovo_file_cinzia.txt
+un file bello
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git add nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ ls -l
+total 16
+-rw-r--r-- 1 cinzia cinzia  239 Jun 11 12:02 09_06_2026
+-rw-r--r-- 1 cinzia cinzia 2499 Jun 11 12:02 appunti
+-rw-r--r-- 1 cinzia cinzia 1069 Jun 11 12:02 monitoraggio.sh
+-rw-r--r-- 1 cinzia cinzia   14 Jun 11 12:06 nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git commit nuovo_file_cinzia.txt
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'cinzia@corso-cyber.(none)')
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git config --global user.email "cinzia@gmail.com"
+  git config --global user.name "Cinzia"
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git commit 'prova'
+error: pathspec 'prova' did not match any file(s) known to git
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git commit -m 'prova'
+[main 6c82b84] prova
+ 1 file changed, 1 insertion(+)
+ create mode 100644 cinzia/nuovo_file_cinzia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git push
+To github.com:theclash8/corso-cyber.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'github.com:theclash8/corso-cyber.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git config pull.rebase fals
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git pull
+fatal: invalid value for 'pull.rebase': 'fals'
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git config pull.rebase false
+cinzia@corso-cyber:~/corso-cyber/cinzia$ git pull
+remote: Enumerating objects: 34, done.
+remote: Counting objects: 100% (34/34), done.
+remote: Compressing objects: 100% (19/19), done.
+remote: Total 29 (delta 9), reused 20 (delta 4), pack-reused 0 (from 0)
+Unpacking objects: 100% (29/29), 6.77 KiB | 770.00 KiB/s, done.
+From github.com:theclash8/corso-cyber
+   53f6ead..874e3c7  main       -> origin/main
+Merge made by the 'ort' strategy.
+ Matteo/Ciao               |   2 +
+ cinzia/11_06_2026         | 179 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ fabiana/fila_f.txt        |   1 +
+ silvia/file_di_silvia.txt |   1 +
+ 4 files changed, 183 insertions(+)
+ create mode 100644 Matteo/Ciao
+ create mode 100644 cinzia/11_06_2026
+ create mode 100644 fabiana/fila_f.txt
+ create mode 100644 silvia/file_di_silvia.txt
+cinzia@corso-cyber:~/corso-cyber/cinzia$
