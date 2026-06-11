@@ -1,4 +1,144 @@
+appunti
+**da google
 
+Le chiavi pubbliche, chiavi private e gli hash sono concetti diversi della crittografia.
+
+Chiave pubblica e chiave privata
+
+Fanno parte della crittografia asimmetrica.
+
+Chiave pubblica: può essere condivisa con chiunque.
+Chiave privata: deve rimanere segreta.
+
+Funzionano come una coppia matematicamente collegata.
+
+Esempio: cifratura
+
+Vuoi inviarmi un messaggio segreto.
+Usi la mia chiave pubblica per cifrarlo.
+Solo la mia chiave privata può decifrarlo.
+
+Esempio: firma digitale
+
+Firmo un documento con la mia chiave privata.
+Chiunque può verificare la firma usando la mia chiave pubblica.
+Questo dimostra che il documento è stato firmato da me e non è stato modificato.
+Hash
+
+Un hash non è una chiave.
+
+È una funzione che trasforma dati di qualsiasi dimensione in una stringa di lunghezza fissa.
+
+Ad esempio:
+
+"Ciao" → 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+
+Caratteristiche:
+
+È deterministico: stesso input → stesso hash.
+È unidirezionale: dall'hash non si dovrebbe poter ricostruire il testo originale.
+Una piccola modifica all'input produce un hash completamente diverso.
+
+Uso tipico:
+
+Verifica dell'integrità dei file.
+Archiviazione sicura delle password (insieme a salt e algoritmi appositi).
+Blockchain e criptovalute.
+Confronto rapido
+Concetto	Serve per	Segreto?
+Chiave pubblica	Cifrare dati o verificare firme	No
+Chiave privata	Decifrare dati o creare firme	Sì
+Hash	Creare un'impronta digitale dei dati	Non è una chiave
+Analogia semplice
+
+Immagina una cassetta delle lettere:
+
+La chiave pubblica è la fessura: chiunque può inserirvi una lettera.
+La chiave privata è la chiave che apre la cassetta: la possiede solo il proprietario.
+L'hash è come l'impronta digitale della lettera: serve a verificare che il contenuto non sia stato alterato, ma non permette di leggere la lettera stessa.
+
+Questi tre concetti vengono spesso usati insieme: ad esempio, nelle criptovalute come Bitcoin le transazioni sono firmate con chiavi private, verificate con chiavi pubbliche e organizzate usando funzioni hash.
+
+Come Funziona la Coppia di Chiavi pubblica e privata con esempi
+
+La coppia di chiavi pubblica e privata è il cuore della crittografia asimmetrica. Funziona grazie a una proprietà matematica: ciò che viene cifrato con una chiave può essere decifrato solo con l’altra (e viceversa, in certi casi).
+
+🔐 Come funziona (idea base)
+
+Ogni persona ha:
+
+Chiave pubblica → la può dare a chiunque
+Chiave privata → la tiene segreta
+
+Le due chiavi sono collegate, ma:
+
+dalla chiave pubblica non puoi ricavare la privata
+e viceversa
+📩 Esempio 1: inviare un messaggio segreto (cifratura)
+
+Supponiamo che:
+
+Alice vuole scrivere a Bob
+Passi:
+Bob crea una coppia di chiavi:
+pubblica (la distribuisce)
+privata (la tiene segreta)
+Alice prende la chiave pubblica di Bob
+
+Alice cifra il messaggio:
+
+“Ciao Bob” → (testo cifrato incomprensibile)
+
+Solo Bob può leggere il messaggio usando la sua chiave privata
+Risultato:
+
+✔ Tutti possono cifrare un messaggio per Bob
+✔ Solo Bob può leggerlo
+
+✍️ Esempio 2: firma digitale (autenticità)
+
+Ora il caso opposto: non vogliamo nascondere il messaggio, ma dimostrare chi lo ha scritto.
+
+Passi:
+
+Alice scrive un messaggio:
+
+“Ho inviato 100€ a Bob”
+
+Alice usa la sua chiave privata per firmarlo
+Chi riceve il messaggio usa la chiave pubblica di Alice per verificare
+Risultato:
+
+✔ Il messaggio è autentico (solo Alice poteva firmarlo)
+✔ Il contenuto non è stato modificato
+
+🔁 Riassunto semplice
+Azione	Chiave usata	Scopo
+Cifrare messaggio	Pubblica del destinatario	Segretezza
+Decifrare messaggio	Privata del destinatario	Leggere il contenuto
+Firmare	Privata del mittente	Autenticità
+Verificare firma	Pubblica del mittente	Controllo
+🧠 Analogia intuitiva
+
+Immagina una cassetta postale:
+
+Chiave pubblica = fessura della cassetta (chiunque può inserire lettere)
+Chiave privata = chiave per aprirla (solo il proprietario legge)
+Firma digitale = sigillo sulla lettera che tutti possono controllare ma non falsificare
+🌐 Dove si usa nella realtà
+HTTPS nei siti web 🔒
+Email sicure
+Login e autenticazione
+Blockchain e Bitcoin
+Chat e VPN
+
+Se vuoi, posso farti anche un esempio con numeri semplici (tipo RSA passo-passo) o mostrarti cosa succede
+
+
+
+
+
+##########################################################comandi
 Microsoft Windows [Versione 10.0.26200.8457]
 (c) Microsoft Corporation. Tutti i diritti riservati.
 
