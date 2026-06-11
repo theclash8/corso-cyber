@@ -153,13 +153,45 @@ Come funziona un sito internet?
  HTML 
  Processi (come gestirli, come visualizzarli, quali utilizzano più/meno RAM)
 
+
 COS'è UN HASH?
 
-E' una stringa che può avere diversi usi. Nel caso delle criptovalute sono dei risultati univoci matematici.
+E' un'impronta digitale univoca. E' il risultato di una trasformazione matematica tramite algoritmo.
+E' una stringa che può avere diversi usi. Nel caso delle criptovalute sono dei risultati univoci matematici.  **stringa - univoca**
 Alternativamente l'hash viene utilizzato per:
  - il cript delle password ('hashare' una password, cioè cambiarla da 'ciaone' a una stringa applicandole un algoritmo di cript tipo in 'enoaic')
    (cambiare 'ciaone' in una stringa di caratteri esadecimali) es. MD5 (era considerato un algoritmo di cript sicuro).
+Da un hash non si può risalire al file d'origine. 
 
 Da un decript posso arrivare a cript, ma non viceversa. Non è reversibile. 
 Ora viene utilizzato algoritmo di SHA(512). E' più lento di un MD5. 
+
+
+Chiavi ASINCRONE 
+Posso utilizzare delle stringhe più o meno lunghe per creare un HASH. Algoritmo + mia stringa = chiave pubblica.
+La mia stringa è la mia CHIAVE PRIVATA (parlando di coppie di chiavi ASINCRONE). Arrivo alla chiave pubblica (hash). 
+Una coppia di chiavi asincrone si utilizzano allo stesso modo di un hash ma applicate in altre cose. Possedere le chiavi certifica un certo tipo d'identità.
+Non si può criptare tutto, solitamente si criptano password e dati personali degli utenti. 
+
+*(da: Google)* Come Funziona la Coppia di Chiavi
+
+Il funzionamento si basa su due scopi principali, garantiti dalla complementarità delle chiavi: 
+- **Riservatezza (Cifratura):** Se vuoi inviarmi un messaggio, **cifri** i dati usando la mia _chiave pubblica_. A quel punto, quel messaggio diventa illeggibile per tutti, tranne che per me, poiché sono l'unico a possedere la _chiave privata_ in grado di **decrittarlo**. 
+- **Autenticità (Firma Digitale):** Se sono io a firmare un documento, **cifro** un'impronta del documento con la mia _chiave privata_. Chiunque riceva il documento può usare la mia _chiave pubblica_ per **verificare** che il file provenga effettivamente da me e che non sia stato alterato dopo la firma. 
+
+Algoritmi Principali
+
+Gli algoritmi più noti utilizzati per generare queste coppie di chiavi includono:
+
+- **RSA:** Uno dei primi e più diffusi metodi, basato sulla complessità della scomposizione in fattori primi di numeri molto grandi.
+- **DSA ed ECDSA:** Molto usati per le firme digitali, questi ultimi si basano sulla matematica delle curve ellittiche e offrono la stessa sicurezza di RSA ma con chiavi più corte e maggiore efficienza.
+
+Casi d'Uso Comuni
+
+- **Connessioni Sicure (HTTPS / SSL/TLS):** Protegge le comunicazioni web tra il tuo browser e i server, permettendo scambi sicuri.
+- **Firma Digitale:** Utilizzata per firmare contratti e documenti legalmente vincolanti, associando in modo inequivocabile l'identità del firmatario al file.
+- **Accesso Remoto (SSH):** Permette di autenticarsi su server remoti in modo sicuro senza dover digitare password, associando la propria chiave pubblica al server e conservando la chiave privata sul proprio computer. 
+
+
+
 
