@@ -1,0 +1,57 @@
+In informatica, l'acronimo SAS può riferirsi a tre concetti principali a seconda dell'ambito:Statistical Analysis System: 
+Una potente suite software e linguaggio di programmazione sviluppata dal SAS Institute. È lo standard di riferimento 
+
+aziendale per il Data Management avanzato,
+ l'analisi statistica,
+ il machine learning e la business intelligence.
+PHP (Hypertext Preprocessor) è un popolare linguaggio di scripting open source, interpretato ed eseguito lato server, ed 
+
+è specializzato nello sviluppo di siti web e applicazioni dinamiche. Il codice viene elaborato dal server e inviato al 
+
+browser sotto forma di HTML.Caratteristiche PrincipaliLato Server: L'elaborazione (interazione con database, 
+
+autenticazione, logica) avviene sul server, rendendo il sito sicuro e indipendente dal dispositivo 
+
+dell'utente.Integrazione HTML: Il codice PHP può essere facilmente incorporato direttamente all'interno dei documenti 
+
+HTML.Versatilità: Supporta la programmazione procedurale e orientata agli oggetti (OOP).Database: Comunica in modo nativo 
+
+ed efficiente con database come MySQL o PostgreSQL.Perché viene UtilizzatoÈ il motore che alimenta gran parte del web ed 
+
+è alla base di sistemi di Content Management come WordPress, Drupal e Magento.Facilità di Apprendimento: Ha una sintassi 
+
+semplice e intuitiva, derivata dal C e dal Java.Economico e Compatibile: Essendo open source, è supportato dalla 
+
+stragrande maggioranza dei servizi di hosting web.Grande Community: Offre una documentazione ufficiale ricca e 
+
+un'infinità di librerie già pronte.Per una guida visiva che ti illustra come installare un ambiente di sviluppo locale 
+
+(come XAMPP) ed eseguire i tuoi primi script:
+
+client site  attacco hacker siti truffaldini 
+HASH  e chiavi asincrona COSè
+
+Un hash (o codice hash) è un'impronta digitale univoca generata da un algoritmo matematico. Converte dati di qualsiasi 
+
+dimensione in una stringa di caratteri alfanumerici di lunghezza fissa. È una funzione a senso unico: non può essere 
+
+decifrata per risalire al testo o file originale.
+si usa per dicifrare password una stringa univoca 
+concetto genrale di chiave asincrone , ovvero posso utilizzare piu meno delle stringhe lunghe per creare un hash , da 
+
+questo uso il mio hash un algoritmo (chiave pubblica) per avere tutto cio ho bisogno di una stringa una chiave privata 
+arrivo poi a queto hash 
+ci interessa capire che una coppia di chiavi asincrono si usa lo stesso per un hash devo avere tutte e due 
+possederle tutte e due certifica una edintita 
+chiave publica hai la serrature ma non la chiave 
+privata invece ho tutto  per fare un hash ho bisogno di entrambi .
+stringa ad esempio username ... chiave privata , pubblica lo sanno tutti 
+
+pgp protoccolo default
+gpg protoccollo uomo stalla
+ccokies tecnici id sessione 
+cookie per vedere i sei , sono piccolo doc di testo dove il sito si salva per vedere chi sei 
+per farti vedere determinate cose
+esempo chiave ssh 
+
+ssh-keygen -t rsa -b 2048 codice creare vedere chiavi poi cd .ssh
