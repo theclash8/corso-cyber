@@ -93,6 +93,7 @@ linux cardcheat:1 ls
             15 ./ (cartella corrente)
             16 ps-ax (visualizza processi in esecuzione come 'top')
             17 chmod (serve a modificare i permessi)
+            18 chown (modifica il proprietario) es. chown silvia:silvia_check_memory.sh
             
             
             
