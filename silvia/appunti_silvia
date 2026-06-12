@@ -192,6 +192,41 @@ Casi d'Uso Comuni
 - **Firma Digitale:** Utilizzata per firmare contratti e documenti legalmente vincolanti, associando in modo inequivocabile l'identità del firmatario al file.
 - **Accesso Remoto (SSH):** Permette di autenticarsi su server remoti in modo sicuro senza dover digitare password, associando la propria chiave pubblica al server e conservando la chiave privata sul proprio computer. 
 
+Sicurezza dei sistemi operativi. 
+
+Linux 
+ - Multiutenza (possibilità per ogni utente di salvare nella propria cartella i propri file senza che essi siano visibili agli altri utenti). 
+ - Permessi per i vari utenti. 
+ 
+ Permessi: permesso di lettura, di scrittura e di esecuzione.
+ Il permesso di esecuzione ha due tipi di funzionalità: sui file mi permette di eseguirli e trattarli come binari. Sulle directory mi permette di navigarle. A livello logico le cartelle non esistono, le cartelle sono dei mini programmini e quindi hanno bisogno del permesso di esecuzione per venire navigate.
+ 
+ Utente = proprietario del file.
+ Gruppo = gruppo al quale appartiene l'utente.
+ Altri = Chi non è ne il gruppo ne l'utente.
+ 
+ Molto utile avere gruppi d'utenti, ad esempio tutti noi utenti all'interno del server facciamo parte di default di un utente che porta il tuo stesso nome (es. sono Silvia e faccio parte del gruppo Silvia e altri gruppi, soprattutto in Linux). 
+ 
+ Silvia -> Audio -> Users (tutti noi utenti ne facciamo parte, mi è utile per condividere file tra di noi)
+
+L'utente (Amministratore del proprio gruppo) può dare i permessi agli altri utenti. Approfondire gruppi utenza Linux.
+Come settare i permessi ? CHMOD (su Linux).
+I file creati hanno dei permessi di default  (es. creo con editor di testo), se non vengono specificati i permessi il file viene creato con i permessi di lettura e scrittura.
+Le cartelle vengono create con permesso di esecuzione. 
+
+
+Play services (Android) è uno spyware che prende tutti i dati biometrici, telefonate, messaggi, numero di sblocchi, etc. che manda tutto a Google.
+G-suite replica l'esatto funzionamento dello spyware Play services, ma senza mandare tutti i dati a Google.
+
+Sembra scontato ma avere un utente limitato e uno con una password difficile è molto efficace contro la compromissione del proprio OS. 
+Bucare rete wifi =
+ - Dizionari di due tipi: scaricati dalla rete (file con 8mln-10mln di password)
+                   generati dinamicamente  (che mi farà domande sul nome dell'azienda, della via, del wifi, cosi da generare un dizionario basato sulle informazioni che gli passo.)
+ 
+ BRUTE FORCE (tecnica di forza bruta) 
+  provi a decodificare la password
+ 
+
 
 
 
