@@ -293,3 +293,16 @@ Git pull
 Git push 
 
  
+ 
+
+Git checkout –b nome 
+
+Git push origin nome 
+
+ 
+
+Feature 
+
+doc 
+
+ 
