@@ -1,0 +1,51 @@
+LISTA COMANDI PYTHON E LINUX
+Comando	Categoria	Descrizione	Esempio
+ls	File system	Elenca file e directory	ls -la
+cd	File system	Cambia directory	cd /home/user
+pwd	File system	Mostra la directory corrente	pwd
+mkdir	File system	Crea una directory	mkdir nuova_dir
+rm	File system	Rimuove file o directory	rm -rf dir/
+cp	File system	Copia file o directory	cp file1 file2
+mv	File system	Sposta o rinomina file	mv old new
+touch	File system	Crea un file vuoto	touch file.txt
+find	File system	Cerca file nel filesystem	find / -name '*.conf'
+cat	Testo	Mostra il contenuto di un file	cat file.txt
+less	Testo	Visualizza file paginato	less file.log
+grep	Testo	Cerca pattern nel testo	grep 'error' log.txt
+sed	Testo	Stream editor per manipolazione testo	sed 's/foo/bar/g' f
+awk	Testo	Elaborazione avanzata del testo	awk '{print $1}' f
+sort	Testo	Ordina le righe di un file	sort -r file.txt
+wc	Testo	Conta righe, parole, caratteri	wc -l file.txt
+head / tail	Testo	Mostra inizio o fine del file	tail -n 20 log
+ps	Processi	Mostra i processi in esecuzione	ps aux
+top / htop	Processi	Monitor dei processi in tempo reale	htop
+kill	Processi	Termina un processo per PID	kill -9 1234
+killall	Processi	Termina processi per nome	killall nginx
+jobs / bg / fg	Processi	Gestione job in background/foreground	bg %1
+nohup	Processi	Esegue un comando senza blocco	nohup script.sh &
+chmod	Permessi	Modifica i permessi di un file	chmod 755 script.sh
+chown	Permessi	Cambia proprietario di un file	chown user:group f
+sudo	Permessi	Esegue comandi come superuser	sudo apt update
+su	Permessi	Cambia utente nella sessione	su - root
+useradd	Permessi	Aggiunge un nuovo utente	useradd -m mario
+passwd	Permessi	Cambia la password utente	passwd mario
+ifconfig / ip	Rete	Mostra e configura interfacce di rete	ip addr show
+ping	Rete	Verifica la connettività di rete	ping google.com
+netstat / ss	Rete	Mostra connessioni di rete	ss -tulnp
+curl	Rete	Trasferisce dati da URL	curl -O url
+wget	Rete	Scarica file da internet	wget https://...
+ssh	Rete	Connessione sicura remota	ssh user@host
+scp	Rete	Copia file via SSH	scp file user@host:/
+nmap	Rete	Scanner di rete e porte	nmap -sV 192.168.1.1
+uname	Sistema	Info sul kernel e sistema	uname -a
+df	Sistema	Spazio su disco delle partizioni	df -h
+du	Sistema	Dimensione di file e directory	du -sh /var/
+free	Sistema	Memoria RAM disponibile e usata	free -h
+uptime	Sistema	Tempo di attività del sistema	uptime
+dmesg	Sistema	Messaggi del kernel	dmesg | tail
+systemctl	Sistema	Gestione dei servizi systemd	systemctl status nginx
+journalctl	Sistema	Log del sistema systemd	journalctl -u nginx
+cron / crontab	Sistema	Pianificazione di task	crontab -e
+tar	Archivi	Crea e gestisce archivi .tar	tar -czvf a.tar.gz dir
+zip / unzip	Archivi	Comprime e decomprime zip	unzip file.zip
+gzip / gunzip	Archivi	Comprime e decomprime gzip	gzip file.txt
