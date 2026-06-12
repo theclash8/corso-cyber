@@ -94,8 +94,12 @@ linux cardcheat:1 ls
             16 ps-ax (visualizza processi in esecuzione come 'top')
             17 chmod (serve a modificare i permessi)
             18 chown (modifica il proprietario) es. chown silvia:silvia_check_memory.sh
-            
-            
+            19 touch (creare un file) es. touch file_permessi_esempio)
+                *u= user g= group o= others*
+                *r=read w= write x= execute*
+                *rwx = 7
+                rw = 4
+                x= 1 
             
 Parametro 2
 
@@ -142,9 +146,9 @@ La prima cosa che fa un virus è creare o lanciare un PROCESSO malevolo col nome
 
 La CPU ha un set di istruzioni più limitato di una scheda video. Molti miner sono nascosti.
 
-   2) motivi etici, es. controllo statale, attivismo politico
+       2) motivi etici, es. controllo statale, attivismo politico
      
-   3) goliardia...
+	   3) goliardia...
 
 L'installazione di un processo malevolo deve avere un nome (PID) familiare ai processi in esecuzione sul sistema operativo. 
 Capire da dove sono entrati. Per questo motivo i PID sono importanti, quando controlliamo i processi di sistema dobbiamo sempre tenerne conto perche rendono univoco un processo all'interno di un sistema operativo.
@@ -195,6 +199,47 @@ Casi d'Uso Comuni
 - **Firma Digitale:** Utilizzata per firmare contratti e documenti legalmente vincolanti, associando in modo inequivocabile l'identità del firmatario al file.
 - **Accesso Remoto (SSH):** Permette di autenticarsi su server remoti in modo sicuro senza dover digitare password, associando la propria chiave pubblica al server e conservando la chiave privata sul proprio computer. 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ID sessione: un dato che permette al sito visitato di sapere che te sei te (es. Area Clienti)
+
+
+**Git** utilizza ssh per poter fare delle modifiche al pc senza passare per l'interfaccia grafica. 
+
+
+protocollo Pgp o Gpg
+
+
+
+
+
+
+
+
+
+
+RANSOMWARE = virus che ti cripta tutto il sistema operativo e ti chiede riscatto in BTC.
+cyber side language
+HTML = markdown language
+md = markdown language
+Il linguaggio HTML viene spedito al nostro un browser. 
+Il linguaggio cyber side (PhP, Python) ha il compito di compilare il codice e poi di trasformarlo in html da spedire al browser.
+Client-side = sarà il client a compilare. I linguaggi vengono spediti ai client così come sono (es. Javascript), il compito a quest'ultimi di tradurli. 
+
+
+
 Sicurezza dei sistemi operativi. 
 
 Linux 
@@ -212,10 +257,14 @@ Linux
  
  Silvia -> Audio -> Users (tutti noi utenti ne facciamo parte, mi è utile per condividere file tra di noi)
 
+**LINUX** 
+
 L'utente (Amministratore del proprio gruppo) può dare i permessi agli altri utenti. Approfondire gruppi utenza Linux.
 Come settare i permessi ? CHMOD (su Linux).
 I file creati hanno dei permessi di default  (es. creo con editor di testo), se non vengono specificati i permessi il file viene creato con i permessi di lettura e scrittura.
 Le cartelle vengono create con permesso di esecuzione. 
+I sistemi operativi sono divisi in *file* e *processi (ossia i programmi in esecuzione)*. In un certo modo il kernel tratta i processi come dei file, quindi molte cose possono essere lette con il comando cat, informazione relative all'hardware possono essere lette come file (linux). Facendo cosi i processi che vengono visualizzati come file ereditano i permessi come tali. Ogni processo viene trattato come un file quindi ha SEMPRE un proprietario ed un gruppo (estremamente importante a livello di sicurezza). 
+www-data www-utente (possono leggere e scrivere solo nella cartella dove ci sono i siti, parliamo del processo Apache2)
 
 
 Play services (Android) è uno spyware che prende tutti i dati biometrici, telefonate, messaggi, numero di sblocchi, etc. che manda tutto a Google.
@@ -229,7 +278,6 @@ Bucare rete wifi =
  BRUTE FORCE (tecnica di forza bruta) 
   provi a decodificare la password
  
+inode = numero logico di file che posso creare/scrivere su di un hard disk indipendentemente dalla grandezza di un HD.
 
-
-
-
+webserver è per natura NON sicuro. 
