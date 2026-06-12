@@ -92,6 +92,8 @@ linux cardcheat:1 ls
             14 ../ (serve a salire di cartella)
             15 ./ (cartella corrente)
             16 ps-ax (visualizza processi in esecuzione come 'top')
+            17 chmod (serve a modificare i permessi)
+            
             
             
 Parametro 2
