@@ -1,1 +1,64 @@
+•	TRIADE CIA:
+Confidentiality, confidenzialità garantisce che i dati siano accessibili solo agli utenti autorizzati
+Integrity, integrità assicura che le info siano accurate, integre e non vengano modificate 
+ Availability, disponibilità garantisce che i dati siano sempre accessibili e utilizzabili dagli utenti autorizzati. 
+-	attacco DDOS Distributed Denial of Service (sovraccarica un sito o un server, ingolfandolo)
+
+•	SAAS Software as a Service, un modello si distribuzione software in cui le applicazioni vengono ospitate e fornite su cluod da un’azienda terza; 
+•	SITO
+•	SISTEMI OPERATIVI
+KERNEL stack (networking, gestione file sistem, cripto), drive. parla alle periferiche. I drive sono programmi che parlano con periferiche (scheda di rete, wifi...etc) basso livello
+USER SPACE =programma utente.
+- Rootkit prigrammi malevoli nella kernel bruci tutto. Alto livello
+Kernel e user space si parlano attraverso i SYSCALL (=system call, chiamata di sistema)= chiamate di sistema 88 le più importanti. Sono totali 400
+
+Ram rom networking
+[Livello bassissimo appena si accende il pc, tramite il bios viene caricato il boot loader dal bios scegli quale sia il boot loader, i primi 160gb contengono il sistema operativo. Il boot loader carica il kernel, inizializza le periferiche e carica le utenze]
+•	LINUX è diverso DA WINDOWS sia a livello grafico che virtual box.
+Nei SO basatti su unix (BSD) le funzionalita aggiuntive sono già implementate.
+•	Tool =applicativo. 
+•	SHELL È l'interfaccia  che permette all'utente di comunicare direttamente con il sistema operativo, interpretando e traducendo i comandi testuali in azioni macchinaes. le shell di Linux/Unix come Bash
+
+STRUTTURA FILE SISTEM = è un modo per gestire gli hard disck 
+Quando gli HD vengono inizializzati vengono divisi in due da una parte i meta dati  (grandezza, indirizzo dei file) da l’altra i dati
+su LINUX sono gestiti in maniera differente.
+A:/floppy
+C:/documental centing (per cartelle utente) 
+D:/ cdrom
+E:/ f:/....
+su unix e quindi su linux è un’alberatura: una directory principale ROOT: 
+root/
+/root
+Toor/
+Alberatura:
+/smd
+/home
+/var
+
+
+Opzioni del comando shell: -r –n –w (il – si usa per i comandi; non si spazia usare _)
+	--write –list
+	-a vediamo file nascosti
+	Ls lista file 
+	-l maggiori info
+	-h dimensioni file
+	Cd ci fa entrare nelle directory
+	Nano file.txt editor testo
+	Cat file.txt  richiamare file
+	Crt c per uscire da un programma appeso
+	Mkdir nuova_dir  crea nuova directory
+	Rm nome del file.txt   cartella file
+	Top task manager
+	Cp copia file
+	Free –h -n stampa la ram
+	Echo stampa una stringa 
+	Mv rinomina file
+
+•	PATH Absolute Path è il percorso verso una posizione in un sistema operativo o su Internet.
+Ls file.txt è patH relarivo
+Ls/home/luca percorso assoluto parto dalla barra / (=patH assoluti) si usa per fare script
+Sempre meglio metterli assoluti
+Vedo che è una directory per dir.
+./ recupere la cartella precedente
+../ recupere la cartella due posti sopra
 
