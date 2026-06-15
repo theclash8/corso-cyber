@@ -1,5 +1,18 @@
+
+
+Conta il numero totale di righe del file di log.
+Output atteso: un numero intero
+
 cinzia@corso-cyber:/home$ wc -l /home/access.log
 1302 /home/access.log
 cinzia@corso-cyber:/home$
 
+----------------------------------------------------------------------------
+grep >
+Estrai tutte le righe che contengono il codice di stato 404 e salva il risultato in un nuovo file errori_404.log.
+Verifica: il file creato esiste e contiene solo righe con "404"
 
+grep '404' /home/access.log > /home/cinzia/errori_404.log    --- /home/    inizia dall'inizio 
+                                                                home/cinzia/errori_404.log  -- inizia dalla directory corrente
+#controlla il contenuto del file
+cinzia@corso-cyber:/home$ cat /cinzi
