@@ -1,0 +1,43 @@
+script.md.sh
+comandi
+cicli e variabili (variabili bash dollaro)$
+if
+for
+while
+con python ma bash linux va piu facile
+parliamo di output con questi script che fanno il lavoro umano ci diano questo output
+
+esempio cat nome file (comando è cat )
+uname -r ti da versione del kernel 
+cpn python manipoli un output mentre per bash linux no 
+pidof hacker.sh
+ps aux 
+Il comando ps aux in Linux fornisce un'istantanea dettagliata di tutti i processi in esecuzione nel sistema, inclusi quelli degli altri utenti e quelli in background. 
+È ampiamente utilizzato per monitorare l'utilizzo delle risorse (CPU e memoria) e per identificare i processi da terminare.Le colonne dell'outputL'output del comando si divide principalmente nelle seguenti colonne:USER: l'utente che ha avviato il processo.PID: l'identificativo numerico del processo (Process ID), utile per gestirlo o terminarlo (es. con il comando kill <PID>).%CPU: la percentuale di CPU attualmente utilizzata dal processo.%MEM: la percentuale di RAM di sistema attualmente utilizzata dal processo.VSZ / RSS: dimensioni della memoria virtuale e della memoria fisica (RAM) residente occupata.TTY: il terminale associato al processo. Un punto interrogativo (?) indica che è un processo in background non legato a una console.STAT: lo stato del processo (es. R per Running, S per Sleeping).START: l'orario o la data in cui è stato avviato.TIME: il tempo totale di CPU accumulato dal processo.COMMAND:
+ il comando esatto o il programma che ha generato il processo.Combinazioni utiliPoiché l'output può essere molto lungo, spesso si combina ps aux con altri comandi tramite la pipe (|):Scorrere la lista: ps aux | less permette di visualizzare i processi una pagina alla volta.Cercare un processo specifico:
+ ps aux | grep nomeprocesso filtra la lista per trovare solo i processi che contengono il nome specificato.Ordinare per utilizzo di CPU: ps aux --sort=-%cpu ordina la lista mostrando in cima i processi più pesanti per il processore.Ordinare per utilizzo di memoria: ps aux --sort=-%mem posiziona in alto i processi che consumano più RAM.
+ython è un linguaggio di programmazione interpretato e di alto livello, usato per scrivere software. Linux è invece un sistema operativo open source che gestisce l'hardware del computer. Il codice Python può essere eseguito su Linux, ma Linux stesso offre strumenti nativi e ambienti ideali per lo sviluppo.Le differenze chiave a colpo d'occhioCos'è PythonNatura: Linguaggio di programmazione.Utilizzo: Serve per creare script, siti web, software e intelligenza artificiale.Indipendenza: Un codice scritto in Python è multipiattaforma; funziona su Linux, Windows e macOS senza dover essere riscritto.Cos'è LinuxNatura: Sistema operativo (simile a Windows o macOS).Utilizzo: Gestisce le risorse del computer, la memoria e i programmi.Integrazione: Molte distribuzioni Linux (come Ubuntu o Fedora) includono Python preinstallato, poiché il sistema operativo stesso usa Python per gestire e automatizzare diverse operazioni interne.
+> generalmente è un file ps aux > nome file
+sostanzialmente è un file o lo crei o lo sovrascrivi se invece non voglio sovascriverlo ma vogliamo metterelo alla fine
+ps aux >> appendo output alla fine dell output precedente 
+ps aux >
+ps aux >> 
+pipa o pipe / \ slash ex ps aux \ wc(conta cose) -l ( sta per linee)
+& commerciale mette in backgroud ovvero l output che tira fuori il comando 
+&& ps aux faami questo e poi questo ps aux \\ nome or nome
+&& ps aux and wc -l
+
+ps aux puo essere modificato
+stdout ovvero setto e dico a linux dove far vedere l output se non trovo ps aux
+ex errore stderr 
+si chiamano variabile di ambiente e epr settare la shell 
+
+COMANDI
+grep
+sed
+awk
+wc -l
+grep è il più utile di tutto cerca le occorenze 
+esempio passi una stringa cerca le cose le directory ecc o nome del file 
+awk manipoli le stringhe python cmq non si manipoli linux si 
+
