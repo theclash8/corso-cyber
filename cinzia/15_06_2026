@@ -1,0 +1,5 @@
+cinzia@corso-cyber:/home$ wc -l /home/access.log
+1302 /home/access.log
+cinzia@corso-cyber:/home$
+
+
