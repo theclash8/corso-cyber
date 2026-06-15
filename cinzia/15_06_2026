@@ -1,4 +1,4 @@
-
+https://corso-cyber.acido.be/output.html
 
 Conta il numero totale di righe del file di log.
 Output atteso: un numero intero
@@ -16,3 +16,122 @@ grep '404' /home/access.log > /home/cinzia/errori_404.log    --- /home/    inizi
                                                                 home/cinzia/errori_404.log  -- inizia dalla directory corrente
 #controlla il contenuto del file
 cinzia@corso-cyber:/home$ cat /cinzi
+
+
+
+---------------------
+
+manipolazione-output
+pipe, redirezioni, filtri di testo — applicati al log di Apache2
+
+Nome
+manipolazione-output — esercitazione pratica sugli strumenti di filtraggio, estrazione e ordinamento dell'output, applicati a un file di log reale.
+
+Sinossi
+grep
+cut
+awk
+sed
+sort
+wc
+>
+|
+&&
+||
+# pattern generali da combinare
+$ comando1 | comando2 | comando3 > output.txt
+$ comando1 && comando2 || comando3
+Descrizione
+L'obiettivo è esercitarsi sui comandi di manipolazione dell'output usando come dataset il log degli accessi di Apache2, nel formato combined (o common, a seconda della configurazione):
+
+192.168.1.10 - - [15/Jun/2026:10:01:23 +0200] "GET /index.html HTTP/1.1" 200 1024 "-" "Mozilla/5.0"
+Prima di iniziare, individua il file e ispezionalo:
+
+# Debian/Ubuntu
+$ ls -la /var/log/apache2/access.log
+
+# RHEL/CentOS/Fedora
+$ ls -la /var/log/httpd/access_log
+
+# dai un'occhiata alle prime righe
+$ sudo head /var/log/apache2/access.log
+Permessi: il file è di proprietà di root. Se non vuoi anteporre sudo a ogni comando, fai una copia di lavoro nella tua home con permessi adeguati prima di iniziare, e usa quella copia per tutti gli esercizi.
+Campi del formato combined
+Utile per capire quali colonne estrarre con cut/awk — ma occhio: la richiesta HTTP è racchiusa tra virgolette e contiene spazi, quindi con la separazione di default su spazi alcuni campi "logici" occupano più di una colonna. Ispeziona sempre una riga con attenzione prima di scegliere il delimitatore e l'indice.
+
+Elemento	Esempio	Note
+IP client	192.168.1.10	primo campo, sempre
+Data/ora	[15/Jun/2026:10:01:23 +0200]	contiene uno spazio interno
+Richiesta	"GET /index.html HTTP/1.1"	tre token tra virgolette
+Status	200	codice numerico HTTP
+Size	1024	byte trasferiti
+Esercizi
+01
+
+wc
+Conta il numero totale di righe del file di log.
+Output atteso: un numero intero
+02
+
+grep
+>
+Estrai tutte le righe che contengono il codice di stato 404 e salva il risultato in un nuovo file errori_404.log.
+Verifica: il file creato esiste e contiene solo righe con "404"
+03
+
+cut / awk
+>
+Estrai solo gli indirizzi IP (primo campo di ogni riga) e salvali in un file ips.txt.
+Verifica: ogni riga di ips.txt contiene un solo IP
+04
+
+sort
+|
+A partire da ips.txt, ottieni la lista degli IP univoci, ordinati, senza creare ulteriori file intermedi.
+Suggerimento: sort ha un'opzione per eliminare i duplicati
+05
+
+grep
+wc
+|
+In un'unica pipeline, conta quante richieste hanno restituito un codice di errore lato server (status che inizia con 5), senza creare file intermedi.
+Output atteso: un numero intero (può essere 0 se non ci sono errori 5xx nel log)
+06
+
+sed
+>
+Crea una copia del log in cui ogni occorrenza del metodo POST viene sostituita con RICHIESTA-POST, salvando il risultato in un nuovo file.
+Verifica: il file originale rimane invariato
+07
+
+cut / awk
+sort
+Estrai la colonna dei codici di stato HTTP e ordinala numericamente, in modo da individuare a colpo d'occhio l'intervallo di valori presenti nel log.
+Suggerimento: sort ha un'opzione per l'ordinamento numerico (di default è lessicografico)
+08
+
+&&
+||
+Scrivi una singola riga di comando che verifichi se il file di log esiste: se sì, stampi il numero di righe; altrimenti, stampi un messaggio di errore — usando && e || invece di if/then/else.
+Suggerimento: test -f restituisce uno stato di uscita 0/1
+09
+
+grep
+wc
+|
+In un solo comando, combinando più grep con |, trova quante richieste con metodo GET hanno restituito status 200.
+Output atteso: un numero intero
+Note
+Ogni volta che un esercizio chiede di "non creare file intermedi", il punto è abituarsi a concatenare comandi con | piuttosto che salvare e ricaricare risultati passo per passo.
+Per ispezionare velocemente l'output di un comando senza scorrere tutto il file, combinalo con head o less mentre lo stai sviluppando.
+Se il log è molto grande, lavora su una copia troncata (es. le prime 1000 righe) durante la fase di sviluppo del comando, poi rilancialo sul file completo.
+Vedere anche
+man grep
+man cut
+man awk
+man sed
+man sort
+man wc
+man bash — sezione "Lists" per && / ||
+man 5 logfile — formato dei log Apache
+Linux
