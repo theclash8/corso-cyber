@@ -1,0 +1,24 @@
+Ecco i concetti fondamentali:
+
+Cos'è una rete — un insieme di dispositivi (computer, smartphone, stampanti, server) collegati tra loro per scambiarsi dati. Può essere piccola come una casa o grande come internet.
+I tipi principali:
+
+LAN (Local Area Network) — rete locale, tipicamente una casa, un ufficio, una scuola. I dispositivi comunicano ad alta velocità tra loro.
+WAN (Wide Area Network) — rete geograficamente estesa. Internet è la WAN più grande del mondo.
+WiFi — LAN wireless, la connessione avviene via onde radio invece che via cavo.
+VPN (Virtual Private Network) — rete privata "virtuale" che viaggia cifrata sopra internet.
+
+I dispositivi chiave:
+
+Router — è il "cancello" tra la tua rete locale e internet. Assegna gli indirizzi IP ai dispositivi tramite DHCP e gestisce il NAT (fa sembrare che tutti i tuoi dispositivi abbiano un solo IP pubblico).
+Switch — distribuisce il traffico all'interno della LAN, collega PC, stampanti, server tramite cavo Ethernet.
+Access point — estende la rete via WiFi, di solito integrato nel router di casa.
+
+I protocolli fondamentali:
+
+IP — indirizzo univoco di ogni dispositivo in rete (es. 192.168.1.10)
+TCP — garantisce che i dati arrivino completi e nell'ordine giusto
+DNS — traduce i nomi (google.com) in indirizzi IP
+HTTP/HTTPS — protocollo per navigare sul web
+
+La distinzione IP privato / pubblico — dentro casa i tuoi dispositivi hanno IP privati (es. 192.168.x.x). Verso internet tutti condividono un unico IP pubblico, assegnato dal tuo operatore (ISP). Ecco perché ip addr mostra un IP diverso da curl ifconf
