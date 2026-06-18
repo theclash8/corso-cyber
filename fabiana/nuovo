@@ -1,0 +1,56 @@
+Cos’è una rete e le due tipologie: 
+-LAN (reti locali, di ufficio, di casa) 
+-WAN (reti globali, cittadine)
+
+Inizialmente non era pensato che ogni casa avesse una connessione internet
+Reti cittadine e reti di quartiere.
+
+- Funzionamento di una rete locale:
+     - sniffing e modalità promiscua 
+
+- 3 domande:
+     - chi sono? INDIRIZZO IP
+     - Dove sono? NETMASK
+     - Chi/dove sono gli altri? DEFAUL GW-ROUTER
+    
+ 
+--IP
+-NETMASK
+-Il **TCP/IP** (Transmission Control Protocol/Internet Protocol) è l'insieme di regole fondamentale che permette ai dispositivi di comunicare su Internet. È composto da due protocolli principali: l'**IP** si occupa di indirizzare e instradare i pacchetti, mentre il **TCP** garantisce che arrivino a destinazione in modo affidabile
+-stack tecnologico** (o _security stack_) è l'insieme stratificato di strumenti, software e servizi cloud utilizzati per proteggere reti, dispositivi e dati. Funziona come una serie di difese sovrapposte; se un livello fallisce o viene aggirato, quello successivo interviene per bloccare la minaccia.Un stack è un saas
+-Dipc server che smista
+
+-Sniff del traffico tutto il traffico che passa posso salvarlo da qualche perte.
+-Peering accordi da provider per connettersi direttamentee
+
+stack ip (questo gestisce come comunicanoo due router) questo è gestito a 32bit
+192.168 per il privato è abbastanza ricorrente.
+
+10.0.0.0 sono classi di ip che viene utilizzato per le reti locali
+
+172.16.02.8
+
+Quando utilizzeremo il cluad useremo una classe direte particolare 10.0.0.0
+- la NETMASK definita controintuitiva perché non descrive quanti dispositivi ci sono in una rete, ma **definisce esattamente dove inizia e dove finisce la rete stessa**. Funziona come un "filtro di bit": impone al computer di ignorare alcuni numeri dell'indirizzo IP per capire se un altro dispositivo è raggiungibile direttamente o meno
+- Come scegliamo le netmask? In base alla rete su cui dobbiamo lavorare, si usa la tecnica della segmentazione di reti.
+
+Si sceglie la classe in base a quanti device ci si devono attaccare.
+
+Generalmente nelle reti di casa si sceglie la c, aziende dalla b a salire.
+-Gli ip che utilizziamo oggi hanno piu ottetto
+
+IPV4 e IPV6
+
+Le caratteristiche del ipv6 a 128bit
+# comandi:
+ipconfig mi da un output
+
+SCRIPT PLAY:
+script --timing-timing.long sessione.log
+route -n
+
+
+VARIABILE $PATH:
+luca@corso-cyber:-$ echo $PATH
+/user/luca/bin:/usr/bin:/bin:/user/local/games:/user/games
+
