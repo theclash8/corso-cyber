@@ -1,0 +1,22 @@
+Le reti
+IoT (Internet of Things) dispositivi elettronici che hanno una connessione a Internet 
+inter net --> interconnesse reti 
+stack tcp/ip 
+arpanet che utilizza il protocollo ARP
+MAC Address 
+Come fanno queste reti a parlarsi?
+3 domande
+chi sono? i paddr (ip address)
+dove sono? netmask
+chi/ dove sono gli altri? router
+LAN = rete locale   pc connessi tra loro
+WAN = rete non locale
+Switch
+Hub
+DHCP
+.Funzionamento di una rete locale
+Sniffing e modalità promiscua 
+
+
+Utility
+Script play
