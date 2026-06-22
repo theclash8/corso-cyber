@@ -531,3 +531,91 @@ mtu - grandezza  massima di un pacchetto alla volta
 mtu 1500 - standard
 
 
+
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+---------------------------------------------------------------------
+
+Standard contenuti negli RFC: request for comments. standard definitivo di internet gestita dalla IETF.
+
+SNP
+SMTP
+
+TCP/IP protocollo di rete a 32bit
+Transmission Control Protocol - 3wanhandshake 
+
+UDP
+User Datagram Protocol - streaming/videocall/giochi online - se perdi qualche frame ci sono i codec. Velocità di trasmissione più ampia.
+
+ICMP
+CARP
+HTTP(S) con s quando è criptato
+zsh
+
+
+Pila ISO/OSI:
+
+| Livello | Nome (English) | Funzione principale                                                      | Unità di dati                     | Protocolli/Device esempi                                 |
+| ------- | -------------- | ------------------------------------------------------------------------ | --------------------------------- | -------------------------------------------------------- |
+| 7       | Application    | Interfaccia diretta con le applicazioni utente, fornisce servizi di rete | Dati                              | HTTP, FTP, SMTP, DNS, Chrome, Firefox fastweb+1          |
+| 6       | Presentation   | Crittografia, decrittografia, codifica dei dati per l'applicazione       | Dati                              | TLS, SSL, JPEG, MIME, crittografia fastweb+1             |
+| 5       | Session        | Gestione, controllo e sincronizzazione delle sessioni tra dispositivi    | Dati                              | SIP, RPC, NetBIOS, gestione sessioni dmf.unisalento+1    |
+| 4       | Transport      | Trasferimento affidabile dei dati, controllo errori, numeri di porta     | Segmenti (TCP) / Datagrammi (UDP) | TCP, UDP, porte 80/443 fastweb+1                         |
+| 3       | Network        | Instradamento (routing) dei pacchetti tra reti, indirizzi IP             | Pacchetti                         | IP, ICMP, ARP, router fastweb+1                          |
+| 2       | Data Link      | Creazione pacchetti di dati, controllo flusso, addresses MAC             | Frame                             | Switch, MAC, LLC, MAC dmf.unisalento+2                   |
+| 1       | Physical       | Trasmissione fisica dei bit sul mezzo (cavi, radiofrequenza)             | Bit                               | Cavi, hub, modem, Wi-Fi, Bluetooth, DSL dmf.unisalento+2 |
+
+
+NAT sistema che fa funzionare il routing e quindi lo scambio di pacchetti
+BGP serve per annunciare le rotte. Protocollo ad assoluta fiducia.
+
+@@Serverfarm a Tivoli di TIM per richiedere una stecca di IP
+
+Multiplexing - standard che divide e gestisci tante connessioni (o flussi di dati/ segnali) per poter inviarle nel traffico di rete.
+
+chrome - www.google.it - avere porta locale - connect to google por443
+google risponde attraverso la porta locale ^
+
+Server:
+HTTP 80
+HTTPS 443
+SSH 22 
+FTP 21
+SMTP
+SMTS 
+...
+
+netstat -tunap
+netstat -polenta
+nc -lvp 5000
+telnet ...ip... porta(5000....)
+echo " ciao" | nc indirizzo servere e porta
+
+telnet - telnetd / ssh - shhd 
+dove ssh.. è criptato
+quando finiscono con "d" si comportano come server. "d" da demoni
+ssh-deamon
+systemd, sempre attivo in background
+
+
+crt-key (https)
+key-exchange (ssh-pgp) criptata
+
+tecnologia SSL certificates oppure TLS oppure GNU/TLS
+autoriti di certificazione centralizzate
+Certificati:
+=! server
+=! IP
+== Domini
+
+grep -v
+
+last
+host "ip"
+nmap "ip"
+telnet "ip" "porta"
+ssh "ip" -p "porta"
+
+
+
+https://corso-cyber.acido.be/tcp.html
