@@ -619,3 +619,69 @@ ssh "ip" -p "porta"
 
 
 https://corso-cyber.acido.be/tcp.html
+
+-----------------------------------------------------------------------------
+------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
+
+Raspberry
+
+TCP/IP Networking
+
+connectionless
+codec
+
+dove viene utilizzato UDP:
+	streaming, videocall.
+	vpn, utilizzano udp che creano intrefacce di rete virtuali
+	 traffico DNS
+
+
+iots
+differenze tra: rete wifi - rete cablata (differenti modi di sicurezza)
+
+Pila ISO/OSI. NETWORKING:
+
+**Livello 7 - Application** È il livello che vedi tu, l'utente. Qui vivono i programmi e i protocolli che usi direttamente: browser, email, messaggistica. Esempi di protocolli: HTTP, FTP, SMTP. Non è "l'app" in sé, ma l'interfaccia tra l'app e la rete.
+
+**Livello 6 - Presentation** Si occupa di tradurre e formattare i dati così che chi li manda e chi li riceve si capiscano. Qui entrano in gioco cose come la codifica dei caratteri, la compressione, e la cifratura (SSL/TLS storicamente collocato qui). Pensa a questo livello come a un traduttore.
+
+**Livello 5 - Session** Gestisce l'apertura, il mantenimento e la chiusura di una "conversazione" tra due dispositivi. Tiene traccia di chi sta parlando con chi, e per quanto tempo. Nella pratica moderna è il livello meno visibile, spesso assorbito da altri protocolli.
+
+
+**Livello 4 - Transport** Qui si decide come i dati viaggiano: in modo affidabile e ordinato (TCP) oppure veloce ma senza garanzie (UDP). Questo livello gestisce anche il concetto di porta (es. porta 443 per HTTPS) e la segmentazione dei dati in pacchetti più piccoli.
+
+**Livello 3 - Network** È il livello dell'indirizzamento logico e dell'instradamento (routing). Qui vivono gli indirizzi IP, e i router decidono qual è il percorso migliore per far arrivare i dati da un punto A a un punto B, anche attraverso reti diverse.
+
+**Livello 2 - Data Link** Gestisce la comunicazione tra dispositivi che si trovano sulla stessa rete locale. Qui ci sono gli indirizzi MAC e dispositivi come gli switch. Questo livello si preoccupa di "chi è il prossimo salto" dentro la stessa rete, e di rilevare errori di trasmissione di base.
+
+**Livello 1 - Physical** È il livello più concreto: cavi, segnali elettrici, luce nelle fibre ottiche, onde radio nel Wi-Fi. Qui non ci sono dati "intelligenti", solo bit grezzi (0 e 1) che viaggiano fisicamente da un punto all'altro.
+
+
+Encapsulasion
+
+echo -n "Matteo Costantini" | xxd -b
+00000000: 01001101 01100001 01110100 01110100 01100101 01101111  Matteo
+00000006: 00100000 01000011 01101111 01110011 01110100 01100001   Costa
+0000000c: 01101110 01110100 01101001 01101110 01101001           ntini
+
+connessioni 5g finte in italia
+
+
+access point
+
+multiplexing 
+ogni porta connesione quando ti conneti 
+ogni connesione genera un aporta
+
+
+cat /etc/services 
+cat /etc/services | more
+last
+
+bgp servizio in network and application layer. 
+open bgp(vecchi quagda e zeta)
+
+i hop
+| australia | america | europa-asia
+clastering
