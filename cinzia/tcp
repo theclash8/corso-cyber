@@ -1,1 +1,47 @@
+import socket
+import threading
+import time
 
+def connetti_client(id_client, nome_utente):
+    try:
+        # 1. Crea il socket TCP e connettiti
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(('tcpbin.com', 4242))
+        
+        # 2. Recupera subito la porta locale assegnata
+        _, porta_locale = s.getsockname()
+        print(f"[Client {id_client}] Connesso! Porta locale: {porta_locale}")
+        
+        # 3. Invia il messaggio
+        messaggio = f"{nome_utente} da Client {id_client}\n"
+        s.sendall(messaggio.encode('utf-8'))
+        
+        # Simula una leggera attesa per mantenere le connessioni attive in contemporanea
+        time.sleep(1)
+        
+        # 4. Ricevi la risposta
+        risposta = s.recv(1024)
+        print(f"[Client {id_client}] Risposta server: {risposta.decode('utf-8').strip()}")
+        
+        # 5. Chiudi il socket
+        s.close()
+        
+    except Exception as e:
+        print(f"[Client {id_client}] Errore: {e}")
+
+    # Lista per tenere traccia dei thread
+      threads = []
+      nomi = ["Mario Rossi", "Luigi Verdi", "Anna Bianchi"]
+
+      print("--- Avvio delle 3 connessioni simultanee ---")
+
+      # Crea e avvia 3 thread in parallelo
+      for i in range(3):
+            t = threading.Thread(target=connetti_client, args=(i+1, nomi[i]))
+            threads.append(t)
+             t.start()
+
+      # Attendi che tutti i thread abbiano terminato prima di chiudere lo script
+      for t in threads:
+          t.join()
+           print("--- Tutte le connessioni sono state chiuse ---")
