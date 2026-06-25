@@ -1,1 +1,22 @@
 
+Obiettivi didattici
+Al termine dell'esercizio lo studente sarà in grado di:
+
+Mappare i protocolli di una sessione reale sui layer del modello OSI e TCP/IP.
+Riconoscere i campi dell'header IP (versione, TTL, indirizzi, protocollo).
+Leggere il three-way handshake TCP e i flag SYN, SYN-ACK, ACK, FIN.
+Calcolare subnet, host range e broadcast per un dato blocco CIDR.
+Distinguere il ruolo di TCP (trasporto affidabile) da quello di IP (instradamento best-effort).
+01
+Scenario
+Contesto operativo
+Sei il responsabile IT di una piccola azienda. Un collega ti segnala traffico insolito proveniente da una workstation interna. Hai eseguito una cattura con tcpdump e ti trovi di fronte al dump qui sotto.
+
+Il tuo compito è analizzare manualmente i pacchetti, identificare i protocolli coinvolti layer per layer, e rispondere alle domande nella sezione 03.
+
+Non hai accesso a Wireshark: devi ragionare sul dump grezzo.
+Non cercare le risposte online: l'esercizio misura il ragionamento, non la memoria.
+Usa il riferimento rapido in sezione 04 se hai bisogno di un promemoria sui layer.
+
+servizio web server porta 80
+
