@@ -36,8 +36,8 @@
 * le reti WIFI
 ## Modulo fondamenti di sicurezza informatica
 * ~~Introduzione alla sicurezza informatica~~
-* Business continuity plan e disaster recovery plan
-* Strategie di backup
+* ~~Business continuity plan e disaster recovery plan~~
+* ~~Strategie di backup~~
 * Strategie di firewalling
 * ~~Introduzione al monitoring~~
 * ~~Monitoring e metriche~~
