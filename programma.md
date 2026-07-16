@@ -43,7 +43,6 @@
 * ~~Monitoring e metriche~~
 	* ~~Nagios/Zabbix~~
 	* ~~Stack ELK, Grafana, Datadog~~
-* Il social engineering e le best practice nell'utilizzo di strumenti informatici
 
 ## Modulo hacking di reti e applicazioni
 * ~~Introduzione all'hacking~~
@@ -61,10 +60,9 @@
 	* ~~SSRF~~
 	* ~~SQL Injection~~
 	* ~~Path inclusion e file upload~~
-* I bug 0-day
-* La programmazione nella sicurezza informatica
-* Virus e Ransomware
-* Le backdoor
+* ~~I bug 0-day~~
+* ~~Virus e Ransomware~~
+* ~~Le backdoor~~
 ## Modulo Laboratori
 * ~~Introduzione a GIT~~
 * Esercizi su server linux
