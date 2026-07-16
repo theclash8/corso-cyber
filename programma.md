@@ -39,7 +39,7 @@
 * Business continuity plan e disaster recovery plan
 * Strategie di backup
 * Strategie di firewalling
-* Introduzione al monitoring
+* ~~Introduzione al monitoring~~
 * ~~Monitoring e metriche~~
 	* ~~Nagios/Zabbix~~
 	* ~~Stack ELK, Grafana, Datadog~~
