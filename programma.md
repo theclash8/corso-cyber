@@ -43,7 +43,6 @@
 * ~~Monitoring e metriche~~
 	* ~~Nagios/Zabbix~~
 	* ~~Stack ELK, Grafana, Datadog~~
-* Discussione su case studies famosi
 * Il social engineering e le best practice nell'utilizzo di strumenti informatici
 
 ## Modulo hacking di reti e applicazioni
