@@ -40,9 +40,9 @@
 * Strategie di backup
 * Strategie di firewalling
 * Introduzione al monitoring
-* Monitoring e metriche
-	* Nagios/Zabbix
-	* Stack ELK, Grafana, Datadog
+* ~~Monitoring e metriche~~
+	* ~~Nagios/Zabbix~~
+	* ~~Stack ELK, Grafana, Datadog~~
 * Discussione su case studies famosi
 * Il social engineering e le best practice nell'utilizzo di strumenti informatici
 
