@@ -32,7 +32,7 @@
 	* ~~I Database~~
 		* ~~Database SQL~~
 		* ~~Database NOSQL~~
-* I WAF
+* ~~I WAF~~
 * le reti WIFI
 ## Modulo fondamenti di sicurezza informatica
 * ~~Introduzione alla sicurezza informatica~~
