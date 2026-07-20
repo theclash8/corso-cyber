@@ -21,24 +21,24 @@
 * ~~Introduzione al routing~~
 * ~~il NAT~~
 * * ~~Tipologie di reti (flat/routed)~~
-* il DHCP
+* ~~il DHCP~~
 * ~~La pila ISO/OSI~~
 * ~~Introduzione a IPTables~~
 * Applicativi di rete
 	* ~~web server~~
 	* ~~DNS~~
 	* ~~FTP~~
-	* VPN
+	* ~~VPN~~
 	* ~~I Database~~
 		* ~~Database SQL~~
 		* ~~Database NOSQL~~
 * ~~I WAF~~
-* le reti WIFI
+* ~~le reti WIFI~~
 ## Modulo fondamenti di sicurezza informatica
 * ~~Introduzione alla sicurezza informatica~~
 * ~~Business continuity plan e disaster recovery plan~~
 * ~~Strategie di backup~~
-* Strategie di firewalling
+* ~~Strategie di firewalling~~
 * ~~Introduzione al monitoring~~
 * ~~Monitoring e metriche~~
 	* ~~Nagios/Zabbix~~
@@ -46,14 +46,13 @@
 
 ## Modulo hacking di reti e applicazioni
 * ~~Introduzione all'hacking~~
-* Tipologie di Hacker
-* La cyber security engineering nelle aziende
+* ~~Tipologie di Hacker~~
+* ~~La cyber security engineering nelle aziende~~
 * ~~Tipologie di attacco~~
 	* ~~Attacchi alle applicazioni~~
 	* ~~Attacchi di rete~~
-* Attacchi DDOS
-* Il packet sniffing
-* Hacking di reti wifi
+* ~~Attacchi DDOS~~
+* ~~Hacking di reti wifi~~
 * ~~Dalle applicazioni web ai SaaS nella sicurezza informatica~~
 	* ~~XSS~~
 	* ~~CSRF~~
@@ -65,7 +64,7 @@
 * ~~Le backdoor~~
 ## Modulo Laboratori
 * ~~Introduzione a GIT~~
-* Esercizi su server linux
+* ~~Esercizi su server linux~~
 	* ~~Scriviamo uno script di monitoring e backup~~
-* Esercizi su piattaforma DVWA e Try to hack me per lo studio dei exploit applicativi
-* Hackeriamo insieme una rete WIFI
+* ~~Esercizi su piattaforma DVWA e Try to hack me per lo studio dei exploit applicativi~~
+* ~~Hackeriamo insieme una rete WIFI~~
