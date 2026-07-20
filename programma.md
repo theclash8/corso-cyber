@@ -3,7 +3,7 @@
 * La shell di linux
 * La memoria RAM
 * La gestione dei dischi
-* La gestione dei device
+* La gestione dei processi
 * Introduzione a Bash/POSIX
 * I principali comandi di gestione di Linux
 * Introduzione a SSH
