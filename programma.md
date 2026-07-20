@@ -1,19 +1,19 @@
 ## Modulo Fondamenti di sistemi operativi
-* Introduzione a Linux
-* La shell di linux
-* La memoria RAM
-* La gestione dei dischi
-* La gestione dei processi
-* Introduzione a Bash/POSIX
-* I principali comandi di gestione di Linux
-* Introduzione a SSH
-* I permessi
+* **Introduzione a Linux**
+* **La shell di linux**
+* **La memoria RAM**
+* **La gestione dei dischi**
+* **La gestione dei processi**
+* **Introduzione a Bash/POSIX**
+* **I principali comandi di gestione di Linux**
+* **Introduzione a SSH**
+* **I permessi**
 * La manipolazione dell'output
-	* sed
-	* awk e cut
-	* grep
-	* wc
-	* sort
+	* **sed**
+	* **awk**
+	* **grep**
+	* **wc**
+	* **sort**
 ## Modulo fondamenti di networking
 * Introduzione a Internet
 * Introduzione alle reti di calcolatori
