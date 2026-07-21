@@ -15,20 +15,20 @@
 	* **wc**
 	* **sort**
 ## Modulo fondamenti di networking
-* Introduzione a Internet
-* Introduzione alle reti di calcolatori
-* Indirizzi IP e Netmask
-* Introduzione al routing
-* il NAT
-* Tipologie di reti (flat/routed)
-* il DHCP
-* La pila ISO/OSI
-* Introduzione a IPTables
-* Applicativi di rete
-	* web server
-	* DNS
-	* FTP
-	* VPN
+* **Introduzione a Internet**
+* **Introduzione alle reti di calcolatori**
+* **Indirizzi IP e Netmask**
+* **Introduzione al routing**
+* **il NAT**
+* **Tipologie di reti (flat/routed)**
+* **il DHCP**
+* **La pila ISO/OSI**
+* Introduzione a IPTables**
+* **Applicativi di rete**
+	* **web server**
+	* **DNS**
+	* **FTP**
+	* **VPN**
 	* I Database
 		* Database SQL
 		* Database NOSQL
