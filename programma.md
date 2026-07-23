@@ -46,7 +46,7 @@
 
 ## Modulo hacking di reti e applicazioni
 * Introduzione all'hacking
-* ipologie di Hacker
+* Tipologie di Hacker
 * La cyber security engineering nelle aziende
 * Tipologie di attacco
 	* Attacchi alle applicazioni
