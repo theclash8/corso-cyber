@@ -45,6 +45,8 @@
 	* **Stack ELK, Grafana, Datadog**
 
 ## Modulo hacking di reti e applicazioni
+* **CIA**
+* **STRIDE**
 * **Introduzione all'hacking**
 * **Tipologie di Hacker**
 * **La cyber security engineering nelle aziende**
