@@ -8,7 +8,7 @@
 * **I principali comandi di gestione di Linux**
 * **Introduzione a SSH**
 * **I permessi**
-* La manipolazione dell'output
+* **La manipolazione dell'output**
 	* **sed**
 	* **awk**
 	* **grep**
@@ -23,45 +23,45 @@
 * **Tipologie di reti (flat/routed)**
 * **il DHCP**
 * **La pila ISO/OSI**
-* Introduzione a IPTables**
+* **Introduzione a IPTables**
 * **Applicativi di rete**
 	* **web server**
 	* **DNS**
 	* **FTP**
 	* **VPN**
-	* I Database
-		* Database SQL
-		* Database NOSQL
-* I WAF
+	* **I Database**
+		* **Database SQL**
+		* **Database NOSQL**
+* **I WAF**
 * le reti WIFI
 ## Modulo fondamenti di sicurezza informatica
-* Introduzione alla sicurezza informatica
-* Business continuity plan e disaster recovery plan
-* Strategie di backup
-* Strategie di firewalling
-* Introduzione al monitoring
-* Monitoring e metriche
-	* Nagios/Zabbix
-	* Stack ELK, Grafana, Datadog
+* **Introduzione alla sicurezza informatica**
+* **Business continuity plan e disaster recovery plan**
+* **Strategie di backup**
+* **Strategie di firewalling**
+* **Introduzione al monitoring**
+* **Monitoring e metriche**
+	* **Nagios/Zabbix**
+	* **Stack ELK, Grafana, Datadog**
 
 ## Modulo hacking di reti e applicazioni
-* Introduzione all'hacking
-* Tipologie di Hacker
-* La cyber security engineering nelle aziende
-* Tipologie di attacco
-	* Attacchi alle applicazioni
-	* Attacchi di rete
-* Attacchi DDOS
-* Hacking di reti wifi
-* Dalle applicazioni web ai SaaS nella sicurezza informatica
-	* XSS
-	* CSRF
-	* SSRF
-	* SQL Injection
-	* Path inclusion e file upload
-* I bug 0-day
-* Virus e Ransomware
-* Le backdoor
+* **Introduzione all'hacking**
+* **Tipologie di Hacker**
+* **La cyber security engineering nelle aziende**
+* **Tipologie di attacco**
+	* **Attacchi alle applicazioni**
+	* **Attacchi di rete**
+* **Attacchi DDOS**
+* **Hacking di reti wifi**
+* **Dalle applicazioni web ai SaaS nella sicurezza informatica**
+	* **XSS**
+	* **CSRF**
+	* **SSRF**
+	* **SQL Injection**
+	* **Path inclusion e file upload**
+* **I bug 0-day**
+* **Virus e Ransomware**
+* **Le backdoor**
 ## Modulo Laboratori
 * Introduzione a GIT
 * Esercizi su server linux
