@@ -33,7 +33,7 @@
 		* **Database SQL**
 		* **Database NOSQL**
 * **I WAF**
-* le reti WIFI
+* **le reti WIFI**
 ## Modulo fondamenti di sicurezza informatica
 * **Introduzione alla sicurezza informatica**
 * **Business continuity plan e disaster recovery plan**
